@@ -44,6 +44,10 @@ footer {
     height: auto;
 
 }
+.foto1 {
+    max-width: 100px;
+    height: auto;
+}
 /* Estilo para el contenido principal */
 main {
     padding: 20px;
