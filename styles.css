@@ -19,11 +19,13 @@ header {
 .gif-left {
     max-width: 100px;
     height: auto;
+    float: left;
     margin-right: 5px;
 }
 .gif-right {
     max-width: 100px;
     height: auto;
+    float: right;
     margin-left: 5px;
 }
 footer {
