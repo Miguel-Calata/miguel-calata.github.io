@@ -14,19 +14,17 @@ header {
     background-color: #000000;
     color: #ff0000;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 .gif-left {
     max-width: 100px;
     height: auto;
-    margin-right: 10px;
+    margin-right: 5px;
 }
-
-/* Estilo para los GIFs a la derecha */
 .gif-right {
     max-width: 100px;
     height: auto;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 footer {
     background-color: #000000;
