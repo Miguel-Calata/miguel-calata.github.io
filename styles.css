@@ -5,7 +5,11 @@ body {
     margin: 0;
     padding: 0;
 }
-
+header img {
+    max-width: 100%;
+height: auto;
+display: block;
+}
 header {
     background-color: #000000;
     color: #ff0000;
