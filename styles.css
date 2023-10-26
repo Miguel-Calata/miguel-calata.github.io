@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 header img {
-    max-width: 100%;
+    max-width: 400;
 height: auto;
 display: block;
 }
@@ -14,7 +14,7 @@ header {
     background-color: #000000;
     color: #ff0000;
     text-align: center;
-    padding: 15px;
+    padding: 13px;
 }
 .gif-left {
     max-width: 100px;
@@ -40,7 +40,7 @@ footer {
     height: auto;
 }
 .gif2 {
-    max-width: 400px;
+    max-width: 300px;
     height: auto;
 
 }
