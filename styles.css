@@ -27,7 +27,16 @@ footer {
     text-align: center;
     padding: 10px;
 }
+/* Estilo para los GIFs */
+.gif1 {
+    max-width: 100px;
+    height: auto;
+}
+.gif2 {
+    max-width: 100px;
+    height: auto;
 
+}
 /* Estilo para el contenido principal */
 main {
     padding: 20px;
