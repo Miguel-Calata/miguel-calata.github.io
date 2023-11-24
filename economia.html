@@ -9,30 +9,41 @@
             margin: 20px;
             padding: 0;
             background-color: #f4f4f4;
+            text-align: center;
         }
 
         header {
-            text-align: center;
             padding: 10px;
-            background-color: #333;
+            background-color: #1a88e2;
             color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #444;
-            padding: 10px;
+        button {
+            display: block;
+            width: 300px;
+            height: 100px;
+            margin: 10px auto;
+            border: 1px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 25px; 
         }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
+        button:hover {
+            background-color: #ddd;
         }
 
-        main {
-            padding: 20px;
+        .pencil::before {
+            content: "\270F"; /* Emoji del lápiz */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .book::before {
+            content: "\1F4D6"; /* Emoji del libro */
+            font-family: 'Arial', sans-serif;
         }
     </style>
 </head>
@@ -42,14 +53,13 @@
         <h1>Examen de Economía</h1>
     </header>
 
-    <nav>
-        <a href="https://calata.xyz/palabras">Glosario</a>
-        <a href="https://calata.xyz/temario-economia">Temario</a>
-    </nav>
+    <a href="https://calata.xyz/palabras">
+        <button class="pencil">Glosario</button>
+    </a>
 
-    <main>
-        <!-- Contenido principal de la página va aquí -->
-    </main>
+    <a href="https://calata.xyz/temario-economia">
+        <button class="book">Temario</button>
+    </a>
 
 </body>
 </html>
