@@ -5,45 +5,49 @@
     <title>Examen de Economía</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
+            margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-image: url('trade.jpg'); /* Reemplaza 'tu-imagen-de-fondo.jpg' con la URL de tu imagen de fondo */
+            background-size: cover;
+            color: #fff;
+            background-position: center;
         }
 
         header {
-            padding: 10px;
-            background-color: #1a88e2;
-            color: #fff;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            background-color: rgba(68, 68, 68, 0.8); /* Gris con opacidad */
+            padding: 20px;
+            text-align: center;
         }
-
+        a {
+            text-decoration: none; /* Eliminar subrayado en enlaces */
+        }
         button {
             display: block;
             width: 300px;
             height: 100px;
-            margin: 10px auto;
-            border: 1px solid #333;
-            border-radius: 10px;
-            background-color: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444; /* Gris oscuro */
+            color: #fff;
+            font-size: 35px;
             cursor: pointer;
-            font-size: 25px; 
         }
 
         button:hover {
-            background-color: #ddd;
+            background-color: #333; /* Gris un poco más oscuro al pasar el ratón */
         }
 
         .pencil::before {
             content: "\270F"; /* Emoji del lápiz */
-            font-family: 'Arial', sans-serif;
+            margin-right: 5px;
         }
 
         .book::before {
             content: "\1F4D6"; /* Emoji del libro */
-            font-family: 'Arial', sans-serif;
+            margin-right: 5px;
         }
     </style>
 </head>
