@@ -14,7 +14,7 @@
 
         header {
             padding: 10px;
-            background-color: #333;
+            background-color: #1a88e2;
             color: #fff;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -22,13 +22,14 @@
 
         button {
             display: block;
-            width: 150px;
-            height: 50px;
+            width: 300px;
+            height: 100px;
             margin: 10px auto;
-            border: 2px solid #333;
+            border: 1px solid #333;
             border-radius: 10px;
             background-color: #fff;
             cursor: pointer;
+            font-size: 25px; 
         }
 
         button:hover {
@@ -37,10 +38,12 @@
 
         .pencil::before {
             content: "\270F"; /* Emoji del lápiz */
+            font-family: 'Arial', sans-serif;
         }
 
         .book::before {
             content: "\1F4D6"; /* Emoji del libro */
+            font-family: 'Arial', sans-serif;
         }
     </style>
 </head>
@@ -50,11 +53,11 @@
         <h1>Examen de Economía</h1>
     </header>
 
-    <a href="enlace-a-glosario.html">
+    <a href="https://calata.xyz/palabras">
         <button class="pencil">Glosario</button>
     </a>
 
-    <a href="enlace-a-temario.html">
+    <a href="https://calata.xyz/temario-economia">
         <button class="book">Temario</button>
     </a>
 
