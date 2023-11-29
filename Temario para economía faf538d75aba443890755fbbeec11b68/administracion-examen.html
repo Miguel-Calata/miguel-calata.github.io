@@ -1,0 +1,705 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Temario para segundo examen de administración</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b5aebb29-4489-4835-9a1b-7439558a2f31" class="page sans"><header><h1 class="page-title">Temario para segundo examen de administración</h1><p class="page-description"></p></header><div class="page-body"><p id="2ff39164-bec7-4099-b621-47edba5291a3" class="">En este mini temario para el segundo parcial de administración vamos a repasar los temas de “Comunicación”, “Motivación”, “liderazgo” y “Los equipos de trabajo y cultura organizacional”.</p><h1 id="3f392c50-4b26-4f15-bf54-803042ba5ae8" class="">Comunicación</h1><p id="82f84fc1-f843-4d53-bf29-e6c07b3773c5" class="">La comunicación se define como la comprensión, transmisión e intercambio de información de una persona a otra por medio de símbolos que tienen significado. En las organizaciones, los gerentes o administradores utilizan el proceso de comunicación para cumplir sus cuatro funciones administrativas, planeación, organización, dirección y control como ellas deben acceder a información relevante para tomar decisiones correctas. Los administradores efectivos crean redes de contacto que les ayudan a recabar, interpretar y difundir la información. </p><p id="dd185e7b-a315-4db0-a5f1-31806296e310" class="">El proceso de comunicación tiene seis elementos básicos, emisor, receptor, mensaje, canales, retroalimentación y percepción:</p><figure id="47e39637-334b-4594-8501-3920a420b79f" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled.jpeg"><img style="width:2916px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled.jpeg"/></a></figure><p id="3643adad-5e7a-4e34-8695-0fc5f8638540" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="998643cb-929e-429d-93d2-edc9b00b1f35"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%">Los principios de la comunicación efectiva<ol type="1" id="e8b0eca8-31d6-4f93-9a25-4e369b8b4f9b" class="numbered-list" start="1"><li><strong>Oportunidad y Veracidad:</strong><ul id="f7abc98f-8aad-40cd-a44d-3e2b5e804709" class="bulleted-list"><li style="list-style-type:disc"><strong>Oportunidad:</strong> Se refiere a la importancia de comunicar la información en el momento adecuado. La oportunidad asegura que el mensaje sea relevante y útil en el contexto en el que se comparte.</li></ul><ul id="cf26531c-701c-43dc-8934-8d9c7ca31519" class="bulleted-list"><li style="list-style-type:disc"><strong>Veracidad:</strong> Implica la honestidad y la precisión en la comunicación. La información debe ser fiel a los hechos y presentada de manera que no induzca a malentendidos o engaños.</li></ul></li></ol><ol type="1" id="a6136184-f876-41b4-8d0a-03e0e91525e9" class="numbered-list" start="2"><li><strong>Bilateralidad:</strong><ul id="ffc3fd88-b135-4be2-9246-1384f31487b3" class="bulleted-list"><li style="list-style-type:disc">Este principio destaca la importancia de la comunicación bidireccional. No se trata solo de transmitir información, sino también de escuchar y entender la perspectiva del interlocutor. La bilateralidad fomenta un diálogo constructivo y promueve la participación activa de ambas partes.</li></ul></li></ol><ol type="1" id="d0039855-d3ee-4e6d-be1e-93a9e85e8649" class="numbered-list" start="3"><li><strong>Rastreabilidad:</strong><ul id="91cf397d-3276-4625-98cf-1837527a4e85" class="bulleted-list"><li style="list-style-type:disc">La rastreabilidad se refiere a la capacidad de seguir o rastrear la comunicación. Esto implica que los mensajes deben ser claros y comprensibles, permitiendo a las partes entender la información y seguir el hilo de la conversación. La falta de rastreabilidad puede llevar a malentendidos y confusiones.</li></ul></li></ol></div></figure><h3 id="5fc47ba5-7516-4f04-9896-0cff74d02367" class="">El emisor (codificador)</h3><p id="0138dd42-200d-442c-8ea1-2dae936af929" class="">El emisor es la fuente de información y el iniciador del proceso de comunicación. Intenta elegir el tipo de mensaje y el canal que considera más efectivo.</p><p id="30fc55db-0030-4e80-86aa-45770b4292c9" class="">la codificación se refiere al proceso de traducir los pensamientos o sentimientos a un medio escrito visual oral que transmita el significado que se pretende.</p><p id="e1d97cd7-028d-45a3-bd35-1a23bf687366" class="">Los 5 principios de la estructura de un mensaje </p><ol type="1" id="588c103b-6230-469b-9d37-b7d335259e66" class="numbered-list" start="1"><li>Relevancia. Haga que su mensaje tenga sentido e importancia eligiendo con cuidado las palabras, símbolos o gestos que utilizará.</li></ol><ol type="1" id="760f5048-d19e-4893-80f2-1a3cc63a3f1b" class="numbered-list" start="2"><li>Sencillez. Presente el mensaje en los términos más sencillos que pueda, reduciendo el número de palabras, símbolos o gestos que utilice para comunicar los pensamientos y sentimientos que desea transmitir.</li></ol><ol type="1" id="60fe7a17-b4fb-4814-a8b8-daf89c8d4506" class="numbered-list" start="3"><li>Organización. Ordene el mensaje en forma de una serie de puntos, de modo que éstos faciliten la posibilidad de comprenderlo. Concluya cada punto del mensaje antes de pasar al siguiente.</li></ol><ol type="1" id="d7ae49c4-37ec-4870-97af-f6983c276ec6" class="numbered-list" start="4"><li>Repetición. Presente por lo menos dos veces los puntos centrales del mensaje, utilizando otras palabras para expresar lo mismo. La repetición tiene particular importancia para la comunicación oral, porque las palabras a veces no se escuchan con claridad ni se entienden del todo la primera vez.</li></ol><ol type="1" id="b3f00fd1-3828-437d-a469-0e7455c06403" class="numbered-list" start="5"><li>Enfoque. Concéntrese en los aspectos esenciales o los puntos centrales del mensaje. Presente un mensaje claro y evite los detalles innecesarios. En la comunicación oral, subraye los puntos importantes cambiando el tono de voz, haciendo una pausa o un gesto, o utilizando las expresiones faciales que vengan al caso. En el caso de la comunicación escrita, use letra bold o subraye los enunciados, frases o palabras centrales.</li></ol><h2 id="72cb8c29-4090-4ebf-8ce4-ee30d639962d" class="">El receptor</h2><p id="65df55af-d33f-4add-a399-620214fe1357" class="">El receptor a la persona que recibe y decodifica el mensaje del emisor, entendamos por decodificar, traducir el mensaje a una forma que tengas sentido para el receptor.</p><h3 id="4858e446-d6e7-42ec-af54-de66d9da9caf" class="">La escucha efectiva</h3><p id="eaa480ac-db06-4fd3-82f7-b86ea51869db" class="">Uno. De los principales requisitos del receptor es su capacidad para escuchar lo que implica poner atención al mensaje y no sólo oírlo aprender a escuchar mejor. Es una vía importante para que las personas mejoren sus habilidades para la comunicación. Algunos estudios Han demostrado que sólo se puede recordar de inmediato alrededor del 50% de lo que se dice y dos meses después alrededor del 25%. Esto explica por qué la comunicación efectiva involucra a menudo el uso de varios medios como informes escritos, memorando, boletines y mensajes por correo electrónico, a continuación se presentan 10 lineamientos para escuchar de forma efectiva:</p><p id="82c65a1f-6214-4b3e-b4d2-53a498cdf2a0" class="">
+</p><ol type="1" id="e201e165-b447-4621-a1aa-72fee9ebcb6e" class="numbered-list" start="1"><li>Recuerde que escuchar no consiste sólo en recibir información, sino que la forma en que usted escuche también envía
+un mensaje de vuelta al emisor.</li></ol><ol type="1" id="0886a9aa-446d-497b-8041-4e1c5ed2ea14" class="numbered-list" start="2"><li>¡Deje de hablar! No se puede escuchar mientras se habla.</li></ol><ol type="1" id="072ae126-96b7-4062-862c-6a97d6373b91" class="numbered-list" start="3"><li>Demuestre que quiere escuchar a la persona que habla. Repita lo que ha dicho para demostrar que ha entendido.</li></ol><ol type="1" id="55742191-9c27-422c-8e98-158d4eba4b95" class="numbered-list" start="4"><li>Elimine las distracciones.</li></ol><ol type="1" id="e0805c2d-d8d3-4766-bf93-abc57f9da298" class="numbered-list" start="5"><li>No prejuzgue lo que piensa o siente la otra persona. Primero escuche y después formule juicios.</li></ol><ol type="1" id="96c38d31-7b89-435c-85e7-ae9d13c0fdfe" class="numbered-list" start="6"><li>Escuche el punto de vista de la otra persona.</li></ol><ol type="1" id="493e5123-6132-4ca0-9868-3c04dcaa32f1" class="numbered-list" start="7"><li>Escuche tratando de encontrar el significado total. Esto incluye el contenido de las palabras y también el sentimiento
+o la actitud que están detrás de ellas.</li></ol><ol type="1" id="dff78d10-56e7-4d90-bcf0-f871e0fa6f81" class="numbered-list" start="8"><li>Observe las señales verbales y no verbales. Preste atención a los posibles mensajes ulteriores.</li></ol><ol type="1" id="b705fc6e-b26f-4763-b773-b85880f5bfc5" class="numbered-list" start="9"><li>No caiga en discusiones ni críticas, porque eso coloca a las personas a la defensiva y puede provocar que se &quot;cierren como ostras&quot; o que se enojen.</li></ol><ol type="1" id="f353719b-0b6a-4b6d-b22c-ad79ebd88b57" class="numbered-list" start="10"><li>Antes de que ambos se vayan, confirmen lo que han dicho.</li></ol><p id="ecb1e892-4bc9-4a9a-b2ff-8c5f7fab80fe" class="">
+</p><h2 id="2caa6694-938e-484a-bdf4-005f94f5958c" class="">El mensaje</h2><p id="f8574202-31b3-4013-a8df-2ccf550cd123" class="">El mensaje se refiere a los símbolos verbales y no verbales (orales y escritos) que representan la información que el emisor quiere transmitir al receptor:</p><p id="9989eebf-c3bc-4a2a-83a5-c9f3ebf24108" class="">Mensajes no verbales. Todos los mensajes que no están en formato escrito u oral. Son mensajes no verbales. Los mensajes no verbales son expresiones faciales el contacto de la vista, los movimientos corporales, los gestos y el contacto físico que transmiten un significado. A todos. Estos. Se le suele llamar lenguaje corporal. Una persona puede llegar a comunicar hasta el 60% del contenido del mensaje mediante expresiones faciales y otros métodos de comunicación no verbal.</p><p id="547f4d6f-aa20-41bb-9a66-4b71521a57a4" class="">Mensajes verbales. Las personas se comunican verbalmente con más frecuencia que de cualquier otra manera, la comunicación oral ocurre frente a frente por teléfono y por otros medios electrónicos. Casi todas las personas prefiere la comunicación frente a frente. La comunicación verbal efectiva requiere de que el emisor 1) Codifique el mensaje en forma de palabras 2) Transmite el mensaje de forma bien organizada, y 3) Procura eliminar las distracciones.</p><p id="e0a09e99-7de5-48f4-a7ca-815ba34c7726" class="">Mensajes escritos Esos mensajes son más convenientes cuando muchas personas recaban información cuando se debe distribuir a numerosas personas o cuando es necesario llevar al registro de lo que se ha dicho, A continuación se presentan algunos lineamientos para preparará mensajes escritos efectivos:</p><ol type="1" id="4f0c0767-9245-482b-a72c-ff4b878d1e6a" class="numbered-list" start="1"><li>El mensaje se debe redactar pensando claramente en todo momento en el receptor.</li></ol><ol type="1" id="247f9ffe-92bb-4470-b44e-e78eef586bfe" class="numbered-list" start="2"><li>El contenido del mensaje debe haber sido de antemano meditado a fondo.</li></ol><ol type="1" id="46aec630-77b2-4e37-a8a6-e538ca40a983" class="numbered-list" start="3"><li>El mensaje debe ser tan breve como sea posible, sin palabras ni ideas rimbombantes.</li></ol><ol type="1" id="0242e0db-e841-4534-9a4e-5bdad588176b" class="numbered-list" start="4"><li>Los mensajes importantes primero se deben preparar en borrador para afinarlos. Si el mensaje será largo, entonces se debe presentar un breve resumen en la primera página. El resumen debe explicar los puntos centrales y contener el número de página que refiere a los detalles de cada punto.</li></ol><ol type="1" id="332e25a4-bed1-49ee-a107-1297fad70e8f" class="numbered-list" start="5"><li>El mensaje debe organizarse con gran cuidado. El punto más importante tiene que plantearse primero, y a continuación se debe incluir el siguiente punto en orden de importancia, y así sucesivamente. Por lo tanto, aun cuando el receptor lea sólo los primeros puntos, lo esencial del mensaje será transmitido. Al asignar un título al mensaje, se dejará en claro el tema. Cuando se usan palabras sencillas y enunciados breves y claros, el mensaje resulta más ameno de leer y fácil de entender.</li></ol><p id="fa622244-8e69-4148-8de5-9b1f5250768f" class="">Mensajes ulteriores</p><p id="479e4761-ea3d-4392-85ae-1424e037ad5f" class="">Un mensaje ulterior se refiere a un tipo de comunicación en el cual el significado real o la intención del mensaje no se expresa de manera directa, sino que se oculta o se transmite de manera indirecta. En otras palabras, el mensaje aparente o superficial puede ser diferente del mensaje real que se pretende transmitir.</p><h2 id="3b493dca-8c61-406b-adf6-db171a6e800a" class="">Los canales:</h2><p id="a7f35763-0d47-453d-80a6-7e0063e1430d" class="">El canal es la ruta que sigue el mensaje de la emisora. Receptor. Estos canales suelen tener distinta riqueza de información. Esta se entiende como la capacidad del canal para llevar la información del emisor al receptor. Existen varios tipos de canales. Entre ellos, los ascendentes los descendentes horizontales, transversales y circulares. </p><p id="2af7cbcb-c7a7-4214-8589-6790780f0119" class="">Los canales descendentes incluyen todos los medios de la dirección para enviar mensajes a los colaboradores incluyen la forma en que la organización Comunica la misión, valores, objetivos Y estrategias y instrucciones y planes de trabajo.</p><p id="f3d59a24-cef6-4902-aedc-cb62d9b66fee" class="">Ascendentes los canales ascendentes son todas los medios que utilizan los los colaboradores para enviar mensajes a la dirección y estos canales podrían ser el único medio formal que tienen los colaboradores para comunicarse con los altos directivos de la organización de comunicación ascendente. Incluye proporcionar retroalimentación respecto a qué tan bien han comprendido los colaboradores los mensajes.</p><p id="9aa2c8a8-dc67-4c0c-b498-077b6833683b" class="">Los canales horizontales son todos los medios que utilizan para enviar mensajes entre departamentos o proveedores y clientes para recibirlos de ellos</p><p id="4a9ca5eb-5d3e-4fe0-9fe9-8be69daa4e4b" class="">Que no le transversales los canales son transversales, son Cada vez más comunes en las organizaciones flexibles y planas que buscan eliminar las barreras jerárquicas de su operación. Se trata de una forma de comunicación que puede ir en cualquier dirección.</p><p id="2805cf62-d887-4d3d-a7e4-e1a6173891b5" class="">Canales circulares. Los canales circulares, se refieren al flujo de la comunicación, de forma libre, entre los miembros de la organización con un intercambio continuo de roles, entre emisores y receptores y en entornos virtuales entre creadores y consumidores de contenidos.</p><p id="b1d58344-a243-4a6c-b76d-fc7ec56315b9" class="">Canales informales, eso representan todos los medios informales que utilizan emisor y receptor para comunicarse de forma descendente ascendente, horizontal, transversal o circular. Las cadenas de romanos son el sistema de comunicación informal de la organización, y en ellos la información puede viajar en todas direcciones.</p><h2 id="110bb365-bd4f-43af-8df1-9268f2357e0f" class="">La retroalimentación</h2><p id="721e2b1f-0ec9-41e5-afc0-6b4aa498f977" class="">La retroalimentación es la respuesta que ofrece el receptor al mensaje del emisor. En el ciclo de la comunicación no termina hasta que el emisor recibe la retroalimentación que envía el receptor. una buena alimentación debe de reunir las siguientes características:</p><p id="9acf2c52-0182-4b9e-ab15-9aae00de62b9" class="">
+</p><ol type="1" id="607bb9d4-621f-48f5-b74a-ecacaa553310" class="numbered-list" start="1"><li>Debe ser de utilidad. Si el receptor del mensaje proporciona retroalimentación que se suma a la información del emisor, entonces es probable que se considere que la retroalimentación ha sido constructiva.</li></ol><ol type="1" id="765265a4-7857-4351-a077-ce318f6f3764" class="numbered-list" start="2"><li>Debe ser constructiva en lugar de ser una evaluación. Si el receptor responde de manera descriptiva al mensaje, entonces es probable que la retroalimentación sea efectiva. Si el receptor es muy crítico (o expresa juicios de opinión), entonces es probable que la retroalimentación no sea efectiva, o incluso puede provocar que se interrumpa la comunicación.</li></ol><ol type="1" id="f7199038-eff0-45bd-9fd4-9d356906ed14" class="numbered-list" start="3"><li>Debe ser específica en lugar de general. El receptor debe responder de forma específica a los puntos planteados y las preguntas formuladas en el mensaje. Si el receptor responde con generalidades, entonces la retroalimentación podría indicar evasión o que no se ha comprendido.</li></ol><ol type="1" id="873e94c1-7972-4721-ac1a-7faca1e87a3b" class="numbered-list" start="4"><li>Debe ser oportuna. El contexto en que ocurre la retroalimentación afecta su recepción y, por lo tanto, su efectividad. Si a una persona se le proporciona retroalimentación sobre su desempeño durante un partido de golf o una comida, no es lo mismo que si se le proporciona en la oficina. Los contextos informales suelen estar reservados para las actividades sociales, a diferencia de la retroalimentación basada en el desempeño.</li></ol><ol type="1" id="87c49b02-0d6b-4c77-b7d3-45c55d9fdcd1" class="numbered-list" start="5"><li>No debe ser abrumadora. La comunicación oral depende mucho de la memoria. Por lo mismo, cuando se trata de cantidades importantes de información, la retroalimentación oral es menos efectiva que la escrit. Las personas tienden a &quot;conectarse y desconectarse&quot; durante las conversaciones. Quizá no capten todo lo que el orador dice si el mensaje es demasiado largo y complejo.</li></ol><h2 id="76142a7d-83bb-411d-a31a-6ef1377b4045" class="">Barreras a la comunicación</h2><p id="85108900-b58b-43d9-9a1a-f0b83950a01c" class=""><strong>Niveles de autoridad, estatus y rol</strong></p><p id="ac85344a-b9ec-4d88-a6a4-2839c0d69ff0" class="">Cuánto más niveles tenga la organización y más lejos se encuentre el receptor del emisor. Tanto más difícil. Será que tenga lugar una comunicación efectiva como si ilustra en la figura 16.4. La comprensión se pierde a medida que los mensajes son enviados por un canal formal de comunicación descendente. </p><figure id="6e8a0941-839c-4d2b-8650-5ced65b0996d" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%201.jpeg"><img style="width:3239px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%201.jpeg"/></a></figure><p id="17e6d096-00e7-4c9c-b7c3-de2b6fbf7167" class="">Especialización, a medida que el conocimiento especialista los profesionales suelen desarrollar un vocabulario propio y siglas para simplificar la comunicación. Entre ellos. Esto sólo provocar la comunicación con personas que no están en esa área. Resulta difícil</p><p id="2915b6b8-e51b-4567-8537-ab71c1ace998" class="">Metas diferentes, si cada departamento tiene sus propias metas. Esas podrían representar un interferencia para el desempeño global. En la organización. Estos conflictos pueden ser consecuencia directa de intereses en conflicto o tal vez es surgen simplemente por el malentendido creado por las diferentes perspectivas de las personas.</p><p id="fadc9d58-2b87-4193-985c-ac5205715616" class="">barreras globales y multiculturales conforme una organización crece y va participando más en mercados globales aumenta la interacción entre personas con distintas culturas. Estas interacciones pueden encontrar barreras físicas que pueden ser tintos. Usos horarios y también barreras culturales que desprenden de las prácticas sociales de cada región. estos pueden ser el lenguaje verbal o el no verbal costumbres, entre otros otros.</p><p id="326a5eb9-9078-4c1a-abcf-ca6fde260aa4" class="">Semántica, es la incorrecta interpretación del significado de las palabras, esto puede llegar a tener un papel muy importante en el fracaso de la comunicación.</p><p id="af4459ee-c5d5-41d2-9a0f-4919533a6663" class="">Emociones y sentimientos. Una persona que recuerde sus experiencias no rememorará los hechos, sino que también los sentimientos Qué los acompañen así cuando las personas se comunican transmiten emociones, sentimientos hechos Y opiniones los malentendidos y diferencias en cuanto a lo que despiertan las emociones de las personas. A menudo van de la mano con la comunicación intercultural.</p><hr id="6c180273-ffbc-4e4d-b72b-829f24ef37e1"/><h1 id="01abf1a2-2df6-4475-a033-5bd4f726b134" class="">Motivación</h1><h2 id="6a6162a2-fd91-484c-a129-10d3881ddf55" class="">La motivación y satisfacción</h2><p id="c36072c8-7c59-4ee8-9071-420d2af68f5d" class="">La Motivación es un estado psicológico que se presenta siempre que las fuerzas internas y externas estimulan, dirigen o mantienen las conductas. En las organizaciones, las conductas de los colaboradores que interesan incluyen las productivas (como permanecer concentrado, ser buen ciudadano corporativo, etc) y las improductivas (como perder tiempo, ser antisocial, y hasta violento).</p><p id="29367102-5d96-4d72-8b80-805ec8464c51" class="">La Satisfacción es un estado psicológico que indica lo que las personas sienten de su circunstancia , con base en su evolución de ésta.
+Numerosos gerentes o administradores suponen que la motivación de los colaboradores está vinculada con la satisfacción que sienten. Los colaboradores satisfechos desempeñan su trabajo mucho mejor que los insatisfechos. Las investigaciones también demuestran que la satisfacción del personal produce mayor satisfacción en los clientes.</p><h2 id="0ed1cd21-1c82-460d-aaf9-a103a9c0f23b" class="">Enfoque de las diferencias individuales</h2><p id="cab53705-62f1-419b-bd71-9dc7588f9469" class="">Este enfoque aborda la motivación y la satisfacción, donde se dice que la motivación esta vinculada con la satisfacción que sienten los colaboradores. Las diferencias individuales son las necesidades, valores, personalidades y otras características que los empleados llevan consigo al trabajo, se reconocen como diferencias individuales porque varían de una persona a otra.</p><p id="fd8dbeeb-9b1b-4179-bc3f-845ba269279a" class="">Según este enfoque, la motivación y las actitudes son aspectos estables de la composición psicológica de un empleado y los gerentes no tienen muchas posibilidades de cambiarlas, sin embargo, pueden motivar y satisfacer a los empleados.</p><p id="13e4dcd6-bec0-4889-9be6-e445e536d067" class="">Ahora veremos algunas de las necesidades que los empleados tiene y que pueden marcar la diferencia en su motivación y satisfacción. </p><h3 id="13242ed8-3c00-4c74-a95b-c189b9e44e4f" class="">La pirámide de las necesidades</h3><p id="d4721db3-ff38-445c-8569-442eb446b353" class="">El psicólogo Abraham Maslow pensaba que las personas tienen cinco tipos de necesidades y las ordenó en una pirámide, para describir el orden en que las personas tratan de satisfacerlas, empezando por satisfacer las que se encuentran en la base, las necesidades se tienen que ir satisfaciendo en orden ascendente.</p><figure id="7fd88a92-18e4-4cec-870f-e2468e845112" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%202.jpeg"><img style="width:4032px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%202.jpeg"/></a></figure><p id="b50dc314-47fc-49db-a03b-f4dfa0018ca6" class=""><strong>Necesidades Fisiológicas:</strong></p><p id="32c21fbe-b368-4983-ab46-1af15855080d" class="">Incluyen las necesidades básicas para la supervivencia, como alimentación, agua, aire, sueño y refugio.</p><p id="6ff45b5e-a43e-47e3-ac9e-e11489d03208" class=""><strong>Necesidades de Seguridad:</strong></p><p id="0fab0c60-6464-482a-be67-7e102f26fd54" class="">Involucran la búsqueda de estabilidad, seguridad física y protección contra peligros y amenazas.</p><p id="21e4104a-3544-4483-a769-b0cb9dd66c7a" class=""><strong>Necesidades de Afiliación:</strong></p><p id="c0490cd6-3e9a-4cbc-930d-b23db5916c9c" class=""> Incluyen la necesidad de relaciones sociales, afecto, amistad y pertenencia a grupos.</p><p id="9ba7101e-4775-4e1b-bec9-3b85d41792c6" class=""><strong>Necesidades de Estima:</strong></p><p id="9455b87d-91e4-438c-a905-60a2d294d38c" class="">Involucran el deseo de sentirse valorado, respetado y reconocido, tanto por uno mismo como por los demás.</p><p id="dd1b828b-e38a-40c8-ae0e-0414cb24e70d" class=""><strong>Necesidades de Autorrealización:</strong></p><p id="06dff5a5-2902-4d38-b9ed-06920be080ca" class="">Representan el impulso hacia la realización personal, el desarrollo de habilidades, la búsqueda de conocimiento y la expresión plena del potencial.</p><p id="0e1b269e-ac40-431f-95d7-e2ad05c45f72" class=""><mark class="highlight-teal">Movimiento ascendente:</mark> Cuando la necesidad está satisfecha deja de ser un  motivador y surge otra que ocupa su lugar. Las necesidades de orden inferior deben ser satisfechas antes de que las de orden superior adquieran tanta fuerza como para motivar el comportamiento</p><p id="561351d6-d90b-4710-9b70-770852ae0dc6" class="">
+<mark class="highlight-red">Movimiento descendente:</mark> Maslow se enfoca en la dinámica de la progresión de la satisfacción, las investigaciones muestran que las personas pueden moverse en orden descendente en la jerarquía. La hipótesis de la regresión-frustración plantea que cuando una persona se siente frustrada porque no satisface sus necesidades de orden superior; entonces regresan las necesidades del orden inferior de inmediato y vuelven a guiar el comportamiento.</p><h2 id="3f2069ed-7bab-4fd5-80a9-2b6ed3c3cc13" class="">Enfoque del diseño de puestos</h2><p id="a13f4484-6d56-48a2-be3f-1f26d3eb49a2" class="">Otro enfoque para motivar al personal se centra en el diseño de puestos, donde los directivos tienen la capacidad de configurar las responsabilidades y funciones de los empleados que supervisan, aunque esto no siempre es factible. El diseño de puestos está condicionado por factores que pueden ser difíciles de modificar a menos que haya una transformación tecnológica o estructural en la unidad de trabajo. Además, las características inherentes a los puestos también desempeñan un papel crucial en la satisfacción y motivación de los colaboradores. La teoría de las características de puestos destaca como el enfoque más reconocido y probado para el diseño de puestos, generando un entorno donde los colaboradores disfrutan de sus responsabilidades y se sienten motivados para lograr un mejor desempeño.</p><p id="19892523-5410-463f-9b7e-bed4157e5bcf" class="">Esta teoría señala que los colaboradores estarán más satisfechos y motivados cuando su trabajo tiene sentido y crea un sentimiento de responsabilidad, al igual que cuando su puesto está diseñado de modo que garantiza que obtendrán cierta retroalimentación. Los puestos deben ser diseñados de modo que ofrezcan al personal un trabajo que les guste hacer.</p><figure id="d93c0c26-25d8-4264-b6a8-14008bea1d4d" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%203.jpeg"><img style="width:3740px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%203.jpeg"/></a></figure><p id="a7c14571-4a17-462f-938e-f138ffdadd33" class="">La teoría de las características de los puestos describe 3 estados psicológicos críticos que se requieren para crear altos niveles de motivación en el centro del trabajo.</p><ul id="16269ce0-65bc-4d20-a046-bbf843ed29d1" class="bulleted-list"><li style="list-style-type:disc"><strong>El significado experimentado:</strong> Representa un estado psicológico crítico que determina si las personas perciben si su trabajo es valioso y si vale o no la pena. Ejemplo: Quienes trabajan en servicio de salud saben que sus actividades sirven para salvar vidas y mejorar la calidad de vida de las personas.</li></ul><ul id="187e2eee-cb89-47b4-9756-2941dc9cf2e7" class="bulleted-list"><li style="list-style-type:disc"><strong>La responsabilidad experimentada:</strong> Representa un estado psicológico crítico que refleja si los colaboradores se sienten responsables en lo personal por la cantidad y la calidad de trabajo.</li></ul><ul id="a1f46df0-8875-4ba3-befb-2f7197154612" class="bulleted-list"><li style="list-style-type:disc"><strong>El conocimiento de los resultados:</strong> Representa un estado psicológico crítico que se refiere a la medida en que los colaboradores reciben retroalimentación acerca de qué tan bien se están desempeñando.</li></ul><h3 id="32d44ee9-a8c6-4692-8629-6cffc2ba7f41" class="">Características Clave del puesto</h3><p id="764ccab1-28f5-44df-8a1d-face88ddd710" class="">La teoría de las características de los puestos señala que 5 características clave del puesto afectan a estos estados Psicológicos críticos. Las características clave del puesto son aspecto objetivos del diseño del puesto que se pueden cambiar a fin de mejorar los estados psicológicos críticos. Las 5 características claves del puesto son:
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="50a23aee-6f5f-49fc-8216-b76075d466f7"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%">-Variedad de habilidades. 
+-Identificación con las tareas. 
+-Importancia de las tareas.
+-Autonomía.
+-Retroalimentación.</div></figure><h2 id="74e2ea04-fff8-47a7-b9b6-6ac2b1e1a6bb" class="">Enfoque organizacional</h2><p id="ed15596f-4d59-45bb-8be6-1ed7d3ebbd7e" class="">Las políticas y prácticas de administración de recursos humanos son aspectos relevantes del contexto de la organización, esto quiere decir, se encarga de los beneficios, la estructura y las oportunidades para desarrollarse, pueden atraer a nuevos colaboradores e incrementar el esfuerzo y su deseo de permanecer en la organización.</p><h3 id="6ff9656a-6e24-4094-9fa1-86f730d5de62" class="">Teoría de los dos factores de Herzberg</h3><p id="f6c261ea-9e61-403a-a834-8e3bf2557933" class="">Según esta teoría, existen dos conjuntos distintos de factores que influyen en la satisfacción y la insatisfacción en el trabajo, y cada uno opera de manera independiente. Estos dos conjuntos son:</p><ul id="2890028a-10e6-4a8b-b56b-0a1a4e8f174d" class="bulleted-list"><li style="list-style-type:disc"><strong>Factores de Higiene: </strong>Los factores de higiene, según lo señala Herzberg determinan el nivel de satisfacción tomando en cuenta solo las características del entorno laboral:</li></ul><blockquote id="80ae460f-7884-4f24-adc7-f8b47ab9555e" class="">La compensación, El nivel de responsabilidad, Las condiciones de trabajo, Las políticas, La supervisión, El sueldo, El estatus formal y Seguridad.</blockquote><ul id="7f2e19f0-ce67-4f06-9fc7-6208cff4ea83" class="bulleted-list"><li style="list-style-type:disc"><strong>Factores de Motivación:</strong> Son aspectos del contexto de la organización que hacen que el personal experimente sentimientos positivos. Algunos de los que se mencionan son:</li></ul><blockquote id="92d44ca2-43bf-4fb3-92d6-1adb709d4074" class="">Logros, El desafío del trabajo, La responsabilidad, El reconocimiento, El avance y El crecimiento.</blockquote><h3 id="1e20fe9e-87bf-4b44-8c64-d3789a19c3bb" class="">Teoría de la equidad de John Stacey Adams</h3><p id="ecb24c9a-df9e-4a82-8eee-5a6ac046406b" class="">Propone que cuando las personas se sienten tratadas de manera justa o ventajosa, es más probable que estén motivadas; cuando se sienten injustamente tratadas son muy propensas a los de desafección y desmotivación. Se trata de que el balance entrada-salida sea una recompensa para el trabajador, en otras palabras, evaluar el esfuerzo y la recompensa como menciona Adams, se trata de la comparación con los referentes o personas que utilizamos día a día</p><p id="1065bd4e-1932-4181-a755-07ebcead769f" class="">La teoría consta de 4 mecanismos para la motivación:</p><ul id="4604efd4-ab2a-42b7-8010-c782bf28d418" class="bulleted-list"><li style="list-style-type:disc">Maximizar los resultados.</li></ul><ul id="02f60fae-530c-4fed-a5a8-811ae865eb56" class="bulleted-list"><li style="list-style-type:disc">Maximizar las recompensas colectivas al desarrollar sistemas aceptados para repartir equitativamente las recompensas y los costos.</li></ul><ul id="8791b2f6-7352-4c73-8c74-062edcf85cb1" class="bulleted-list"><li style="list-style-type:disc">Cuanto más inequitativa es la relación, más angustia sienten los individuo.</li></ul><ul id="91163954-9b3a-4f3d-9913-cab805639c5d" class="bulleted-list"><li style="list-style-type:disc">Cuanto mayor es la inequidad, más angustia siente la gente y más tratan de restaurar la equidad.</li></ul><h2 id="916d5539-7148-4b9c-844d-84c6961aa451" class="">Enfoque directivo</h2><p id="8f59119b-9599-4554-b96f-2599b018bc64" class="">El enfoque directivo, para comprender la motivación, se concentra en cómo influye el comportamiento de los directivos en la satisfacción y la motivación con los colaboradores. Los directivos pueden motivarlos y satisfacerlos de forma directa mediante la comunicación personal, al establecer metas realistas y brindar reconocimiento, elogios y recompensas monetarias a quienes las alcanzan.</p><h3 id="dc80f9f0-1b2e-4b8f-8f7a-cc0be7c74e45" class="">Establecimiento de metas</h3><p id="ba5c57e6-2167-44d0-a0d2-7478da42fbfc" class="">Los administradores o gerentes, además de infundir el sentimiento de que el trabajo tiene un propósito, pueden motivar más a las personas por medio de metas. En pocas palabras, la teoría del establecimiento de metas señala que:<mark class="highlight-orange"> los gerentes o administradores pueden dirigir el desempeño de sus colaboradores si asignan metas específicas y desafiantes que estos aceptan y con las que están dispuestos a comprometerse.</mark>
+Se ha demostrado que cuando se establecen metas de forma correcta, resulta muy eficaz para mejorar el desempeño de personas que desarrollan una amplia variedad de trabajos.</p><figure id="b51b158c-d6a6-42df-9984-136ccb64175a" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%204.jpeg"><img style="width:3361px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%204.jpeg"/></a></figure><p id="bf6fcb37-37ec-4cdc-a95f-8e7ceb26572e" class="">Establecer metas, es una poderosa técnica para la motivación, pero no es una panacea en la siguiente tabla. Se muestra alguno de los posibles problemas asociados con el establecimiento de metas y también algunos soluciones a estos problemas.</p><figure id="2884c3fe-0ecf-4607-96ce-5e517c2a0ed8" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled.png"><img style="width:824px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled.png"/></a></figure><h3 id="c3fcad25-1bbf-4e5c-97e1-88ac72c95609" class="">Administración por objetivos</h3><p id="a19756cb-db63-4dac-b00c-b7ff5db57c52" class="">Es una técnica para establecer metas en participación.
+Por lo general, el proceso de la APO inicia con una conversación entre directivo y colaborador. En esta charla se revisa el desempeño histórico y se identifican los objetivos futuros. Así, acuerdan un conjunto de metas y ambas partes las aceptan porque las consideran correctas, en el entendido de que las evaluaciones del desempeño y las recompensas futuras reflejarán el avance logrado por el colaborador para alcanzar las metas acordadas</p><hr id="e51c2b6c-6e08-4cea-8433-83cc26b9b571"/><h1 id="b5d975d3-e26f-4b39-a71b-af8574e97866" class="">liderazgo</h1><p id="c70e551c-d745-4797-8278-4c218df6b8ba" class="">Se trata de la relación de influencia entre los líderes y los seguidores que luchan por obtener resultados que reflejen los fines que comparten.</p><h2 id="87bc9960-4f14-41b7-bbbb-c06a63ba5043" class="">Bases de la influencia</h2><p id="c6875517-cf71-4988-9070-98af39018632" class=""><strong>La influencia es un proceso social en el cual una persona afecta las percepciones, creencias y conductas de otra. Para que exista liderazgo verdadero, la influencia debe tener una dirección definida y no debe existir coacción o condicionamiento para la acción.</strong></p><ul id="378028a1-9afc-4f28-8ca3-a51c77fb3bb6" class="bulleted-list"><li style="list-style-type:disc"><strong>Coerción: </strong>Consiguen el cumplimiento a través del miedo</li></ul><ul id="6e8078fe-89eb-4ca8-bb3c-6e86d7994fea" class="bulleted-list"><li style="list-style-type:disc"><strong>Puesto formal: </strong>Utilizan la autoridad de su puesto para influir</li></ul><ul id="611c558c-d0f3-486b-bbd8-21c3b509f1f3" class="bulleted-list"><li style="list-style-type:disc"><strong>Recompensas: </strong>Sistema de recompensas</li></ul><ul id="aa402a7d-93eb-4176-8232-3fd8b9fdfcb7" class="bulleted-list"><li style="list-style-type:disc"><strong>Expertise: </strong>Influyen a través de su conocimiento experto</li></ul><ul id="7c207975-2495-4223-936e-0730221ddda2" class="bulleted-list"><li style="list-style-type:disc"><strong>Carisma: </strong>Hacen uso de su carisma personal en terceros</li></ul><figure id="5c071a20-cdbd-48d9-a248-f85cd4adfa5a" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%201.png"><img style="width:1141px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%201.png"/></a></figure><h3 id="bda59b8a-d352-47ac-9c59-4fbfb52c4c81" class="">Características personales de los líderes efectivos</h3><p id="aed22f01-8f9b-4f63-9456-63f0ff3b0366" class="">La Inteligencia Emocional (IE) se ha popularizado a partir de la capacidad que tiene de reconocer y gestionar las emociones, propias y ajenas, de manera efectiva. Gestión te cuenta más detalles de lo que es y cuáles son sus características principales.</p><p id="b43c1aaa-e7a4-44a2-98bc-c48b4783c0a8" class="">Primero se debe entender que es una combinación de habilidades, como el autoconocimiento, la autorregulación, la empatía, la motivación y las habilidades sociales, de acuerdo a la definición de Daniel Goleman.</p><p id="613ea71e-bd08-4d28-a76d-852b149dcd1f" class="">Los cuatro elementos de la inteligencia emocional:</p><p id="db5d749f-5ae6-4ff6-9bfb-66862137d7ec" class=""><strong>Autoconciencia:</strong> El primer elemento de inteligencia emocional es la autoconciencia o conciencia de sí mismo que es la habilidad para reconocer y comprender los estados de ánimo, las emociones y los impulsos propios y también su efecto en terceros. Para ser efectivo, un líder se debe conocer incluyendo lo bueno, malo y lo feo. Y deben de comprender que sus cambios de humor pueden tener un efecto sordo colaboradores.</p><p id="3f570c00-dfee-4411-972e-9c9835902354" class=""><strong>Autocontrol:</strong> es la habilidad para regular y redirigir los impulsos, estados de ánimos y deseos personales. Los líderes efectivos no son inmunes a los sentimientos negativos como la frustración y el enojo. Sin embargo, cuando se les presentan no permiten que los controlen. En cambio, ellos controlan los sentimientos y los utilizan para fines constructivos.</p><p id="e2c057c6-afd5-4abe-a665-55dd101460b8" class=""><strong>Conciencia social:</strong> se refiere a la capacidad para comprender la composición emocional de otras personas, así como la habilidad para tratarlas con base en su relación emocionales. Los líderes con inteligencia emocionales pueden reconocer sus reacciones emocionales y también experimentar empatía con los sentimientos de sus seguidores.</p><p id="6705af6d-fe08-42fc-8223-5967715cc889" class=""><strong>Habilidad social:</strong> es la capacidad para crear redes interpersonales, administrar relaciones encontrar áreas comunes y crear entendimiento. Los líderes con esta habilidad social suelen ser personas apreciadas y tienen un amplio círculo de amistades. Utilizan sus relaciones personales para conseguir que todos se mueva en la misma dirección.</p><h3 id="43cb1609-8d52-49a8-8ed9-7eb7db4b970f" class=""><strong>Comportamiento de liderazgo</strong></h3><p id="416f2f95-497f-46d4-adfb-3977ccb77f78" class="">Los modelos de comportamiento de liderazgo se concentran en explicar las diferencias que existen entre las acciones de los líderes efectivos y los no efectivos</p><h3 id="b56b1954-3fe9-4092-a57a-8718fd07ca15" class="">Teoría X y Y</h3><p id="93620409-a36b-4d1e-84a9-54f2c51652d2" class="">Estas teorías exploran las suposiciones fundamentales que los gerentes tienen sobre la naturaleza humana y cómo estas creencias influyen en la gestión de las personas en el entorno laboral.</p><ol type="1" id="74b6c474-525f-4caf-a6c6-89a2886f48b8" class="numbered-list" start="1"><li><strong>Teoría X:</strong><ul id="e43be025-99bc-4579-a194-03a7610cf210" class="bulleted-list"><li style="list-style-type:disc">En la teoría X, se parte de la premisa de que la mayoría de las personas tienen una aversión inherente al trabajo y tratarán de evitarlo siempre que sea posible.</li></ul><ul id="60fad0e7-6c1e-4bb4-b8a6-dd56528c214b" class="bulleted-list"><li style="list-style-type:disc">Se asume que las personas prefieren ser dirigidas, desean evitar responsabilidades, tienen poca ambición y buscan principalmente la seguridad en el trabajo.</li></ul><ul id="ca97143e-68ef-4056-b115-73f4a7f05beb" class="bulleted-list"><li style="list-style-type:disc">En este enfoque, los gerentes tienden a adoptar un estilo de gestión más autoritario y controlador, ya que se cree que los empleados necesitan ser supervisados de cerca y motivados mediante incentivos o amenazas.</li></ul></li></ol><ol type="1" id="550965cb-6a4b-4872-a10b-042328f73163" class="numbered-list" start="2"><li><strong>Teoría Y:</strong><ul id="7d668683-cf0e-4e25-b029-d6b744970bc8" class="bulleted-list"><li style="list-style-type:disc">Por otro lado, la teoría Y parte de la idea de que el trabajo es tan natural como el juego o el descanso, y que las personas pueden llegar a encontrar satisfacción en su trabajo.</li></ul><ul id="1ed6259c-8160-495a-8043-cdc03a64577f" class="bulleted-list"><li style="list-style-type:disc">Se supone que las personas no evitan la responsabilidad y que, de hecho, pueden buscar y aceptar responsabilidades adicionales.</li></ul><ul id="2d4c6ff1-7117-4587-95a9-7bcfff6ce162" class="bulleted-list"><li style="list-style-type:disc">McGregor sostiene que la creatividad, el ingenio y el potencial para resolver problemas existen en todos los empleados y que el papel del gerente es liberar este potencial al crear un entorno de trabajo favorable.</li></ul><ul id="b86477f4-4dfc-4cf9-9eba-5860d63b49e6" class="bulleted-list"><li style="list-style-type:disc">En la teoría Y, se aboga por un estilo de gestión más participativo y democrático, donde se fomente la autonomía, la toma de decisiones compartida y la autorregulación por parte de los empleados.</li></ul><figure id="19858e8d-57df-4fa0-b9f8-b9512439d94a" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled.gif"><img style="width:432px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled.gif"/></a></figure><h3 id="ba17af58-fb87-4cf6-90c4-c988a94d00b3" class="">El grid gerencial</h3><p id="94083df0-4cff-4792-8028-98e858b35e79" class="">.Este modelo se presenta en forma de una cuadrícula que evalúa el comportamiento gerencial en función de dos dimensiones fundamentales: el interés en la producción (resultados) y el interés en las personas. Estas dos dimensiones están representadas en los ejes horizontal y vertical de la cuadrícula, respectivamente.</p><figure id="e83c26ba-d4a4-4c0d-a091-2c6b69ccbfe1" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%205.jpeg"><img style="width:3529px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%205.jpeg"/></a></figure><p id="87449a48-9e1b-4b2b-a8bd-0e185ca3e5c0" class="">
+</p><p id="5a03f95a-0bb6-4053-8968-23c683e09fc8" class="">En este sistema se presentan 5 Estilos principales:</p><ol type="1" id="6a0297f7-4fcd-4a02-9eda-20b87c0477a0" class="numbered-list" start="1"><li>Estilo empobrecido.</li></ol><ol type="1" id="5a1f1602-9a2a-4f69-8544-7a6aa950dc7a" class="numbered-list" start="2"><li>Estilo club campestre.</li></ol><ol type="1" id="c12610a2-2dea-447a-9594-288e63c9ec67" class="numbered-list" start="3"><li>Estilo Producir o morir.</li></ol><ol type="1" id="c771e940-278f-4572-86a9-90a3aa8e0560" class="numbered-list" start="4"><li>Estilo a la mitad del camino.</li></ol><ol type="1" id="32480eef-5f44-49ae-8121-f03e2b6a17f4" class="numbered-list" start="5"><li>Estilo Equipo.</li></ol><p id="1eb575da-2beb-41b5-83ad-9da34dab708e" class="">Estas son algunas de las características de los estilos:</p><p id="c37eae90-7734-42e9-a75a-3b1432eafbad" class="">(<strong>1, 1) Estilo empobrecido:</strong> Bajo interés tanto en la producción como en las personas. Este estilo refleja una falta general de compromiso y esfuerzo gerencial.</p><p id="f6050cc7-96b7-4d52-a8e0-d5f44daaa272" class=""><strong>(1, 9) Estilo club campestre: </strong>Mayor énfasis en las personas que en la producción. Enfoque en las relaciones y en satisfacer las necesidades individuales, a veces a expensas de la eficiencia.</p><p id="cd31ad4a-bf11-47e2-9f50-e8a3e8628529" class=""><strong>(5, 5) Estilo  a mitad del camino:</strong> Enfoque moderado tanto en la producción como en las personas. Busca un equilibrio entre ambas preocupaciones.</p><p id="88685698-9294-4f2c-80b6-6f43362cb3e0" class=""><strong>(9, 1) Estilo producir o morir:</strong> Mayor énfasis en la producción que en las personas. Enfoque en resultados y eficiencia, con menos atención a las necesidades individuales.</p><p id="ef731d2d-3b67-4834-9417-976d9ab98d04" class=""><strong>(9, 9) Estilo de equipo: </strong>Alta preocupación por las personas y por la producción. Busca el equilibrio entre ambas dimensiones.</p><h2 id="46ed519a-f760-4305-bf7a-9162e4608fa6" class="">Contingencias del comportamiento de liderazgo:</h2><p id="9c414d31-a674-4097-96f7-422cf1439fe0" class=""><strong><strong>Modelo de liderazgo situacional</strong></strong></p><p id="280c2a32-a3ca-4e1b-8a1a-15ec1b812fb9" class="">Este modelo establece que el estilo de liderazgo que se utilice se debe adaptar al grado de preparación de los seguidores. Al igual que otros modelos de liderazgo, este cuenta con tres elementos básicos:</p><ul id="dc2561e1-09a0-4e71-8251-e6f0219273d0" class="bulleted-list"><li style="list-style-type:disc">Un conjunto de estilos posibles de liderazgo</li></ul><ul id="8975c481-6b1a-4af4-ae4f-3d4f84aaaa2f" class="bulleted-list"><li style="list-style-type:disc">Descripción de varias situaciones que podrían encontrar los líderes</li></ul><ul id="090ef68f-4d89-4ee3-98fe-70e3618f288c" class="bulleted-list"><li style="list-style-type:disc">Recomendaciones sobre qué estilos de liderazgo serán más efectivos en dichas situaciones</li></ul><p id="2deefc4c-9fed-4574-a692-f8a7a44cd7a5" class="">Estilos de liderazgo: Basado en este modelo, los líderes pueden elegir entre 4 estilos de liderazgo qué implican comportamiento ya sea orientado a las tareas u orientado a las relaciones.</p><p id="2fd05cca-71ad-4566-b062-f410d452ceca" class=""><strong>Comportamiento orientado a las tareas</strong></p><p id="f967b2cc-d10c-441f-863e-4112f477e84a" class="">Este comportamiento incluye emplear la comunicación unilateral, establecer las obligaciones y decir a los seguidores lo que tienen que hacer y cuándo, dónde y cómo.</p><p id="07a9293c-149a-438a-9e16-c78387c6fffe" class=""><strong>C</strong><strong>omportamiento orientado a las relaciones</strong></p><p id="9835a476-bc25-4b56-b327-0b3c73fd779b" class="">Este comportamiento, a diferencia del orientado a tareas incluye la comunicación de dos vías, escuchar a los seguidores, alentarlos e involucrarlos en la toma de decisiones, así como brindarles apoyo emocional</p><figure id="1430a829-105b-478b-af6c-2264e18a5f1b" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%206.jpeg"><img style="width:2349px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%206.jpeg"/></a></figure><p id="58a30e55-43ba-4299-a60c-06e9ff1204a5" class="">La contingencia situacional de este modelo es el grado de preparación de los seguidores, que es la capacidad del seguidor para establecer metas relacionadas con la tarea, altas pero alcanzables, y su preparación para aceptar la responsabilidad para alcanzarlas.</p><p id="1822c9ad-6ed6-4a35-8091-a163671381f0" class="">Esta depende de la cantidad de capacitación que hayan recibido, su nivel de compromiso con la organización, su experiencia técnica, etc.</p><p id="daa68d5c-2ab2-4da3-a608-51fd653ff534" class=""><strong>Estilo indicativo:</strong> Proporciona directrices claras, gira instrucciones específicas y supervisa muy de cerca el trabajo.</p><p id="2524af9a-d547-4756-b876-0bb0e1745c3f" class=""><strong>Estilo vendedor: </strong>Ofrece dirección, fomenta la comunicación de dos vías y ayuda a crear confianza y motivación en el seguidor.</p><p id="b97d6c53-02c3-4c45-8276-5558085cc859" class=""><strong>Estilo participativo:</strong> Fomenta que los seguidores compartan sus ideas y facilita el trabajo porque alienta y apoya a los colaboradores.</p><p id="553cca1e-b4db-4801-82d7-b367fb28d3a2" class=""><strong>Estilo delegador:</strong> Transfiere a sus seguidores la responsabilidad de tomar e implementar las decisiones.</p><h3 id="4e700f8d-69c4-40d5-bf5a-a73bf96a9a33" class="">Modelo Vroom-Jago</h3><p id="33995b78-28e7-4141-88ac-7a470dfd7592" class="">Este modelo, al igual que otros modelos de contingencia, señala que los líderes deberían evaluar un conjunto de factores situacionales y a continuación decidir cómo se comportará.</p><p id="bcceff0a-4677-42f2-b7b1-bdc11655ce1a" class="">Reconoce que distintos estilos de liderazgo entrañan diferentes costos y beneficios.</p><p id="015d3da0-8191-4e73-8917-7c978686d7f8" class="">El liderazgo Vroom-Jago postula que los líderes deberían elegir uno de entre cinco estilos de liderazgo con base en siete variables contingentes, a la par que reconocen el tiempo que se requieran, así como otros costos asociados con cada uno de los estilos.</p><p id="3b75c0c1-05dc-461b-b3d2-c7757d4f5cc1" class="">Este modelo identifica 5 estilos básicos de liderazgo, los cuales representan las diferentes vías que pueden utilizar los líderes para involucrar a los miembros de un equipo cuando toman decisiones relacionadas con el trabajo.</p><ol type="1" id="41d47595-1867-404f-b251-822b98a5dba3" class="numbered-list" start="1"><li>Estilo decisor</li></ol><ol type="1" id="1c38c3fa-35cd-4254-9907-928fb8fc1a6c" class="numbered-list" start="2"><li>Estilo de consulta individual</li></ol><ol type="1" id="ff43f3ab-6954-411f-a612-ac0588b9f35a" class="numbered-list" start="3"><li>Estilo de consultar al equipo</li></ol><ol type="1" id="1e0e7711-6f6e-4510-9db0-b04762dd6bc2" class="numbered-list" start="4"><li>Estilo facilitador</li></ol><ol type="1" id="f216ca7e-0807-4416-ad59-90ba2ad47e72" class="numbered-list" start="5"><li>Estilo delegador</li></ol><p id="53c07be8-8878-4202-a640-938b28e09f0a" class=""><strong><strong>Estilo decisor:</strong></strong></p><p id="02d82a9a-8ea0-46ac-b1d2-06cedd4e33ba" class="">El líder toma la decisión y la anuncia o vende al equipo.</p><p id="c85f12c6-d6bf-427b-acbc-3e3eeab2266a" class="">El líder puede utilizar su experiencia y o recabar información que le proporcione el equipo y otras personas que él considera que pueden ayudar a resolver el problema.</p><p id="bc7fce5d-fe6b-42c3-9e09-017ef7f9ebfd" class="">El papel de los colaboradores consiste en proporcionar claramente la información específica que solicita el líder, en lugar de generar o evaluar soluciones.</p><p id="160f2bcf-fde9-4c70-8a1d-2f23d7a4c265" class=""><strong><strong>Estilo de consulta individual:</strong></strong></p><p id="d608c3a9-5d96-4959-bf80-594ae8eb8533" class="">El líder presenta de forma individual el problema a los miembros del equipo, y escucha sus ideas y sugerencias sin reunirles como grupo, y enseguida toma la decisión la cual puede o no reflejar la influencia de los miembros del equipo.</p><p id="8b725090-594c-4603-965e-fc84c527ed9f" class=""><strong><strong>Estilo de consultar al equipo:</strong></strong></p><p id="3094b744-e84d-4b0b-863b-2731a77bdc8a" class="">El líder presenta el problema a los miembros del equipo en una reunión, escucha sus sugerencias y a continuación toma la decisión, la cual puede o no reflejar las sugerencias de los miembros del equipo.</p><p id="1f3b2e81-cd32-4a08-9885-0c2dcfa33354" class=""><strong><strong>Estilo facilitador:</strong></strong></p><p id="05024b2d-b011-4052-b807-8367d3c37c05" class="">El líder presenta el problema al equipo en una reunión y actúa como facilitador, definiendo el problema que debe ser resuelto y las limitaciones que hay para tomar la decisión.</p><p id="6d36c738-6ba4-49d1-9315-1294bc16cddb" class="">La meta es que haya coincidencia en la decisión.</p><p id="d6c45a9b-1934-419e-9267-a21503e3fbcc" class="">El líder se encarga sobre todo de asegurar que sus ideas no tengan más peso que las de otros, solo por el puesto que ocupa en el equipo.</p><p id="2e71d0cb-fea7-40ef-9747-395840827e05" class="">El líder coordina la discusión, la mantiene enfocada en el problema, y se asegura que se comenten todos los temas esenciales.</p><p id="8a983de9-0823-40f1-8e1c-eb063287ef7d" class=""><strong><strong>Estilo delegador:</strong></strong></p><p id="dfdc97f5-4225-4ca5-8111-e1a93ade0e21" class="">El líder permite que el equipo tome la decisión dentro de los límites establecidos.</p><p id="09afb943-65e0-42b3-aa04-b64b5bc6afe4" class="">El equipo se ocupa de identificar y diagnosticar el problema, desarrollar los procedimientos optativos para resolverlo y decidir por una o varias soluciones alternas.</p><p id="c1c8942e-bcd0-4093-85b2-d1dc97c79f10" class="">El líder no participa en las deliberaciones del equipo a no ser que se le soliciten de forma explícita, pero sí desempeña una función importante de apoyo al proporcionar los recursos y el aliento necesarios.</p><p id="6f9ea9fd-52b9-417b-b92e-02d98f865357" class=""><strong><strong>Contingencias situacionales</strong></strong></p><p id="3903dc85-e228-4e7f-a886-5ea89990ea15" class="">El modelo Vroom-Jago incluye siete factores contingentes que los líderes tienen que evaluar antes de decidir cuál estilo de liderazgo emplearán.</p><p id="35b9be7e-20f4-49a6-bc84-45227db540a1" class="">Los factores situacionales que deben considerar son los siguientes:</p><ol type="1" id="14709949-af46-4247-b0bc-a1b8b1292178" class="numbered-list" start="1"><li><strong>Importancia de la decisión.</strong> ¿Qué tan importante es la calidad técnica de la decisión?</li></ol><ol type="1" id="c36178aa-732f-4eea-9bc7-69351b325abd" class="numbered-list" start="2"><li><strong>Importancia del Compromiso.</strong> ¿Qué tan importante es que los seguidores se comprometan con la decisión? ¿La decisión se puede implementar a pesar de que los seguidores no coinciden en que se trata de la mejor?</li></ol><ol type="1" id="31ec7ed3-3bbc-4440-b450-a9d71e93d8b7" class="numbered-list" start="3"><li><strong>Expertise (experiencia) de Líder .</strong> ¿El líder cuenta con la información relevante y las competencias para comprender el problema y elegir la mejor solución?</li></ol><ol type="1" id="892a32c2-4a5d-43fc-bef9-4ed4a5b3482b" class="numbered-list" start="4"><li><strong>Probabilidad de un compromiso.</strong> Si el líder toma la decisión, ¿los seguidores confiarán en el buen juicio del líder? ¿Se comprometerían a implementar una decisión tomada por él?</li></ol><ol type="1" id="25099810-f0e3-494f-bfc1-da58a64eef1c" class="numbered-list" start="5"><li><strong> Apoyo del equipo.</strong> ¿Los seguidores comparten las metas que se alcanzarán si se resuelve este problema? ¿Los intereses de los seguidores están alineados con los de la organización?</li></ol><ol type="1" id="b105bcb2-c295-497d-a5c3-7053c22267ae" class="numbered-list" start="6"><li><strong>Expertise (experiencia) del equipo</strong>. ¿El líder piensa que los seguidores tienen las capacidades y la información necesarias para tomar una decisión de calidad?</li></ol><ol type="1" id="c2acd632-1e4d-4954-9dc5-43a9efbd87ed" class="numbered-list" start="7"><li><strong>Competencia del equipo. </strong>¿Los seguidores son capaces de manejar el proceso para tomar decisiones propias?
+</li></ol><p id="e85f3545-8517-412f-99e5-306570cc843d" class="">
+</p><figure id="1784aef6-47f4-430a-b7bd-9e916b441d27" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%207.jpeg"><img style="width:2558px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%207.jpeg"/></a></figure><p id="770602bf-410f-4904-9159-0e445e2ca853" class="">
+</p><h2 id="c87830df-7a92-4b6c-93f0-cda9cc96d5ea" class=""><strong><strong>Modelo de Hersey y Blanchard</strong></strong></h2><p id="a729dda1-854b-4576-ae7d-e5bc39b15ebf" class="">De manera similar al modelo situacional Paul Hersey y Ken Blanchard desarrollaron otro modelo de liderazgo en el cual señalan que las conductas básicas esperadas del gerente como líder son: orientación a las tareas y orientación a las relaciones.</p><p id="c6aa4d3f-4566-4a8a-9eeb-51cd753aa716" class="">Esto con la diferencia de que esta vez su actuación va de acuerdo con el grado de madurez del colaborador, madurez que estos autores consideran como “La habilidad y disposición de las personas de dirigir su propio comportamiento”.</p><figure id="bdd49b56-111b-4a76-8bc0-c1f26101170a" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%202.png"><img style="width:582px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%202.png"/></a></figure><p id="68ade58d-0deb-42ce-a826-27d771948326" class=""><strong><strong>Estilo de dirigir</strong></strong></p><p id="3965d268-8159-4c96-9c8e-9bbf578c2f7b" class="">Con orientación a la tarea alta y “mínima”, así como una adecuada y correcta orientación a las relaciones. Este estilo es útil cuando el colaborador se encuentra en un nivel de madurez muy bajo, en el que no se siente capaz o no desea responsabilidades por sentirse inseguro o por estar al inicio de su formación en la empresa y requiere capacitación.</p><p id="cc3db0d3-b5e5-419f-b1ba-8429ee2e3d4f" class=""><strong><strong>Estilo de vender</strong></strong></p><p id="fe3a3c1d-24a8-4537-b233-9ee52e528d67" class="">Consiste en persuadir al colaborador para que realice las tareas, con supervisión y asesoría en función del ejercicio del trabajo y con interés por las relaciones entre líder y el colaborador.</p><p id="50379412-b868-4f80-9aef-839df68f6eaf" class="">Su aplicación es recomendada cuando el miembro está aún inmaduro, pero tiene deseos de superación.</p><p id="24eadc9d-915c-4a31-b8bc-18d41efa9809" class=""><strong><strong>Estilo de participar</strong></strong></p><p id="9d649f38-91dc-405b-9ba8-ed92ca87ed85" class="">Se recomienda cuando ya hay madurez aunque todavía se requieren de guías. Su participación le genera motivación y enriquece el trabajo en equipo.</p><p id="71ab58db-c3b8-4d6b-836e-5b7160e875e0" class=""><strong><strong>Estilo de delegar</strong></strong></p><p id="eee7a03b-9b27-4aec-9eed-27daa519a7c5" class="">Delegar o facultar plenamente (empowerment), se aconseja cuando la madurez del miembro es alta, tanto en capacidad técnica como en involucramiento y lealtad con la organización.</p><hr id="b28ee890-7545-40ff-bfab-94997e3d678e"/><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="acbd4139-6116-408d-921a-429244f69c78"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%">De aquí pa abajo yo digo que es especialmente importante todo</div></figure><h2 id="54bf0c70-7798-422a-8147-0a8be8e5c8e2" class="">Conceptos emergentes de liderazgo</h2><p id="b716fb48-3292-4f09-b2ec-a41a30606d16" class=""><strong><strong>Líderes transformacionales:</strong></strong></p><ul id="d9352322-9c43-4c70-b539-9defe2186678" class="bulleted-list"><li style="list-style-type:disc">Inspiran a otros con su visión.</li></ul><ul id="b3fdac27-d255-42c7-8600-5097eb87388c" class="bulleted-list"><li style="list-style-type:disc">Promueven su visión a pesar de la discrepancia.</li></ul><ul id="9355792a-24f0-4cd4-b33f-62a7a7542872" class="bulleted-list"><li style="list-style-type:disc">Muestran confianza en sí mismos y sus opiniones.</li></ul><ul id="ce2a3b22-2fe4-4835-87d5-33c4f0dddefa" class="bulleted-list"><li style="list-style-type:disc">Desarrollan nuevos enfoques.</li></ul><p id="19c11db5-0f81-4940-8d81-66f8a7b64cc9" class=""><strong><strong>Lideres sociales</strong></strong></p><ul id="bef88949-e9b5-4532-b705-f043a84f5851" class="bulleted-list"><li style="list-style-type:disc">Emprenden acciones para solucionar problemas sociales.</li></ul><ul id="cdab7e17-e83d-49e1-987e-2fc08ff21c44" class="bulleted-list"><li style="list-style-type:disc">Trascienden fronteras para lograr un cambio positivo.</li></ul><p id="ba399124-758f-4dc3-b497-583b401276cd" class="">Estos lideres suelen tener algunos tipos de liderazgo y algunas características que pueden llegar a compartir:</p><p id="464aefcc-ca7b-428f-9a25-88ac429b21f9" class="">Tipos de liderazgo:</p><p id="a09f8979-56e3-4270-956a-a22edbd34db1" class=""><strong><strong>Liderazgo transaccional</strong></strong></p><ul id="9a91c6cf-9638-436e-aee8-868fc14d20f7" class="bulleted-list"><li style="list-style-type:disc">Se orientan a movilizar a las persona hacia los procesos e intercambios de valor económico necesarios para este fin.</li></ul><ul id="56208c9f-4233-4de1-a0c8-50dc36361f05" class="bulleted-list"><li style="list-style-type:disc">El líder no es sólo un agente social sino también un agente comercial que persigue metas financieras y de desarrollo económico.</li></ul><p id="54fce5ac-dd73-41f4-99aa-f26ecf82fe22" class=""><strong><strong>Liderazgo relacional</strong></strong></p><ul id="00120138-c7d7-40fa-8887-71e5ccbf6e5c" class="bulleted-list"><li style="list-style-type:disc">Da un valor importante a las personas ya los vínculos sociales para lograr objetivos.</li></ul><ul id="ed3dfe5b-c0ec-4a68-a449-a7d6f54dbd66" class="bulleted-list"><li style="list-style-type:disc">No se trata de un líder que busca complacer a los colaboradores para construir un entorno agradable, sino de un líder que valora los puentes y las conexiones sociales como elemento impulsor para la acción.</li></ul><p id="39fc5af3-c13c-46d1-b7dc-278e644af99b" class=""><strong><strong>Liderazgo digital</strong></strong></p><ul id="6eabf3ef-dba1-45c6-91ab-2dd568dbec40" class="bulleted-list"><li style="list-style-type:disc">Ejerce la influencia y dirección para la gestión de plataformas digitales para adoptar formas de trabajo en constante evolución.</li></ul><ul id="98f1db79-e2d3-422a-813f-73f3a042d450" class="bulleted-list"><li style="list-style-type:disc">No solo se centra en interaccionar con colaboradores y seguidores también establece relaciones maduras de confianza que permiten un alto nivel de delegación en todos los niveles de la estructura organizacional.</li></ul><ul id="63865eb5-4078-4626-83bc-f2a231ea9e2c" class="bulleted-list"><li style="list-style-type:disc">Optimiza necesidades y demandas de los diferentes grupos de interés.</li></ul><p id="634be635-9f1d-477f-8f2a-d8f1f28b6a02" class="">Características:</p><p id="04c1f2c9-96b2-448d-88aa-c04749582942" class=""><strong><strong>Visionarios</strong></strong></p><ul id="bd82bb71-ae0e-4397-850a-1dd38d102e16" class="bulleted-list"><li style="list-style-type:disc">Tienen algo más que una simple visión. También tienen un mapa de como realizarla.</li></ul><ul id="3c4195c1-c245-4163-a24a-4bef7dc21f31" class="bulleted-list"><li style="list-style-type:disc">Lo importante es que los seguidores “compren” esa visión y que el líder tenga un plan para llenarlos de energía a efecto de que la puedan realizar.</li></ul><p id="5ab88d12-cdc2-4e4c-8e4b-b88d9ffa78ed" class=""><strong><strong>Carismáticos y Éticos</strong></strong></p><p id="d1e6ac48-b8df-4d15-9991-66f3e0c10fb8" class="">Los líderes transformacionales y sociales son carismáticos pero no todos los líderes carismáticos se encasillan entre estos dos.</p><ul id="004832bf-4202-48b0-8496-6f6ffc139aff" class="bulleted-list"><li style="list-style-type:disc">Un líder carismático es una persona capaz de influir en otras por que sus cualidades producen inspiración, estos tienen el don de conseguir la cooperación de otros con facilidad.</li></ul><ul id="530ea499-ef3e-4a1d-9619-012fcbdb79ba" class="bulleted-list"><li style="list-style-type:disc">Estos líderes no necesariamente pueden beneficiar, también en algunos casos pueden generar conflictos.</li></ul><ul id="610d4c8e-a02f-490f-997b-883456a0e08d" class="bulleted-list"><li style="list-style-type:disc">No necesariamente un líder carismático es ético, ya que pueden actuar por sus propios intereses utilizando su capacidad de persuadir a sus seguidores.</li></ul><ul id="26f1c2a4-8009-4240-9243-0ff3fed6e86a" class="bulleted-list"><li style="list-style-type:disc">Independientemente de la cultura existen principios que deben regir el comportamiento de un líder para que este sea considerado ético.</li></ul><p id="58549bef-9073-4002-9d1d-febb8b50cd01" class=""><strong><strong>Confiables</strong></strong></p><ul id="286557e8-c9bc-43f8-9e29-4bc53ca0b0cd" class="bulleted-list"><li style="list-style-type:disc">Una parte fundamental de ser un líder es que las personas que te siguen puedan confiar en ti, es de suma importancia ya que si los colaboradores comienzan a dudar de si están siguiendo la visión correcta, el efecto del liderazgo se disminuye.</li></ul><ul id="1c418aa1-a7f6-4e38-a357-809540ca211a" class="bulleted-list"><li style="list-style-type:disc">Además para fomentar la confianza los líderes suelen delegar tareas y atribuir facultades para que los colaboradores se sientan parte.</li></ul><p id="5d3ea5ed-2977-4287-b734-674fc2cefcba" class=""><strong><strong>Pensadores e innovadores</strong></strong></p><ul id="2979d581-16fb-419f-a441-319078fddb2a" class="bulleted-list"><li style="list-style-type:disc">Fomentan la solución de problemas y las razonamientos positivos.</li></ul><ul id="d27e8ab8-f70c-4963-86a0-dda6afaec1ee" class="bulleted-list"><li style="list-style-type:disc">También creen que se deben asumir riesgos, pero fundan sus acciones en un análisis y una discusión bien meditados.</li></ul><ul id="58d89eb0-2b30-4f59-a5b5-755c2f2778be" class="bulleted-list"><li style="list-style-type:disc">Fomenta la creatividad.</li></ul><ul id="1cf16043-2616-4e21-b437-36a82bde7c0a" class="bulleted-list"><li style="list-style-type:disc">Alientan a los seguidores a cuestionar los supuestos y prácticas antiguas, y esperan que así lo harán.</li></ul><ul id="5d679256-246c-4adf-abaa-ff79a5ef376d" class="bulleted-list"><li style="list-style-type:disc">Suelen concentrarse en el “que&quot; y en el “porqué” de los problemas, y no en el &quot;quién&quot; para responsabilizarlos.</li></ul><hr id="f26efbe1-911d-4aad-beed-7b7e465a1710"/><h1 id="837c0f04-3e12-47f7-b16b-df1f092aed84" class="">Cultura organizacional</h1><h2 id="a40628db-471f-4f2f-a8d9-bdbe2d93ed20" class="">Tipos de cultura:</h2><figure id="30ab970c-14a7-4590-a938-132a21f46ba1" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%203.png"><img style="width:719px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/Untitled%203.png"/></a></figure><h3 id="188f15f0-f199-415c-b25b-058ea23d4d6d" class="">Cultura burocrática:</h3><p id="02383d77-bdb5-4694-b777-8e55e98cba2d" class="">En una cultura burocrática, las reglas formales y los procedimientos estándar de operación regulan el comportamiento de los colaboradores, y la coordinación se logra por medio de las relaciones jerárquicas de dependencia. También se le conoce como cultura del control, pues todas las conductas que se alientan están orientadas a controlar los diferentes elementos de la operación del negocio.
+Por lo general, las culturas burocráticas se encuentran en organizaciones que producen bienes y/o ser especialmente comunes en los gobiernos federal, estatal y local.</p><h3 id="05de677f-67a4-4180-b967-01a02dcb0229" class="">Cultura de clan:</h3><p id="912295df-36b7-46df-bcfa-83e1c10f4f32" class="">La cultura de clan o de colaboración también se caracteriza por su enfoque interno. Sin embargo, en comparación con la cultura burocrática, el control de la conducta es más sutil. Existen pocas reglas y procedimientos formales. En una cultura de clan, la tradición, la lealtad, el compromiso personal, la amplia socialización y la autoadministración conforman el comportamiento de los colaboradores.
+Los miembros de la organización reconocen que tienen una obligación que va más allá del simple intercambio del trabajo por un sueldo. Compren- den que las contribuciones a la organización (por ejemplo, horas laboradas por semana) podrían exceder las establecidas en los contratos. La cultura de clan logra la unidad por medio de un proceso de socialización largo y profundo.</p><h3 id="7ef5169b-65dc-458f-bd7d-e97ad4588b78" class="">Cultura emprendedora:</h3><p id="72375e17-0fa3-4bbf-a4b6-cbcd4d1f09bd" class="">En una cultura emprendedora, el enfoque externo y la flexibilidad crean un ambiente que fomenta que las personas Aman riesgos, así como el dinamismo y la creatividad. Asimismo, hay un compromiso con la experimentación, la innovación y en estar siempre a la vanguardia. Todo comportamiento se orienta a la creación.
+Una cultura emprendedora es adecuada para la fase de arranque de una nueva empresa, así como para las demandas afrontan los colaboradores que tratan de crear y desarrollar nuevos productos.</p><h3 id="b0f8dc99-60d4-4486-ba2a-0d91d99dbf68" class="">Cultura de mercado:</h3><p id="1778f953-a859-4f56-86f4-ba4a5f30338d" class="">En una cultura de mercado, los valores y normas reflejan la importancia que tiene alcanzar metas mensurables y demandantes sobre todo las que tienen base financiera y en el mercado (por ejemplo, crecimiento en ventas, rentabilidad y participación de mercado).
+Una cultura de mercado no ejerce mucha presión social informal en los miembros de la organización. Las interacciones de los administradores o gerentes con los colaboradores consisten en gran parte en negociar acuerdos para recompensar el desempeño y/o la evaluación de solicitudes para recibir asignaciones de recursos. No se hace hincapié en las relaciones sociales entre los compañeros de trabajo, y los pocos incentivos económicos están vinculados de forma directa con la cooperación con los compañeros.</p><h2 id="a39a708c-ffae-41a3-b6c0-9d2810406b92" class="">Subculturas:</h2><p id="a39d111d-af72-4d95-91e5-b61857da8028" class="">
+</p><p id="abacd53f-9e74-4de5-b7fa-b02f718cd152" class="">Una subcultura organizacional tiene lugar cuando las premisas, valores y normas son compartidas por algunos miembros de la organización, pero no por todos ellos. Las subculturas organizacionales se presentan por diversas razones. A continuación se indican cuatro razones que explican por qué muchas organizaciones tienen subculturas:</p><ul id="9be81b8e-273d-414b-a180-cdfb0b1a8fca" class="bulleted-list"><li style="list-style-type:disc">La organización fue creada como resultado de una fusión o adquisición.</li></ul><ul id="bb2c7265-8a62-4426-a62a-2e948d69ea09" class="bulleted-list"><li style="list-style-type:disc">Los departamentos de la organización tienen normas y valores propios.</li></ul><ul id="8675fd07-0ae9-440d-974b-d4952dab6fda" class="bulleted-list"><li style="list-style-type:disc">Las operaciones e instalaciones se ubican en diversas zonas geográficas.</li></ul><ul id="5c8b3090-bf75-4192-816d-fe42a1f9cab6" class="bulleted-list"><li style="list-style-type:disc">Una fuerza laboral diversa crea las subculturas.</li></ul><h3 id="6c00f775-7ba8-4305-a926-d5068bb434b5" class=""><strong>Subculturas derivadas de fusiones y adquisiciones:</strong></h3><p id="eb637a18-aeff-48b2-8602-0d25f161cddd" class="">Cuando una organización adquiere a otra, o cuando dos organizaciones se fusionan, es probable que las dos tengan culturas diferentes. De hecho, la incompatibilidad de culturas es el motivo que se cita con más frecuencia para explicar por qué fracasan las fusiones y adquisiciones (FyA). Cuando las culturas organizacionales de las empresas fusionadas son similares, aumentan las probabilidades.</p><figure id="038a8602-69d5-415d-bff9-f07a58b3d7ff" class="image"><a href="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/imageas.jpeg"><img style="width:1194px" src="Temario%20para%20segundo%20examen%20de%20administracio%CC%81n%20b5aebb29448948359a1b7439558a2f31/imageas.jpeg"/></a></figure><p id="ba68cf80-5ccd-4c24-984d-714997f5f556" class="">
+</p><h3 id="fc9df5fe-d286-4850-9024-ffef9a4e707b" class=""><strong>Subculturas de departamentos y divisiones:</strong></h3><p id="084803c9-c699-4860-b9ed-802233034fc7" class="">Con frecuencia encontramos diferentes subculturas en los distintos departamentos de una organización, las cuales refleja-rían las especialidades, o tal vez han sido creadas por los gerentes o directores a cargo de los departamentos.</p><p id="b59b118b-d514-4a11-8c30-5042fd8f8beb" class=""><strong>Subculturas ocupacionales:</strong> En las empresas organizadas en forma de departamentos funcionales, los colaboradores con la misma especialidad están en un mismo grupo. Los departamentos de la organización tienen nombres como producción, investigación y desarrollo, contabilidad, marketing y recursos humanos. Las prácticas de la socialización ocupacional son fuentes muy fuertes de adoctrinamiento cultural, sobre todo en el caso de los profesionales.</p><p id="643e6966-3b16-446b-9bd3-140c60d80d35" class="">Subculturas creadas por los administradores o gerentes: Las diferencias de personalidad y estilos de liderazgo de los administradores o gerentes son otra razón que explica por qué las unidades de una organización tienen diferentes subculturas.</p><h3 id="7ba9880c-e469-4a07-a3dd-4cda967032d8" class="">Subculturas basadas en la geografía:</h3><p id="8e021edf-ea78-4809-af83-3138f5c08512" class="">Numerosas organizaciones tienen instalaciones y operaciones en distintas zonas geográficas, estas organizaciones a menudo tienen estructura geográfica. Si las unidades se encuentran en lugares que tienen culturas propias, entonces es probable que la organización tenga subculturas dependiendo de la plaza, llamadas también regionales.</p><p id="fc1dda17-ae75-4399-85b2-e2ed822eeda7" class=""><strong>Subculturas debidas a la demografía de la fuerza laboral:</strong></p><p id="c51f4030-6138-46f0-8a9a-dde06cffc048" class="">La demografía de la fuerza laboral describe las características de los colaboradores, como su etnia, edad y género. Sin embargo, el hecho de que las personas que tienen distintos orígenes demográficos vivan lado con lado no significa que compartan la misma cultura.</p><h3 id="491a6ebf-d82b-4d56-becc-3ce930c4ca9e" class="">Ventajas y desventajas de las subculturas:</h3><p id="f7f58049-7e48-4fc8-bc3b-f69ad9c6877e" class="">Ventajas: Numerosos equipos de directivos piensan que la presencia de distintas subculturas en una organización suele ser <em>benéfica y tiene enorme valor, razón por la cual cuenta con un área específica para promover la equidad y la diversidad.</em></p><p id="0872eac1-b914-4edc-9dce-078e3d0b1afd" class="">Desventajas: La presencia de subculturas en ocasiones crea problemas para colaboradores y empleadores. Piense en lo que suele ocurrir después de que una organización adquiere a otra. Tal vez se espere que los colaboradores de la adquirida abandonen la cultura de su antigua organización y adopten la cultura de la adquirente. De repente, la forma acostumbrada de hacer las cosas resulta inaceptable. Con frecuencia, los directivos de la adquirida sienten que el nivel de su posición e influencia han disminuido.</p></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
