@@ -9,7 +9,7 @@
             margin: 0;
             height: 100vh;
             overflow: hidden;
-            background: linear-gradient(120deg, #f6d365 0%, #fda085 50%, #fcb69f 100%);
+            background-color: white; /* Fondo blanco para mayor contraste */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,7 +19,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.5) 20%, rgba(255,255,255,0) 70%);
-            animation: moveClouds 30s linear infinite, colorShift 15s ease-in-out infinite alternate;
+            animation: moveClouds 15s linear infinite, colorShift 10s ease-in-out infinite alternate;
         }
         @keyframes moveClouds {
             0% { transform: translate(-50%, -50%) scale(1); }
@@ -28,8 +28,10 @@
         }
         @keyframes colorShift {
             0% { background: radial-gradient(circle, rgba(255,255,255,0.5) 20%, rgba(255,255,255,0) 70%); }
-            50% { background: radial-gradient(circle, rgba(200,255,255,0.5) 20%, rgba(200,255,255,0) 70%); }
-            100% { background: radial-gradient(circle, rgba(255,255,200,0.5) 20%, rgba(255,255,200,0) 70%); }
+            25% { background: radial-gradient(circle, rgba(173,216,230,0.5) 20%, rgba(173,216,230,0) 70%); } /* Azul claro */
+            50% { background: radial-gradient(circle, rgba(144,238,144,0.5) 20%, rgba(144,238,144,0) 70%); } /* Verde claro */
+            75% { background: radial-gradient(circle, rgba(135,206,250,0.5) 20%, rgba(135,206,250,0) 70%); } /* Azul cielo */
+            100% { background: radial-gradient(circle, rgba(102,205,170,0.5) 20%, rgba(102,205,170,0) 70%); } /* Verde mar */
         }
     </style>
 </head>
