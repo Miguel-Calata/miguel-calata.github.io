@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triángulo Girando</title>
+    <title>Nubes de Colores</title>
     <style>
         body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
         }
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 100px solid #007bff;
-            animation: spin 2s linear infinite;
+        .clouds {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 20%, rgba(255,255,255,0) 70%);
+            animation: moveClouds 30s linear infinite;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes moveClouds {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.5); }
         }
     </style>
 </head>
 <body>
-    <div class="triangle"></div>
+    <div class="clouds"></div>
 </body>
 </html>
