@@ -1,54 +1,51 @@
-/* Estilo para el cuerpo y el encabezado */
 body {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #000000;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
-header img {
-    max-width: 100%;
-height: auto;
-display: block;
-}
-header {
-    background-color: #000000;
-    color: #ff0000;
-    text-align: center;
-    padding: 13px;
-}
-.gif-left {
-    max-width: 100px;
-    height: auto;
-    float: left;
-    margin-right: 5px;
-}
-.gif-right {
-    max-width: 100px;
-    height: auto;
-    float: right;
-    margin-left: 5px;
-}
-footer {
-    background-color: #000000;
-    color: #ff0000;
-    text-align: center;
-    padding: 10px;
-}
-/* Estilo para los GIFs */
-.gif1 {
-    max-width: 100px;
-    height: auto;
-}
-.gif2 {
-    max-width: 300px;
-    height: auto;
 
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em;
+    text-align: center;
 }
-.foto1 {
-    max-width: 100px;
-    height: auto;
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
 }
-/* Estilo para el contenido principal */
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 1em;
+    margin: 0 1em;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
 main {
-    padding: 20px;
+    padding: 1em;
+}
+
+section {
+    margin: 2em 0;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    button {
+        margin: 0.5em 0;
+    }
 }
