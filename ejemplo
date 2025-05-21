@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muebles Elegante - Tu hogar, nuestro diseño</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1555041469-a586c61ea4bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .category-btn.active {
+            background-color: #6b7280;
+            color: white;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-couch text-3xl text-amber-700 mr-2"></i>
+                <h1 class="text-2xl font-bold text-gray-800">Muebles <span class="text-amber-700">Elegante</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-800 hover:text-amber-700 font-medium">Inicio</a>
+                <a href="#products" class="text-gray-800 hover:text-amber-700 font-medium">Productos</a>
+                <a href="#about" class="text-gray-800 hover:text-amber-700 font-medium">Nosotros</a>
+                <a href="#testimonials" class="text-gray-800 hover:text-amber-700 font-medium">Testimonios</a>
+                <a href="#contact" class="text-gray-800 hover:text-amber-700 font-medium">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <i class="fas fa-search text-gray-600"></i>
+                </button>
+                <button class="p-2 rounded-full hover:bg-gray-100 relative">
+                    <i class="fas fa-shopping-cart text-gray-600"></i>
+                    <span class="absolute -top-1 -right-1 bg-amber-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-100">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#" class="block py-2 text-gray-800 hover:text-amber-700">Inicio</a>
+            <a href="#products" class="block py-2 text-gray-800 hover:text-amber-700">Productos</a>
+            <a href="#about" class="block py-2 text-gray-800 hover:text-amber-700">Nosotros</a>
+            <a href="#testimonials" class="block py-2 text-gray-800 hover:text-amber-700">Testimonios</a>
+            <a href="#contact" class="block py-2 text-gray-800 hover:text-amber-700">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero text-white py-20 md:py-32 fade-in">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Transforma tu hogar con estilo</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Muebles de alta calidad diseñados para brindar comodidad y elegancia a tus espacios.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full font-medium transition duration-300">Ver colección</button>
+                <button class="bg-white hover:bg-gray-100 text-gray-800 px-8 py-3 rounded-full font-medium transition duration-300">Ver ofertas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nuestras Categorías</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="category-btn active px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">Todos</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">Salas</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">Dormitorios</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">Comedores</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">Oficina</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">Exterior</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Productos Destacados</h2>
+            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Descubre nuestra selección de muebles cuidadosamente diseñados para ofrecer estilo y funcionalidad.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea4bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sofá moderno" class="w-full h-64 object-cover">
+                        <span class="absolute top-2 right-2 bg-amber-600 text-white text-xs px-2 py-1 rounded">Nuevo</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Sofá Moderno Chester</h3>
+                        <p class="text-gray-600 text-sm mb-3">Sofá de 3 plazas en piel genuina</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$1,299.99</span>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mesa de comedor" class="w-full h-64 object-cover">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">Oferta</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Mesa de Comedor Roble</h3>
+                        <p class="text-gray-600 text-sm mb-3">Mesa extensible para 6-8 personas</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$899.99</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">$1,099.99</span>
+                            </div>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cama king size" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Cama King Size Minimalista</h3>
+                        <p class="text-gray-600 text-sm mb-3">Estructura en madera de haya con acabado natural</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$1,499.99</span>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1583845112208-9b80906d063e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Escritorio moderno" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Escritorio Ejecutivo</h3>
+                        <p class="text-gray-600 text-sm mb-3">Diseño ergonómico con almacenamiento integrado</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$599.99</span>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">Ver todos los productos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nuestro taller" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Nuestra Historia</h2>
+                    <p class="text-gray-600 mb-4">Desde 1985, Muebles Elegante ha estado creando piezas excepcionales que combinan artesanía tradicional con diseño contemporáneo.</p>
+                    <p class="text-gray-600 mb-6">Cada mueble que creamos está hecho con materiales de la más alta calidad y un cuidado meticuloso por los detalles, asegurando que no solo sea hermoso, sino también duradero y funcional.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-600 text-xl mr-2"></i>
+                            <span>Materiales premium</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-600 text-xl mr-2"></i>
+                            <span>Diseño personalizado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-600 text-xl mr-2"></i>
+                            <span>Garantía de 5 años</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-600 text-xl mr-2"></i>
+                            <span>Entrega a domicilio</span>
+                        </div>
+                    </div>
+                    <button class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition duration-300">Conoce más</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Lo que dicen nuestros clientes</h2>
+            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Más de 10,000 clientes satisfechos en toda la región</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">María González</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"El sofá que compré superó todas mis expectativas. No solo es hermoso, sino increíblemente cómodo. La calidad es excepcional y el servicio al cliente fue impecable."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Carlos Martínez</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Encargué un juego de comedor a medida y el resultado fue perfecto. El equipo entendió exactamente lo que quería y el producto final es exactamente como lo imaginé."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Laura Sánchez</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"La cama que compré para mi habitación principal es simplemente perfecta. La calidad de la madera y el acabado son impresionantes. Definitivamente volveré por más muebles."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-amber-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Suscríbete a nuestro boletín</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Recibe ofertas exclusivas, novedades y consejos de decoración directamente en tu correo.</p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 rounded-l-full focus:outline-none text-gray-800">
+                <button type="submit" class="bg-gray-800 hover:bg-gray-900 px-6 py-3 rounded-r-full font-medium transition duration-300">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contáctanos</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nombre</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Correo electrónico</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Mensaje</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition duration-300 w-full">Enviar mensaje</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-lg h-full">
+                        <h3 class="text-xl font-bold mb-6">Información de contacto</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-amber-600 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Dirección</h4>
+                                    <p class="text-gray-600">Av. Principal 1234, Colonia Centro, Ciudad de México</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-amber-600 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Teléfono</h4>
+                                    <p class="text-gray-600">+52 55 1234 5678</p>
+                                    <p class="text-gray-600">+52 55 8765 4321</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-amber-600 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Correo electrónico</h4>
+                                    <p class="text-gray-600">contacto@muebleselegante.com</p>
+                                    <p class="text-gray-600">ventas@muebleselegante.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-amber-600 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Horario de atención</h4>
+                                    <p class="text-gray-600">Lunes a Viernes: 9:00 am - 7:00 pm</p>
+                                    <p class="text-gray-600">Sábados: 10:00 am - 4:00 pm</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-4">Síguenos en redes sociales</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-200 hover:bg-gray-300 h-10 w-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-facebook-f text-gray-700"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-gray-300 h-10 w-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-instagram text-gray-700"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-gray-300 h-10 w-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-twitter text-gray-700"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-gray-300 h-10 w-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-pinterest-p text-gray-700"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-couch text-2xl text-amber-600 mr-2"></i>
+                        <h3 class="text-xl font-bold">Muebles Elegante</h3>
+                    </div>
+                    <p class="text-gray-400">Transformando espacios desde 1985 con muebles de calidad y diseño excepcional.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Enlaces rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Inicio</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition">Productos</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonios</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Categorías</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Salas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dormitorios</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Comedores</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Oficina</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Exterior</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contacto</h4>
+                    <address class="not-italic text-gray-400">
+                        <p class="mb-2">Av. Principal 1234</p>
+                        <p class="mb-2">Colonia Centro, CDMX</p>
+                        <p class="mb-2">Tel: 55 1234 5678</p>
+                        <p class="mb-2">Email: contacto@muebleselegante.com</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Muebles Elegante. Todos los derechos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Términos y condiciones</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Política de privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Category buttons active state
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
