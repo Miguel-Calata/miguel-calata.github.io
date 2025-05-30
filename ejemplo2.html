@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Delicia - Experiencia de Café Artesanal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Animación personalizada para el hero */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+        /* Efecto hover personalizado para las tarjetas */
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Transición suave para el menú móvil */
+        .mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header/Navbar -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-coffee text-2xl text-amber-700 mr-2"></i>
+                <a href="#" class="text-xl font-bold text-amber-800">Café Delicia</a>
+            </div>
+            
+            <!-- Menú desktop -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#inicio" class="hover:text-amber-600 transition">Inicio</a>
+                <a href="#menu" class="hover:text-amber-600 transition">Menú</a>
+                <a href="#nosotros" class="hover:text-amber-600 transition">Nosotros</a>
+                <a href="#contacto" class="hover:text-amber-600 transition">Contacto</a>
+            </nav>
+            
+            <!-- Botón menú móvil -->
+            <button id="menu-btn" class="md:hidden text-amber-800 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-white w-full px-4 pb-4">
+            <a href="#inicio" class="block py-2 hover:text-amber-600">Inicio</a>
+            <a href="#menu" class="block py-2 hover:text-amber-600">Menú</a>
+            <a href="#nosotros" class="block py-2 hover:text-amber-600">Nosotros</a>
+            <a href="#contacto" class="block py-2 hover:text-amber-600">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-amber-50 to-amber-100">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0 fade-in">
+                <h1 class="text-4xl md:text-5xl font-bold text-amber-900 mb-4">Descubre el auténtico sabor del café</h1>
+                <p class="text-lg text-amber-800 mb-6">Cada taza es una experiencia única, preparada con granos seleccionados y tostados artesanalmente.</p>
+                <div class="flex space-x-4">
+                    <a href="#menu" class="bg-amber-700 hover:bg-amber-800 text-white px-6 py-3 rounded-lg font-medium transition">Ver menú</a>
+                    <a href="#contacto" class="border-2 border-amber-700 text-amber-700 hover:bg-amber-50 px-6 py-3 rounded-lg font-medium transition">Reservar</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center fade-in" style="animation-delay: 0.3s;">
+                <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                     alt="Taza de café artesanal" 
+                     class="rounded-lg shadow-xl w-full max-w-md object-cover h-80 md:h-96">
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-900 mb-12">Nuestras Especialidades</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md card-hover transition duration-300">
+                    <div class="text-amber-700 text-4xl mb-4">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Café de Origen</h3>
+                    <p class="text-gray-600">Granos seleccionados de las mejores regiones cafetaleras del mundo, con perfiles de sabor únicos.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md card-hover transition duration-300">
+                    <div class="text-amber-700 text-4xl mb-4">
+                        <i class="fas fa-mortar-pestle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Tostado Artesanal</h3>
+                    <p class="text-gray-600">Tostamos nuestros granos en pequeñas tandas para garantizar la máxima frescura y calidad.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md card-hover transition duration-300">
+                    <div class="text-amber-700 text-4xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Preparación Cuidada</h3>
+                    <p class="text-gray-600">Cada bebida es preparada con atención al detalle por nuestros baristas certificados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-900 mb-12">Nuestro Menú</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Coffee Menu -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="bg-amber-800 text-white p-4">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-coffee mr-2"></i> Cafés
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Espresso</h4>
+                                <span class="font-bold">$2.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Un shot intenso de nuestro mejor café.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Cappuccino</h4>
+                                <span class="font-bold">$3.75</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Espresso con leche vaporizada y una capa de espuma cremosa.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Latte</h4>
+                                <span class="font-bold">$4.00</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Espresso con más leche vaporizada y un toque de espuma.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Cold Brew</h4>
+                                <span class="font-bold">$4.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Café infusionado en frío durante 24 horas para un sabor suave.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food Menu -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="bg-amber-800 text-white p-4">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-utensils mr-2"></i> Acompañamientos
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Croissant</h4>
+                                <span class="font-bold">$2.75</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Crujiente por fuera, suave por dentro. Disponible natural o de almendra.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Tarta de Manzana</h4>
+                                <span class="font-bold">$3.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Hecha en casa con manzanas frescas y canela.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Bagel con Queso Crema</h4>
+                                <span class="font-bold">$3.25</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Bagel recién horneado con queso crema artesanal.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-amber-900">Ensalada de Frutas</h4>
+                                <span class="font-bold">$4.00</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Mezcla de frutas de temporada, frescas y jugosas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="show-more" class="bg-amber-700 hover:bg-amber-800 text-white px-6 py-3 rounded-lg font-medium transition">
+                    Ver menú completo
+                </button>
+                <div id="full-menu" class="hidden mt-8 bg-white rounded-xl shadow-md p-6">
+                    <!-- Contenido adicional del menú aparecería aquí -->
+                    <p class="text-gray-600">Pronto agregaremos más opciones a nuestro menú. ¡Vuelve a visitarnos!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="nosotros" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                         alt="Interior de Café Delicia" 
+                         class="rounded-lg shadow-xl w-full h-64 md:h-96 object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-amber-900 mb-6">Nuestra Historia</h2>
+                    <p class="text-gray-600 mb-4">Café Delicia nació en 2010 con la pasión por compartir el mejor café del mundo en un ambiente acogedor. Lo que comenzó como un pequeño local en el centro de la ciudad, hoy es un referente de calidad y servicio.</p>
+                    <p class="text-gray-600 mb-6">Nuestro fundador, Juan Pérez, viajó por las principales regiones cafetaleras de Latinoamérica para seleccionar personalmente a los productores que comparten nuestra filosofía de cultivo sostenible y calidad excepcional.</p>
+                    <div class="flex items-center">
+                        <div class="bg-amber-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-seedling text-amber-700 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-amber-900">Café Sostenible</h3>
+                            <p class="text-gray-600 text-sm">Trabajamos directamente con productores que practican agricultura responsable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 bg-amber-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-900 mb-12">Contáctanos</h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-amber-900 mb-4">Información de contacto</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-map-marker-alt text-amber-700 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Dirección</h4>
+                                <p class="text-gray-600">Calle Principal 123, Centro Histórico</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-phone-alt text-amber-700 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Teléfono</h4>
+                                <p class="text-gray-600">+52 55 1234 5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-envelope text-amber-700 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-600">hola@cafedelicia.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-amber-700 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Horario</h4>
+                                <p class="text-gray-600">Lunes a Viernes: 7:00 - 20:00</p>
+                                <p class="text-gray-600">Sábado y Domingo: 8:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-amber-900 mb-4">Envíanos un mensaje</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Nombre</label>
+                                <input type="text" id="name" class="w-full px-4 py-2
+</html>
