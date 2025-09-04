@@ -1,743 +1,389 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Temario para economía</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 6px;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-    margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-.link-descarga{
-	font-size: 2rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-	text-align: center;
-	color: rgb(55, 53, 47);
-}
-p > .user {
-	opacity: 0.5;
-}
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-section {
-    margin: 0;
-    padding: 0;
-}
-nav {
-    margin: 0;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgb(255, 201, 147);
-}
-.highlight-yellow_background {
-	background: rgb(255, 224, 133);
-}
-.highlight-teal_background {
-	background: rgb(165, 235, 152);
-}
-.highlight-blue_background {
-	background: rgb(158, 226, 255);
-}
-.highlight-purple_background {
-	background: rgba(222, 179, 255, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(255, 170, 208, 0.8);
-}
-.highlight-red_background {
-	background: rgb(255, 158, 163);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-.select-value-color-pageGlass { background-color: undefined; }
-.select-value-color-washGlass { background-color: undefined; }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head>
-<body>
-	<article id="faf538d7-5aba-4438-9075-5fbbeec11b68" class="page sans"><header><img class="page-cover-image" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/day-trade.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📚</span></div><h1 class="page-title">Temario para economía</h1><p class="page-description"></p></header><div class="page-body"><p id="19c2a391-5abc-43ff-b949-6ca40f79a3cf" class="">Aquí se incluye lo que venía tanto en el primer examen como las demás actividades que hicimos en la tarea 8 y 9.
-<nav>
-	</p><h1 id="db4b1175-8bb3-4d10-9c51-28953958c2e5" class=""><mark class="highlight-blue"><a href="#seccion1">Actividad 1</a></mark></h1><ul id="60120e1c-e8b4-4799-bd25-11951b2bc837" class="bulleted-list"><li style="list-style-type:disc">Ventaja absoluta y Ventaja comparativa</li></ul><ul id="71598580-fa21-4fac-afae-777a829782da" class="bulleted-list"><li style="list-style-type:disc">Frontera de posibilidades de producción (FPP)</li></ul><ul id="cb3bc9f7-040b-471e-a1e3-755e990d588d" class="bulleted-list"><li style="list-style-type:disc">Costo de oportunidad</li></ul><h1 id="df174158-bed1-43ec-890d-24e337d3f61c" class=""><mark class="highlight-blue"><a href="#seccion2">Actividad 2</a></mark></h1><h3 id="f0a353ff-feb9-4eda-862f-248e0199517e" class="">Elasticidad del precio de la demanda</h3><ul id="beeb1b39-d1e7-483c-b156-487ebfdf9a19" class="bulleted-list"><li style="list-style-type:disc">Método estándar</li></ul><ul id="c993ccdd-ba35-46d3-85ca-83cca85d7cee" class="bulleted-list"><li style="list-style-type:disc">Método punto medio</li></ul><h1 id="75dd537d-5f08-4aa6-bd81-f4a4e40034b1" class=""><mark class="highlight-blue"><a href="#seccion3">Actividad 5</a></mark></h1><ul id="e4a38c73-7e12-44b5-9c04-19ff98fcd0be" class="bulleted-list"><li style="list-style-type:disc">Impuesto</li></ul><ul id="15611e66-5585-4e3b-a855-40b3ec4dbcf7" class="bulleted-list"><li style="list-style-type:disc">Excedente al consumidor</li></ul><h1 id="855c1fc7-f9e3-48e1-9848-696b5d0821ac" class=""><mark class="highlight-blue"><a href="#seccion4">Actividad 7</a></mark></h1><ul id="0d430349-853a-484f-871f-51f3de0f3fab" class="bulleted-list"><li style="list-style-type:disc">Los costos de los impuestos</li></ul><ul id="10334823-db50-46eb-a813-e227c2fb0d94" class="bulleted-list"><li style="list-style-type:disc">Comercio Internacional</li></ul><h1 id="c86f31e3-ebb2-4a20-a282-c96f44b8958d" class=""><mark class="highlight-blue"><a href="#seccion5">Actividad 8</a></mark></h1><ul id="5ee92e94-ab8b-47a6-8725-fc0e8d327694" class="bulleted-list"><li style="list-style-type:disc">Impuestos y Matrimonios</li></ul><ul id="5498d2c3-ce17-4653-b0e0-68581a1fdbb6" class="bulleted-list"><li style="list-style-type:disc">Los costos de producción</li></ul><h1 id="d53a94b1-1a61-4a8c-9b18-1c191f67c9dc" class=""><mark class="highlight-blue"><a href="#seccion6">Actividad 9</a></mark></h1><ul id="3695b2fe-736c-4976-8fc0-b4fab921f176" class="bulleted-list"><li style="list-style-type:disc">Beneficio total y pérdida total de la empresa</li></ul><ul id="d402f0d6-d858-45f9-b200-7a8139f6cc96" class="bulleted-list"><li style="list-style-type:disc">Beneficio y pérdida de monopolio</li></ul><hr id="0cc3ebf6-99b8-4092-81b3-fe2a1a95706e"/></nav><section id="seccion1"><h1 id="768de7b4-88bb-47f4-840f-ed1a596f274f" class=""><mark class="highlight-blue">Actividad 1</mark></h1><h2 id="591489b1-184a-4abb-834e-d98dbe7b4a3d" class="">Ventaja absoluta y Ventaja comparativa</h2>
-	</section><p id="57e65847-0f03-4a04-a0bb-77adba3cb2ce" class=""><strong>La ventaja absoluta:</strong> es la capacidad de producir un bien usando menos insumos que otro productor.</p><p id="7dd1e0a5-6872-47ec-be62-4f755d3848a8" class=""><strong>La ventaja comparativa:</strong> es la capacidad de producir un bien a un costo de oportunidad menor que otro productor.</p><p id="edc6a1c8-134a-4a19-bd1f-9cf24d675a29" class="">Ventaja absoluta:</p><p id="a4070275-e59b-4ede-923a-3c19471bc040" class="">Para calcular la <strong>ventaja absoluta</strong> solo se necesita hacer una comparación directa entre los insumos que necesitan los productores para producir un bien.</p><p id="4132a8c3-f867-4547-bfaa-579e1d240b2b" class="">Encontrar quién tiene la ventaja absoluta al producir jitomate:</p><p id="e9fa7b1d-019c-4432-aa47-2596fe84a885" class=""><em>En China, se puede producir 1 kg de pan en 25 minutos y 1 kg de </em><mark class="highlight-blue_background"><em>jitomate en 35 minutos</em></mark><em>. En Perú se puede producir 1kg de pan en 30 minutos y </em><mark class="highlight-blue_background"><em>1 kg de jitomate en 45minutos</em></mark><em>.</em></p><figure id="af8441ca-f050-4ca8-87db-e4ceb13b3035" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>35</mn><mo>&lt;</mo><mn>45</mn></mrow><annotation encoding="application/x-tex">35 &lt; 45</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">35</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">45</span></span></span></span></span></div></figure><p id="f2c2de2f-4d2f-4cff-9ed2-0520cb38e132" class="">China tiene la ventaja absoluta porque necesita menos insumos (Tiempo), para producir un kilo de jitomate.</p><p id="87861b52-e6fd-411f-a8dd-f8873e6bc299" class=""><strong>Ventaja comparativa:</strong></p><p id="c3250e0d-3952-4b7b-a619-db450418dc18" class="">Para calcular la ventaja comparativa es necesario hacer una división entre el insumo para un bien entre el insumo para el otro bien, ambos del mismo productor.</p><p id="ee185ff7-9a38-4c8b-8fae-354588a6257e" class=""><em>En China, se puede producir 1 kg de pan en </em><mark class="highlight-yellow_background"><em>25 minutos</em></mark><em> y 1 kg de jitomate en </em><mark class="highlight-teal_background"><em>35 minutos</em></mark><em>. En Perú se puede producir 1kg de pan en </em><mark class="highlight-orange_background"><em>30 minutos</em></mark><em> y 1 kg de jitomate en </em><mark class="highlight-red_background"><em>45 minutos.</em></mark></p><p id="1649bd85-8a87-4978-b840-21e8f3d11737" class="">Para saber quién tiene la ventaja comparativa sobre el <strong>jitomate</strong> dividimos los <mark class="highlight-teal_background">35 minutos</mark> necesarios para producir un kilo de jitomate entre los <mark class="highlight-yellow_background">25 minutos</mark> necesarios para producir un kilo de pan. Y después hacemos lo mismo para Perú, dividiendo <mark class="highlight-red_background">45 minutos</mark> entre<mark class="highlight-orange_background"> 30 minutos.</mark></p><figure id="966552d5-0f57-461e-bd91-63bda059901e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>h</mi><mi>i</mi><mi>n</mi><mi>a</mi><mo>:</mo><mn>35</mn><mi mathvariant="normal">/</mi><mn>25</mn><mo>=</mo><mn>1.4</mn></mrow><annotation encoding="application/x-tex">China: 35 / 25 = 1.4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">hina</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">35/25</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.4</span></span></span></span></span></div></figure><figure id="2f2d4797-2c8b-4bb5-96ba-6c8593514022" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>e</mi><mi>r</mi><mover accent="true"><mi>u</mi><mo>ˊ</mo></mover><mo>:</mo><mn>45</mn><mi mathvariant="normal">/</mi><mn>30</mn><mo>=</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">Perú: 45 / 30 = 1.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">u</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">45/30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.5</span></span></span></span></span></div></figure><figure id="1e2152f9-cb94-4d34-a5b4-860b8aa00441" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1.4</mn><mo>&lt;</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">1.4 &lt; 1.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">1.4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.5</span></span></span></span></span></div></figure><p id="783e4aeb-f807-46d3-b6b0-69f6d7470412" class="">Por lo que China tiene la ventaja comparativa al producir jitomate, pues 1.4 es menor que 1.5, se tiene que tomar en cuenta que un país solo puede tener la ventaja comparativa sobre un solo bien, por lo que el otro país tendría la ventaja comparativa sobre el otro bien, en este caso <strong>Perú tendría la ventaja comparativa sobre el Pan.</strong></p><h2 id="8d295118-8c50-404b-a8ed-550eabfb1dbd" class="">Frontera de posibilidades de producción (FPP)</h2><p id="89d13293-f73b-4856-bbe4-6d1a3dbe81c4" class="">La Frontera de Posibilidades de Producción (FPP): Es un gráfico que muestra las combinaciones de dos bienes que la economía puede producir dada la disponibilidad de recursos y la tecnología disponible. O, dicho de otra manera, es una gráfica en la que se representa como si se produce más de un bien se tiene que producir menos de otro.</p><p id="65729f9b-7527-4c96-8d46-c2c076861361" class=""><strong>Ejemplo:</strong></p><p id="50231c6d-d934-4bf2-8792-92e5ab0ab676" class=""><em>Considere dos países, México y Perú, tienen 9,000 horas de trabajo. Suponga que en cada país se producen dos bienes, Cerveza (eje Y) y Cámara (eje X), cuyo único factor productivo es el trabajo. Cada trabajador se puede dedicar únicamente a la producción de uno de dos bienes con la siguiente condición.</em></p><table id="63538d00-6206-4850-8e69-553ee9292617" class="simple-table"><tbody><tr id="089d5485-351e-4b26-ab0d-ba2c5fba4406"><td id="CC~w" class="">País</td><td id="uQ:Y" class="">Cerveza
-(1 unidad)</td><td id="H&gt;K^" class="">Cámara
-(1 unidad)</td></tr><tr id="363525f6-bed7-42b4-bd95-f34285425ba6"><td id="CC~w" class="">México</td><td id="uQ:Y" class="">3 horas</td><td id="H&gt;K^" class="">150 horas</td></tr><tr id="fce54b0d-3136-4b56-a264-3c09ba99288f"><td id="CC~w" class="">Perú</td><td id="uQ:Y" class="">5 horas</td><td id="H&gt;K^" class="">180 horas</td></tr></tbody></table><p id="3efbe733-2333-450f-bf43-518b36655e9d" class="">Para calcular la frontera de posibilidades de producción solo se tienen que tomar las horas de trabajo del país y dividirlas entre las horas que se necesitan para producir cada uno de los bienes.</p><div id="ccc5b98b-778f-4d2e-9d9e-8c1baf62a184" class="column-list"><div id="e5e5a0f5-4546-46c4-9286-6a269b791230" style="width:100%" class="column"><h3 id="4b3112b9-d784-4d30-9ff8-94cfc121557c" class="">México</h3><figure id="8d4ba864-a314-4b2a-b0dd-2220a9faf009" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>9</mn><mo separator="true">,</mo><mn>000</mn><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>3</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">9,000 / 3 = 3,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span></span></span></span></span></div></figure><figure id="41a9867d-d0a4-4e94-af2d-156ad2b5297f" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>9</mn><mo separator="true">,</mo><mn>000</mn><mi mathvariant="normal">/</mi><mn>150</mn><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">9,000 / 150 = 60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/150</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span></span></div></figure></div><div id="476184b0-c138-4334-a64e-b80f69d9cb1d" style="width:100%" class="column"><h3 id="50f2710d-1b57-4071-974c-f976b145e268" class="">Perú</h3><figure id="242d04a7-cf24-4e73-98e9-aaf67f55f72f" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>9</mn><mo separator="true">,</mo><mn>000</mn><mi mathvariant="normal">/</mi><mn>5</mn><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>800</mn></mrow><annotation encoding="application/x-tex">9,000 / 5 = 1,800</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">800</span></span></span></span></span></div></figure><figure id="fa77a67c-d7f3-4d4b-9a3b-a6fe47d51437" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>9</mn><mo separator="true">,</mo><mn>000</mn><mi mathvariant="normal">/</mi><mn>180</mn><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">9,000 / 180= 50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/180</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">50</span></span></span></span></span></div></figure></div></div><figure id="7425448d-fcd0-41ab-a007-931093c269fa" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled.png"><img style="width:624px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled.png"/></a></figure><h2 id="42854640-f0dc-4576-9b0b-afd78cf23544" class="">Costo de oportunidad</h2><p id="de3c893d-c2dc-491e-a0f7-efc23e4fb5f2" class="">Los ejercicios de costo de oportunidad se representan con una tabla con distintos valores, en los que básicamente tenemos que restarle el valor de abajo al valor de arriba en la tabla.</p><p id="040db7f0-8d86-46e8-8d2b-c571502f0045" class=""><strong>Ejemplo:</strong></p><table id="7615b4e8-6cf3-486d-91f0-892b31fb0259" class="simple-table"><tbody><tr id="72d83c60-03a5-4da5-a06a-950abcceddf9"><td id="{l^F" class="" style="width:61px">Punto</td><td id="IFPu" class="" style="width:107px">Monto de Maíz
-（eje Y）</td><td id="EX@x" class="" style="width:105px">Monto de Ropa
-（eje X）</td><td id="WJxQ" class="" style="width:153px">Costo de oportunidad por unidad de Ropa</td><td id="fEb&lt;" class="" style="width:150px">fórmula</td></tr><tr id="0bc0bad2-ccf6-4b78-b36a-515d0ad0d4e6"><td id="{l^F" class="" style="width:61px">A</td><td id="IFPu" class="" style="width:107px">10,000</td><td id="EX@x" class="" style="width:105px">0</td><td id="WJxQ" class="" style="width:153px"></td><td id="fEb&lt;" class="" style="width:150px"></td></tr><tr id="aa70c5d9-135e-4e61-8fec-b0c1ae94e606"><td id="{l^F" class="" style="width:61px">B</td><td id="IFPu" class="" style="width:107px"><mark class="highlight-red_background">9,300</mark></td><td id="EX@x" class="" style="width:105px"><mark class="highlight-teal_background">1,000</mark></td><td id="WJxQ" class="" style="width:153px">(desde opción A a B)
-0.70</td><td id="fEb&lt;" class="" style="width:150px">(10000-9300) ÷（1000-0）
-= 700 ÷ 1000＝0.700</td></tr><tr id="ddb1eb33-d004-461c-85bc-0c8fdf5c47d8"><td id="{l^F" class="" style="width:61px">C</td><td id="IFPu" class="" style="width:107px"><mark class="highlight-blue_background">7,850</mark></td><td id="EX@x" class="" style="width:105px"><mark class="highlight-yellow_background">2,520</mark></td><td id="WJxQ" class="" style="width:153px">(desde opción B a C)</td><td id="fEb&lt;" class="" style="width:150px">(<mark class="highlight-red_background">B eje Y</mark> – <mark class="highlight-blue_background">C eje Y</mark> ) ÷(<mark class="highlight-yellow_background">C eje X</mark> – <mark class="highlight-teal_background">B eje X</mark>)</td></tr><tr id="0b9de029-a3c9-4e26-8d55-f02d47d0609d"><td id="{l^F" class="" style="width:61px">D</td><td id="IFPu" class="" style="width:107px">6,280</td><td id="EX@x" class="" style="width:105px">3,680</td><td id="WJxQ" class="" style="width:153px">(desde opción C a D)</td><td id="fEb&lt;" class="" style="width:150px"></td></tr><tr id="893790c6-b250-43e3-938b-30ea13b94bb2"><td id="{l^F" class="" style="width:61px">E</td><td id="IFPu" class="" style="width:107px">4,390</td><td id="EX@x" class="" style="width:105px">4,590</td><td id="WJxQ" class="" style="width:153px">(desde opción D a E)</td><td id="fEb&lt;" class="" style="width:150px"></td></tr><tr id="2f35b42c-5fd5-4876-b060-26ab01ad7448"><td id="{l^F" class="" style="width:61px">F</td><td id="IFPu" class="" style="width:107px">3,120</td><td id="EX@x" class="" style="width:105px">5,070</td><td id="WJxQ" class="" style="width:153px">(desde opción E a F )</td><td id="fEb&lt;" class="" style="width:150px"></td></tr></tbody></table><p id="74658080-d37d-4574-9440-3c3af414254b" class="">Para llenar la fila “B”, tomamos el 10,000 de la parte superior y le restamos 9,300, hacemos lo opuesto con la columna del eje X, tomamos el número de la fila “B” y le restamos el número de arriba, en este caso 0, los resultados los dividimos.</p><p id="488c889a-1e24-4f54-b7c3-8bae30e19943" class="">Continuamos de la misma manera en las demás filas, tomando el de la parte superior restando el de la parte inferior, y después tomamos el de la fila que estamos llenando y le restamos el de arriba, y los dividimos. <strong>O dicho de otra forma, al número de la fila que estamos resolviendo, le quitamos el número menor más cercano de su columna.</strong></p><p id="6bc2bb11-c8f2-4137-9e9a-70685e399c78" class="">
-	<section id="seccion2">
-	</p><h1 id="3296dee1-855b-4a58-99ac-f995e40ee0dd" class=""><mark class="highlight-blue">Actividad 2</mark></h1><h2 id="487aaf95-6e7c-46f0-8774-38f6d2b76f47" class="">Elasticidad del precio de la demanda</h2><h3 id="328a8178-da21-43b8-9488-148480f7166f" class="">Método estándar</h3>
-	</section>
-	<p id="927f7864-43b3-4ee1-9490-9677a8ccd389" class="">Para calcular la elasticidad en el precio de la demanda existen 2 formulas, aquí se presenta la del método estándar:</p><figure id="ef6975f8-7f0a-4539-8a6a-8824c9c842ad" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image4.png"><img style="width:612px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image4.png"/></a></figure><p id="526d61b1-0e1f-4d8d-9a98-d13fc719f80a" class=""><strong>Ejemplo:</strong></p><p id="0fff1f75-5541-4ee6-85dd-adde6b7c70cb" class="">Un hotel cambió la tarifa de sus habitaciones de 1,200 pesos a 2,000 pesos por una noche.</p><p id="d775f6e6-31e1-4e62-b849-d8db9750a1b1" class="">Como resultado del aumento de la tarifa, sus clientes han disminuido de la siguiente manera:</p><p id="8e6796b5-dbe5-47f6-898f-92dcf9f8bb6a" class="">Antes de aumento de precio (punto inicial) : P = 1,200, Cd = 14,000</p><p id="ac97290e-78c7-4f85-9bd7-2b0482448d13" class="">Después del aumento del precio (punto final) : P = 2,000, Cd = 6,000</p><p id="ab9354ae-a1a9-4710-bf9a-7fa2844f1c33" class="">
-	</p><p id="db85a55f-1607-49c9-bfb9-10b906e6f9f6" class=""><strong>Cambio en Demanda:</strong></p><p id="b901e57d-a205-42be-9fde-c7e152b71292" class="">(punto final – punto inicio) / (punto inicio) = (6000 - 14000) / 14000 = 8000 / 14000 = 0.571 →0.57 (57 %)</p><p id="55fe17d2-0897-476a-8c94-07aac7cefb28" class="">
-</p><p id="e6d97c88-9671-474c-983c-a6bb7b8cda27" class=""><strong>Cambio en Precio:</strong></p><p id="5a3257fe-bd5d-47ce-949d-581b4267a910" class="">(punto final – punto inicio) / (punto inicio) = (2000 - 1200) / 1200 = 800 / 1200 = 0.666 →0.67 (67%)</p><p id="946094f6-bfcc-4620-b5db-73581b3a1593" class="">(Cambio porcentual en la Cd) / (Cambio porcentual en el P) = 57 % / 67 % = 0.850 → 0.85</p><p id="2d2ce59f-f562-4407-95a4-3f279af3972e" class="">
-</p><p id="df3e286b-361b-46e8-8464-3c130f4095e5" class=""><mark class="highlight-teal">// Se tiene que tomar en cuenta que el resultado no se muestra en forma de porcentaje.</mark></p><h3 id="417c5258-9eeb-4bb2-b5b3-2c5d2c9d127f" class="">Método punto medio</h3><p id="154d8170-27a0-42f4-8cca-fb6ea76ddb7d" class="">Fórmula para calcular la elasticidad de la demanda por el método del punto medio:</p><figure id="eaa16b91-710d-4fe1-beef-06618c610dea" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image5.png"><img style="width:615px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image5.png"/></a></figure><p id="400a543d-4d53-42e4-957f-ed913c474c47" class="">En general es bastante similar a la fórmula del método estándar, con la diferencia que se divide por el punto medio en vez de entre el valor de inicio.</p><p id="bc054805-6a3b-4420-9fce-7dc600879de4" class="">El punto medio se calcula sumando el valor final más el valor de inicio y dividiendo entre dos.</p><p id="817a7d53-1860-4a89-8bfc-df50fbb69e1e" class=""><strong>Ejemplo:</strong></p><p id="3b5b5ec7-6c77-4457-a5fd-27ff4a647703" class="">Cambio en Demanda:</p><p id="b349f0df-7317-45ee-9fb9-56f73252b780" class="">(punto final – punto inicio) / punto medio = (6000 - 14000) / ((6000 + 14000) / 2) = 8000 / 10000 = 0.800 → 0.80 (80 %)</p><p id="abf66ad1-2f0a-43c8-9101-ad52b1e4bb08" class="">Cambio en Precio:</p><p id="ac9d58cf-ac74-4efc-9c68-909f3cc9bcba" class="">(punto final – punto inicio) / punto medio = (2000 - 1200) / ((2000+1200) / 2) = 800 / 1600 = 0.500 → 0.50 (50 %)</p><p id="3c33d67d-52dd-4e1b-8b05-4f2953059cc7" class="">Elasticidad de precio de la demanda:</p><p id="73859f32-ef08-4015-8a6f-d2d8488fdbf7" class="">(Cambio porcentual en la Cd) / (Cambio porcentual en el P) = 80 % / 50 %= 1.600 → <mark class="highlight-red">1.60</mark></p><p id="2f4f6277-6d59-49dc-a1e0-738a336aacb1" class="">
-
-<section id="seccion3">
-</p><h1 id="1f14cff8-6e98-4d38-ad08-bfc7f36b9f5c" class=""><mark class="highlight-blue">Actividad 5</mark></h1><h2 id="fe6ed055-6be8-47ab-977b-2b17eb73706c" class="">Impuesto</h2><p id="d9740739-089a-4e88-a257-a4b3d7e1020f" class="">En estos ejercicios se calcula como afectaría la aplicación de un impuesto a un bien dentro de una economía.</p>
-</section>
-
-<p id="bef049aa-46fc-41a1-95a2-cc1c1e107ea1" class="">Los valores para los que se estima el cambio son los siguientes:</p><ul id="0129adc3-2058-4fad-b201-a0644cd24c1d" class="bulleted-list"><li style="list-style-type:disc">“Nueva cantidad de demanda (Nd)”</li></ul><ul id="30f76af8-24cd-4191-b956-01bc55366c57" class="bulleted-list"><li style="list-style-type:disc">“Nuevo precio para Consumidor (Pc)”</li></ul><ul id="915872ad-0128-42af-9a88-878c2b7e3569" class="bulleted-list"><li style="list-style-type:disc">“Nuevo precio para Vendedor (Pv)”</li></ul><ul id="bc0cbef0-dd46-49a5-9133-f7295c224199" class="bulleted-list"><li style="list-style-type:disc">“Incidencia de impuestos para Consumidor (Ic)”</li></ul><ul id="a7301458-bb9c-4e7c-94ac-8ddceedd6b27" class="bulleted-list"><li style="list-style-type:disc">“Incidencia de impuestos para Vendedor (Iv)”</li></ul><p id="c7eaed5a-d6c1-407d-93da-9dd5c793cba2" class="">Es necesaria una gráfica para poder hacer las estimaciones.</p><figure id="d9f50f49-ba10-4e17-8efa-bbdfa052a0a3" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image6.png"><img style="width:363px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image6.png"/></a></figure><p id="5e56300f-ebb1-46a1-9c47-b13f33816547" class=""><strong>Ejemplo:</strong></p><p id="cab87535-bea1-4413-add2-b1be1434234f" class="">Si el gobierno aplica impuestos de $ 100 a cada boleto de avión ¿Cuáles serían los valores para: Nd, Pc, Pv, Ic, Iv?</p><ol type="1" id="40fc248d-db60-489c-a0ad-14faa6db07ce" class="numbered-list" start="1"><li>Primero se tiene que buscar un punto con un ancho de 100, que representará al impuesto.</li></ol><ol type="1" id="d10d3a24-a088-403f-a7b9-13e77ed28ba2" class="numbered-list" start="2"><li>Si se encuentre un punto su ancho es 100, se debe determinar la nueva demanda y el nuevo precio para el comprador y el vendedor.</li></ol><ol type="1" id="f311c2f4-1089-4b6d-bf0d-9ea928840099" class="numbered-list" start="3"><li>Con nuevo precio para el consumidor y el vendedor, se va a determinar la incidencia de impuestos para el consumidor y el vendedor.</li></ol><figure id="1c73a91c-c1b7-4745-be13-b11ae250bfee" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image7.png"><img style="width:348px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image7.png"/></a></figure><p id="5d3a5dea-80ee-439d-9221-3d749f6abff0" class=""><strong>Respuestas:</strong></p><ul id="1d27d0d6-ce6a-4096-bb0c-7043f7536834" class="bulleted-list"><li style="list-style-type:disc">“Nueva cantidad de demanda (Nd)”→ 75</li></ul><ul id="9d34bc93-8254-4f54-8b28-274315b29650" class="bulleted-list"><li style="list-style-type:disc">“Nuevo precio para Consumidor (Pc)”→ 250</li></ul><ul id="19b2ed6e-40d6-4672-aa7b-a07258870fc9" class="bulleted-list"><li style="list-style-type:disc">“Nuevo precio para Vendedor (Pv)”→ 150</li></ul><ul id="e48ad1a0-cbe4-4fcf-803c-34f51198c34f" class="bulleted-list"><li style="list-style-type:disc">“Incidencia de impuestos para Consumidor (Ic)”→ 50 (250-200=50)</li></ul><ul id="a57e30e4-677a-4c83-9022-8b3c621b384f" class="bulleted-list"><li style="list-style-type:disc">“Incidencia de impuestos para Vendedor (Iv)” → 50 (200-150=50)</li></ul><p id="47c4784b-9a11-47cd-a895-cc416154538f" class="">En el caso de la incidencia de impuesto para consumidor e incidencia de impuesto para vendedor, su suma tiene que dar el impuesto que se aplicó (en este caso 50 + 50 = 100).</p><p id="03ff9a47-b7bb-4151-afc9-22a59332dacc" class=""><mark class="highlight-teal">//Los resultados para estos ejercicios no necesitan cálculos complejos, es solo observar la gráfica de forma que se puedan encontrar los nuevos valores.</mark></p><h2 id="aac60e34-ca27-41fd-b764-630d1ad4f68d" class="">Excedente del consumidor</h2><p id="cd6877f3-853d-4aba-a883-e2d90ace3a23" class="">Para resolver los ejercicios de este tema se necesita una gráfica en la que se muestre una curva de demanda (Línea que vaya hacia abajo). Hay varios valores que se tienen que se pueden preguntar en estos ejercicios, estos valores son: Disposición para pagar (DPP), Excedente del consumidor (EC), Excedente del consumidor adicional y Excedente del consumidor para nuevos consumidores.</p><figure id="e7dff8ed-28e9-4d82-ad9b-1585f30a51e1" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image8.png"><img style="width:456px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image8.png"/></a></figure><p id="11a9d619-d3ec-47a5-85da-e81afe37b600" class="">Ejemplo:</p><p id="177e2ef8-a66c-44cf-b6f1-8366d2c387d1" class="">Para esta gráfica se tiene que calcular el DPP y el EC.</p><p id="964eb7f4-4299-4a8f-b148-7d529eeaef90" class="">Tenemos que si el valor de la demanda es 15, la disposición para pagar de los consumidores es de 30.</p><p id="8a639970-4371-42d9-b7f9-9b19a1f1ae49" class="">Para el EC, se tiene que calcular el área del triangulo azul, en este caso sería (15 * 30) / 2 = 225</p><figure id="48f1300e-c271-4f11-8a4a-44d1655d0950" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image9.png"><img style="width:445px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image9.png"/></a></figure><p id="60561704-9d24-459f-b529-688362d1593a" class="">En caso de que haya una variación en el precio se pueden calcular nuevas áreas, en el siguiente ejemplo se puede ver una caída de precio de $40 a $30, ahora sí se puede calcular el excedente del consumidor adicional y el excedente del consumidor para nuevos consumidores:</p><p id="4b93edfe-390f-4b5b-beab-851a2b8a2c7b" class="">Cálculo de cada área:</p><p id="4d5822dd-897c-408d-8814-4606f41472df" class=""><mark class="highlight-pink">Área ①</mark>:EC original→(60-40)×(10-0)÷2 = 100</p><p id="2bcc0167-db5b-4dbd-8ab3-7debfff49825" class=""><mark class="highlight-teal">Área ②:</mark> “Excedente del consumidor adicional” para los consumidores iniciales</p><p id="eb85d393-866e-48b5-95eb-45dc4a516e30" class="">→(40-30)×(10-0) = 100</p><p id="afc77845-3006-4858-bf27-7a56557a4cf7" class=""><mark class="highlight-blue">Área ③:</mark> “Excedente del consumidor para los nuevos consumidores”</p><p id="da746976-0644-40dc-b254-392c2bf8ea59" class="">→(40-30)×(15-10)÷2 = 25</p><p id="e0724547-b842-46e0-9108-67832243e0a1" class="">
-
-	<section id="seccion4">
-</p><h1 id="f5df5073-66e1-4e1f-8bee-727faecf0e25" class=""><mark class="highlight-blue">Actividad 7</mark></h1><h2 id="50f1159b-314e-4419-803e-6e139cbec673" class="">Los costos de los impuestos</h2><p id="8c090ae6-3c8e-4333-8ba9-02decb9542c6" class=""><mark class="highlight-teal">//Este tema en específico tiene bastante relación con los temas de la terea 5 llamados “Impuesto” y “Excedentes del consumidor” una disculpa si se vuelven a explicar conceptos que ya se habían explicado.</mark></p>
-</section>
-<p id="17358984-a5d0-4851-a7f9-4eb2c953b336" class="">Para resolver estos ejercicios se retoman algunos conceptos del tema de Excedentes del consumidor, como por ejemplo Excedente del consumidor (EC) y se le agregan los conceptos de Excedente del productor (EP), Excedente total (ET) que es la suma del EC+EP, Ingreso fiscal (IF) que se define como: (Tasa de impuesto) × (monto de cantidad), y por último la Pérdida de Peso Muerto (PPM) : El monto reducido de Excedente total (ET) por culpa de los impuestos.</p><p id="3b242c93-a554-4eec-90f0-c9e3abba0817" class=""><mark class="highlight-teal">//No confundir PPM(Pérdida de peso muerto) con DPP(Disposición para pagar)</mark></p><p id="07b9aa3c-2663-4549-ac06-6a59b94b51d3" class="">Para resolver todos estos ejercicios es necesaria una gráfica como esta:</p><figure id="f0a05014-733b-40f5-bec0-6657059d49f0" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image10.png"><img style="width:486px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image10.png"/></a></figure><p id="fff8783d-45ac-411e-98d8-14317fba5c65" class="">En este caso podemos calcular solo el Excedente del productor, el excedentedel consumidor y el excedente total, pues todos los demás valores se calculan solo en el caso de que hayan impuestos sobre el valor del bien.</p><p id="9699e322-7d04-4b0a-b562-bbe8e0b2c212" class=""><strong>EC = A + B + C</strong></p><p id="f92d3b94-c3c3-4fef-bf28-387522d9e926" class=""><strong>EP = D + E + F</strong></p><p id="6ffba662-24ed-4eca-97be-6ba8ca9292e4" class=""><strong>Ingresos del impuesto = 0</strong></p><p id="7be6c1ba-8860-4d0f-a48a-0ab8f3e30f32" class=""><strong>Excedente total= EC + EP</strong></p><figure id="50120dd2-ffc2-43af-8495-54f87c49e4a7" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image11.png"><img style="width:473px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image11.png"/></a></figure><p id="5c03c6da-9589-4d1d-b8ac-1881faa090b9" class="">Ahora sí se pueden calcular los valores faltantes, como Ingreso fiscal y perdida del peso muerto.</p><p id="1e4265a3-03c5-41a2-87d7-bfd6d745df5b" class=""><strong>EC = A</strong></p><p id="e66eac55-1c1f-4466-86d7-36d3822f36d9" class=""><strong>EP = F</strong></p><p id="669257ef-3542-4443-b5a8-30a73bac56c3" class=""><strong>Ingresos Fiscal = B + D</strong></p><p id="6afe8047-af2e-43c0-96e6-b13736f24d57" class=""><strong>Excedente total = A + B+ D + F</strong></p><p id="2c82731e-42ef-4c6c-97c2-96dd6fafcbbf" class=""><strong>PPM = El impuesto reduce el excedente total por C + E → PPM</strong></p><p id="c7ec66e0-fd3f-47cf-9588-9bc8bbb50a7e" class="">Ahora veremos un par de ejemplos sobre este tema para poder comprender mejor como se calculan y como se resuleven.</p><figure id="1f69e1ec-1f21-4e24-92ea-f91c009fe1a8" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image12.png"><img style="width:577px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image12.png"/></a></figure><p id="86b258c9-daa4-49ba-b3ff-9ede8cd7ae19" class=""><strong>Ejemplo sin impuestos:</strong></p><p id="0c2d8bd2-fd15-4cdf-8312-542803e25fc4" class="">EC</p><p id="1c29ed3c-1e01-414c-bb0d-f53c08f1260d" class="">= 1⁄2 x $200 x 100 = $10,000</p><p id="e567c69b-b703-447d-8f8f-b8dd2170fec6" class="">EP</p><p id="86fb4799-e4fc-46c2-a608-260ff0b77e75" class="">= 1⁄2 x $200 x 100 = $10,000</p><p id="b85ffd1b-902e-411d-941c-ac7cc28093a4" class=""><strong>Excedente total</strong></p><p id="9c461be1-43a8-42b3-8da9-7aed608b101c" class="">= $10,000 + $10,000 = <strong>$20,000</strong></p><figure id="8f754172-09bb-4d12-a5ce-96c9da841c62" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image13.png"><img style="width:662px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image13.png"/></a></figure><p id="88f4de8e-edb1-447d-88ff-7cfcb8938772" class=""><strong>Ejemplo con impuestos:</strong></p><p id="5ded09ca-fe6a-4ba0-a2d3-a5d79f889f69" class="">Ahora es posible calcular el Ingreso Fiscal, el nuevo excedente total y la Perdida de peso muerto.</p><p id="060280aa-a1e0-4e23-aac8-5408f493909b" class="">EC= 1⁄2 x $150 x 75 = $5,625</p><p id="b329e9f1-9e29-401b-a5b2-6eb962709968" class="">EP = 1⁄2 x $150 x 75= $5,625</p><p id="3b1ad2d1-9b04-4237-91ed-98669ffec49f" class="">IF= $100 x 75 = $7,500</p><p id="2142bdd2-a55b-4ee6-83ae-0a99edd1e6f0" class=""><strong>ET</strong>= EC + EP + IF = 5,625 + 5,625 + 7,500 = 18,750</p><p id="e1e1bf95-2dc4-4478-be46-23bd3d75bbb4" class="">PPM = 25 x 50 = $1,250</p><h2 id="75d5633d-9253-4087-bdde-fb20c75652b2" class="">Comercio Internacional</h2><figure id="0c50923d-a5a6-4b6e-9394-ceb13034f9ca" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image14.png"><img style="width:589px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image14.png"/></a></figure><p id="3b81b688-90b8-44a8-8376-c241c7b22019" class="">Para calcular cual es el impacto en el comercio de los aranceles se necesita una gráfica como la siguiente:</p><p id="f94ff8dd-08aa-44d6-8ca4-eb3a8ed713ea" class=""><strong>Pm</strong> (Precio mundial) = $20</p><p id="48508ab6-dda0-47da-8971-8da17f82244f" class="">Libre comercio:</p><p id="8730d955-bb48-4ddd-8293-0fe2c6baf918" class="">Demanda de comprador: 80</p><p id="f7cc6cfb-663b-45cd-998e-5d33b72673dd" class="">Oferta de vendedor: 25</p><p id="174591ff-5492-4f70-9e62-f9e2adeb76b1" class="">Importaciones = 55</p><p id="81ac505c-560c-47e1-b256-8c14c5c4523c" class=""><strong>T</strong> (impuesto)= $10/camisa</p><p id="2472736e-5884-464a-ae47-be56db15fa6a" class="">El precio sube a $ 30:</p><p id="5a4ac116-c85c-472a-9d6a-62b151b91b20" class="">Demanda de los compradores:70</p><p id="6ee25129-562f-4658-ae5e-c0b170e3695d" class="">Los vendedores suministran: 40</p><p id="37ba4821-952c-4ee7-a629-564e4e6d855a" class="">Importaciones = 30</p><p id="c57d9513-030c-4de3-96c3-2c090e9c4dc7" class="">En estos ejercicios es necesario calcular los mismos valores que en el tema anterior</p><p id="10b6d9cc-1157-4668-ab17-c15a16d5caf0" class="">//Se necesita definir qué área es “EC”, “EP”, “IF”, “ET” y “PPM”.</p><p id="343cfe70-8975-46b0-87fe-52faa2c5d791" class=""><strong>Ejemplo:</strong></p><figure id="dd9c8d52-8ba7-42b1-b07d-6a34a22d3cf2" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image15.png"><img style="width:583px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/image15.png"/></a></figure><p id="69f018a8-3d40-489f-a6df-2bcf572ba8ff" class="">Libre comercio (sin arancel: precio = $20)</p><p id="145e9176-8fcb-4669-9a66-1d3425761280" class="">EC = A + B + C+ D + E + F</p><p id="1a6b9e85-125d-4579-86c4-4d487dfc0cde" class="">EP = G</p><p id="e3495ed1-68e6-4d3a-b7a3-cb6d155436b2" class="">Excedente total =A + B + C + D + E + F + G</p><p id="0f666f8a-6734-40f4-aa6b-f55948e3c5fd" class="">Con arancel (precio = $30)</p><p id="08ec7395-b816-4d32-b366-a8a68114e881" class="">EC = A + B</p><p id="1dc7231d-b0ca-46c2-a503-f3a5e642ad3f" class="">EP = C + G</p><p id="247f8616-a13a-43d5-83f8-f6b1bbef59a6" class="">Ingresos fiscales= E</p><p id="dd118128-3404-484c-84fe-08ced726f682" class="">Excedente total =A + B + C + E + G</p><p id="eae4007d-1990-458b-893e-5701f340259e" class="">PPM = D + F</p><p id="735842fb-63bb-4001-b1a1-206d20959040" class="">//D = Pérdida de peso por la sobreproducción de camisetas</p><p id="34578535-cfb8-4817-8495-40c70d26e028" class="">F = Pérdida de peso por debajo del consumo de camisetas</p><p id="b569f0f9-0a80-49fd-b939-35fd5cfd52fb" class="">
-
-	<section id="seccion5">
-</p><h1 id="9bd6f3a8-a381-45b6-98c7-bd80dd25ac71" class=""><mark class="highlight-blue">Actividad 8</mark></h1><h2 id="d78801df-1759-4fce-a90b-ffa1616619eb" class="">Impuestos y Matrimonio</h2>
-</section>
-<p id="1133774c-b29f-451c-a612-c3481fdd6992" class="">En este tipos de ejercicios son bastante fáciles, solo es necesario calcular la cantidad de impuestos que van a pagar las personas según las indicaciones que vienen en el problema, pongamos un ejemplo:</p><blockquote id="33066983-b019-4c45-b11f-308f9b2bc576" class="block-color-gray_background">La tasa de impuesto sobre la renta es del 16%. Los primeros $ 20,000 de ingresos se excluyen de impuestos. La ley fiscal trata a una pareja casada como un solo contribuyente.
-Daniel y Claudia ganan $ 60,000 cada uno.
-<mark class="highlight-default">①</mark><mark class="highlight-pink"> </mark>Si Daniel y Claudia viven juntos solteros, ¿Cuál es su factura de impuestos combinada?</blockquote><p id="f2140d65-df37-4021-92b5-d5153691d444" class="">Tenemos que el impuesto sobre ganancia (Sobre la renta), es del 16%, Daniel Y Claudia, <strong>cada uno</strong> ganan $60,000,  por lo que tendríamos:</p><figure id="9765da11-6b1b-4c7e-87d7-b72e83c32470" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>60000</mn><mo>−</mo><mn>20000</mn><mo stretchy="false">)</mo><mo>×</mo><mn>0.16</mn><mo>=</mo><mn>40000</mn><mo>×</mo><mn>0.16</mn><mo>=</mo><mn>6400</mn></mrow><annotation encoding="application/x-tex">(60000-20000)×0.16=40000×0.16=6400</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">60000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">20000</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">40000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6400</span></span></span></span></span></div></figure><p id="4bf6f2df-c3f9-4320-ad14-b9013cd52f00" class="">Pero recordemos que esa es la tasa que pagaría cada uno, por lo que la tenemos que multiplicar por 2:</p><figure id="a82b2117-e4c9-4a11-a160-4d998bf2a4ec" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>640</mn><mo>×</mo><mn>2</mn><mo>=</mo><mn>12800</mn></mrow><annotation encoding="application/x-tex">640×2=12800</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">640</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12800</span></span></span></span></span></div></figure><p id="ceb7eca8-323d-4080-8bab-8bc4e0beaf76" class="">Pero también se puede preguntar en caso de que estén casados, por lo que sus impuestos serían combinados:</p><figure id="73c86f7b-a99e-47e2-9c58-afbd2a581f42" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>60000</mn><mo>+</mo><mn>60000</mn><mo>−</mo><mn>20000</mn><mo stretchy="false">)</mo><mo>×</mo><mn>0.16</mn><mo>=</mo><mn>100000</mn><mo>×</mo><mn>0.16</mn><mo>=</mo><mn>16000</mn></mrow><annotation encoding="application/x-tex">(60000+60000-20000)×0.16=100000×0.16=16000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">60000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">60000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">20000</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">100000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16000</span></span></span></span></span></div></figure><p id="0f590bf6-83d1-40b6-a934-97dec1c18f8b" class=""><mark class="highlight-teal">//En general estos ejercicios son bastante sencillos, solo es necesario leer con la máxima atención para no perder ningún detalle y se pueda resolver correctamente.</mark></p><h2 id="cb2d6849-9d5c-4898-a678-edde0fab941b" class="">Costos de producción</h2><p id="aeeb2999-eb5c-4af8-ba89-3495ee0280ec" class="">Esta parte de la actividad es la más complicada, pero solo necesitamos saber de donde es que viene cada número.</p><p id="72cd1d58-5f66-4f38-81a6-2e5fafb64471" class="">El problema se presenta como una tabla con algunos espacios en blanco para rellenar, la tabla luce algo así:</p><figure id="d2ef73a2-808e-4660-8411-38d75ef7769d" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%201.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%201.png"/></a></figure><p id="27cd8c74-1774-4e4f-9a60-f2438a715752" class="">Vamos por columnas para no revolvernos, la primera es cantidad de producto y segunda es la de <strong>Costo Variable (CV)</strong>, esta va aumentando de forma constante, pero lo hace siguiendo un patrón, en este caso primero está en 0 y después pasa a 20, después de sumar esos 20 suma otros 30, llegando a 50, después suma otros 40, llegando a 90, después suma 50, llegando a 140, después suma 60, llegando a 200, y por último sumamos 70, llegando a 270.</p><figure id="8a4cddfa-cb84-4f6b-80c4-232911a586bb" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%202.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%202.png"/></a></figure><p id="a1f29b44-bcd8-4656-b197-7c38942f7a0d" class="">Quedaría algo así, es muy importante que aprendamos a encontrar algunos patrones, después sigue la parte de <strong>Costo Total (CT), </strong>Esta se realiza sumando el CV de la fila más el <mark class="highlight-blue">Costo Fijo</mark>, este Costo fijo es básicamente el Costo total cuando CV = 0, en Este caso es 90, entonces tenemos 20 +90 =110, 50 + 90 = 140, y así sucesivamente. nos quedaría algo así: </p><figure id="078da16f-307a-430d-90bc-54f97a528655" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%203.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%203.png"/></a></figure><p id="af92611f-7139-464f-8a24-eca35b1e5d49" class="">Bueno ahora vamos con nuestra cuarta columna, <strong>Costo Fijo Promedio (CFP)</strong> en esta volveremos a utilizar el costo Fijo, por eso es tan importante identificarlo, tomamos nuestro Costo Fijo y lo dividimos ente el número de producto (Primera columna que va de una en una), quedaría 90 ÷ 1= 90, 90 ÷ 2 = 45, 90 ÷ 3 =30 y así sucesivamente, quedaría tal que así:</p><figure id="aa42cb94-4be2-421a-9469-10c4847c720b" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%204.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%204.png"/></a></figure><p id="8d2d2f5a-8524-4f20-971c-363414bf1115" class="">Ahora toca la columna de <strong>CVP (Costo variable promedio)</strong>, esta se resuelve dividiendo el Costo Variable entre el número de productos, se vería algo así:</p><figure id="343d05bc-d5a5-4900-963e-c965f38fef80" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%205.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%205.png"/></a></figure><p id="64a1d8d8-df1b-43f6-9ce9-f795b9baa202" class="">Ahora la con la columna de <strong>Costo Total Promedio (CTP)</strong>, ahora dividiremos el Costo Total en este caso 90 entre el números de productos la columna C, quedaría algo como 110÷1 = 110, después 140 ÷ 2 = 70, 180 ÷ 3 =60, y continuamos hasta abajo, este sería el resultado:</p><figure id="4347145c-33d1-41c8-8382-5c593d8adc0f" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%206.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%206.png"/></a></figure><p id="1c73b4c1-738f-4ffa-964d-57705cc93664" class="">El <strong>Costo Marginal o CM, </strong>se calcula restando el valor anterior de Costo Total al valor actual de Costo Total, por ejemplo en la primer casilla seria: 110 - 90 = 20, en la siguiente sería 140 - 110 = 30, en la siguiente es 180 - 140 = 40, y así sucesivamente, al finalizar la tabla debería quedar algo así:</p><figure id="24a9498a-8f73-4922-ac27-36f0536e5fea" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%207.png"><img style="width:432px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%207.png"/></a></figure>
-
-<section id="seccion6">
-	<h1 id="c723d951-654c-4a7a-a9bc-7fce794e4fcc" class=""><mark class="highlight-blue">Actividad 9</mark></h1><p id="02507779-a209-44fe-be4c-4547e595a9f0" class="">Para esta última actividad es muy importante saber calcular áreas de forma eficiente, sobre todo rectangulares, recordemos que es base por altura.</p>
-</section>
-	<h2 id="7b112724-d3f7-4c3a-b9ef-a6c0a93d39f4" class="">Beneficio total y pérdida total de la empresa</h2><p id="49e19f1e-0f6a-4932-8c05-2cb039897254" class="">En estos ejercicios se presentan curvas con muchas letras que en mi opinión solo confunden más. Por eso lo intentaré explicar todo usando imágenes, el primer ejemplo es el siguiente:</p><blockquote id="932d61f0-f178-4752-ba50-0f1c817c9e61" class="">Calcule el beneficio total de la empresa de la siguiente gráfica:<figure id="47971457-5ecd-4e25-806b-42a97586b22a" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%208.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%208.png"/></a></figure></blockquote><p id="d955b246-ba57-483a-a02d-bde0d4d0c0b1" class="">Okay, tenemos que tener en cuenta que ahora mismo solo nos importan las curvas de Ingreso Marginal (IMg), Costo Marginal (CM) y Costo Total Promedio (CTP), buscamos el punto donde se tocan la curva de CM y IMg, en este caso 50. Ahora buscamos el punto en el que CTP se alinea con el 50 de abajo, en este caso 10. Nos deberia quedar una gráfica algo así:</p><figure id="88ec72ef-915b-4fc3-95b8-8b37953b0ae9" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%209.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%209.png"/></a></figure><p id="6375f3c4-4daa-432f-a1c4-97f82f8ca29c" class="">Calculamos el área de ese rectángulo:</p><figure id="c032e166-a3ca-42ec-ab48-b93d20e76ef8" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>14</mn><mo>−</mo><mn>10</mn><mo stretchy="false">)</mo><mo>×</mo><mn>50</mn><mo>=</mo><mn>4</mn><mo>×</mo><mn>50</mn><mo>=</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">(14-10)×50=4×50=200</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">14</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">50</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">50</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">200</span></span></span></span></span></div></figure><hr id="92eb3de2-34df-4c4b-b947-65ebf2e0ac53"/><p id="0b264c4d-81c2-4607-87ae-4d6369fc76bd" class="">
-</p><p id="a83d70b1-bef4-4836-a984-bf83d1ee93bb" class="">Para calcular la perdida de la empresa tenemos que hacer lo mismo, pero en este caso la gráfica tendrá el IMg por debajo del CTP, sería una gráfica como la siguiente:</p><figure id="5affb006-b73a-4bd7-b2a6-228437593c0e" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2010.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2010.png"/></a></figure><p id="42b2d111-1572-4ce9-87af-98b13d4d9420" class="">Buscamos otra vez el punto donde el CM toca la curva de IMg, este punto según la gráfica es 30. Ahora buscaremos un punto de la CTP que se alinee con el 30, en este caso 12, y con estos datos calculamos el área de la perdida, que debería ser la misma de la siguiente imagen:</p><figure id="4f1994cd-a7e8-4af0-8b73-52753cdf776e" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2011.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2011.png"/></a></figure><figure id="96a28379-5477-43db-b461-fa224a07ac6c" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>12</mn><mo>−</mo><mn>5</mn><mo stretchy="false">)</mo><mo>×</mo><mn>30</mn><mo>=</mo><mn>7</mn><mo>×</mo><mn>30</mn><mo>=</mo><mn>210</mn></mrow><annotation encoding="application/x-tex">(12-5)×30=7×30=210</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">210</span></span></span></span></span></div></figure><h2 id="4f309b4c-1fb5-4a9b-b369-512ae9379864" class="">Beneficio y pérdida de monopolio</h2><p id="4eb0c158-e555-4df8-90ac-b0a921777cdf" class="">Bueno, este último tema es continuar sacando áreas de distintas gráficas, para este caso vamos a necesitar las curvas de: Ingreso Marginal (IMg), Costo Marginal (CM), Costo total Promedio (CTP) y Curva de Demanda (D), Esto se complica bastante por la cantidad de líneas que hay en una sola gráfica, por eso preferí estructurarlo en pasos, si se siguen no hay pierde, este será nuestro ejemplo:</p><figure id="115cf928-fd74-4426-bec3-ca21b5fe8fce" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2012.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2012.png"/></a></figure><h3 id="055c3133-5316-4ab8-b326-ee85f8d9f76a" class=""><strong>1. Encontrar el Punto de Intersección entre la Curva de Ingresos Marginales (IMg) y la Curva de Costos Marginales (CM):</strong></h3><ul id="bb78a036-2bb5-4b18-be52-055a006c5060" class="bulleted-list"><li style="list-style-type:disc"><strong>Objetivo:</strong> Determinar el &quot;monto de demanda&quot;.</li></ul><ul id="c81ec32c-7de9-4771-a16e-d2f801600dfb" class="bulleted-list"><li style="list-style-type:disc"><strong>Procedimiento:</strong> Buscar el punto donde la curva de ingresos marginales (IMg) y la curva de costos marginales (CM) se cruzan. El punto en este ejemplo sería el siguiente:</li></ul><figure id="691ed187-d467-4ee4-b2ca-a3236f96ad56" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2013.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2013.png"/></a></figure><h3 id="53104b68-cfd2-47e4-ac55-4d36b697fa09" class=""><strong>2. Encontrar el Punto de Intersección entre la Curva de Costos Totales (CTP) y el &quot;Monto de Demanda&quot; Obtenido en el Primer Proceso:</strong></h3><ul id="30d6a08d-6fca-44d4-9ad5-ff4093955d0c" class="bulleted-list"><li style="list-style-type:disc"><strong>Objetivo:</strong> Determinar el &quot;nivel de costo&quot;.</li></ul><ul id="1c09060c-e764-4450-9b19-9f9a515cbbf4" class="bulleted-list"><li style="list-style-type:disc"><strong>Procedimiento:</strong> Buscar el punto donde la curva de costos totales (CTP) se alinea con el &quot;monto de demanda&quot;, en este caso era donde la curva pasa por 35.</li></ul><figure id="78d4891a-5e6a-4f86-ad63-3b88046315b5" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2014.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2014.png"/></a></figure><h3 id="790cf766-9e6b-4687-98c3-caa53df41bab" class=""><strong>3. Encontrar el Punto de Intersección entre la Curva de Demanda (D) y el &quot;Monto de Demanda&quot; Obtenido en el Primer Paso:</strong></h3><ul id="59aacf8b-c51e-4fc1-84bd-6ce7ba7c31c7" class="bulleted-list"><li style="list-style-type:disc"><strong>Objetivo:</strong> Determinar el &quot;nivel de precio&quot;.</li></ul><ul id="49def27a-f521-4058-93b5-76e7f5f32648" class="bulleted-list"><li style="list-style-type:disc"><strong>Procedimiento:</strong> Buscar el punto donde la curva de demanda (D) se cruza con el &quot;monto de demanda&quot;, que era en 35.</li></ul><figure id="96a787dd-ebb4-40a3-9137-a3faf0c8f119" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2015.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2015.png"/></a></figure><h3 id="71ca5730-1c7b-4508-b1e3-3bff1a199dfc" class=""><strong>4. Utilizar los Tres Números que obtuvimos hace un momento para Calcular Beneficio o Pérdida:</strong></h3><ul id="33041939-a1f3-4dc9-9dd6-5697041606e0" class="bulleted-list"><li style="list-style-type:disc"><strong>Objetivo:</strong> Calcular el beneficio o pérdida.</li></ul><ul id="08617810-9ea3-4098-8f4b-ff0b5d6a6f54" class="bulleted-list"><li style="list-style-type:disc"><strong>Procedimiento:</strong> Con los valores obtenidos en los pasos anteriores, puedes calcular el beneficio o pérdida. La fórmula general es: Beneficio o perdida = (Precio - Costo) * Cantidad Demanda, nos debería quedar una área similar a la siguiente:</li></ul><figure id="ce638ef6-04b7-4c7e-8e9c-79122158f775" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2016.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2016.png"/></a></figure><figure id="40a6a36b-e8d8-41ed-9558-98c71cfbc17d" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>30</mn><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo><mo>×</mo><mn>35</mn><mo>=</mo><mn>10</mn><mo>×</mo><mn>35</mn><mo>=</mo><mn>350</mn></mrow><annotation encoding="application/x-tex">(30 -20) × 35 = 10 × 35=350</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">30</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">20</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">35</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">35</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">350</span></span></span></span></span></div></figure><h2 id="104c5d82-d068-4c8d-8abf-a8418ef5eea0" class="">Calcular pérdida de peso muerto (PPM)</h2><p id="b07c269e-ba6c-41ad-ac9e-0f4d9de7ac29" class="">Este procedimiento es bastante ambiguo, por eso se tiene que hacer con bastante cuidado, para empezar vamos a partir de los puntos en donde se tocan las curvas de CM y D, en este caso es (45, $25), y también el el punto en el que se tocan CM y IMg, que es (35, $15), a estos son los números identificados:</p><figure id="2dc2ecc8-80b4-4088-85de-9fcba6e84d49" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2017.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2017.png"/></a></figure><p id="c8ebf239-8865-477f-b7c6-a56161fc335c" class="">Tomamos los números que identificamos hace un momento, que son prácticamente los que vimos hace rato y los operamos de la siguiente manera: Tomamos el 30 y le restamos  15. Ahora tomamos el 45, que es donde se toca la Demanda y el CM, y le restamos 35, que es donde esta alineado el cruce del CM y IMg, y los restamos, estos dos resultados de las restas los vamos a multiplicar entre ellos y después los vamos a dividir entre dos, quedaría tal que asÍ:</p><figure id="600ffe88-a3b1-4e92-a06f-eb9b12a36c5b" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>30</mn><mo>−</mo><mn>15</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mn>45</mn><mo>−</mo><mn>35</mn><mo stretchy="false">)</mo><mo>÷</mo><mn>2</mn><mo>=</mo><mn>15</mn><mo>×</mo><mn>10</mn><mo>÷</mo><mn>2</mn><mo>=</mo><mn>75</mn></mrow><annotation encoding="application/x-tex">(30-15)×(45-35)÷2=15×10÷2=75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">30</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">15</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">45</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">35</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">75</span></span></span></span></span></div></figure><p id="16a06c16-f84a-4994-96c6-f84c8ffeaf3a" class="">El área calculada sería la que se ve en la siguiente Imagen:</p><figure id="ef9c7d7e-49e1-4f80-a7e2-aebc72a3766e" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2018.png"><img style="width:336px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2018.png"/></a></figure><hr id="27dbdb77-47ea-40c6-8e7a-2b706d6bca36"/><p id="610eeec2-3e74-487f-abf0-a1cc231c81a0" class="">Para calcular la perdida es más de lo mismo, solo que la curva de CTP estará por encima del la curva de demanda y IMg.</p><p id="89ebdd4b-5575-476d-af3b-b8b584a420ea" class="">Buscamos el punto donde el Costo Marginal toca la curva de IMg, en este caso es 30,</p><p id="9cdcc726-f912-4bfb-acc0-ecaa1bb1d3f3" class="">Después buscamos el punto donde ese 30 se alinea con la curva de Demanda y la curva de CTP, en este caso se alinean en $15 para la demanda y $25 para el Costo Total Promedio, Nuestra área quedaría algo asÍ:</p><figure id="603094b5-db32-4dad-a28f-449393d6b383" class="image"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2019.png"><img style="width:288px" src="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Untitled%2019.png"/></a></figure><p id="814695b8-c4d5-42b2-a453-cfc2ce4f8dc2" class="">Esa área es la que tenemos que calcular:</p><figure id="2048ae97-e4e9-4386-be09-56b388e8321e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>25</mn><mo>−</mo><mn>15</mn><mo stretchy="false">)</mo><mo>×</mo><mn>30</mn><mo>=</mo><mn>10</mn><mo>×</mo><mn>30</mn><mo>=</mo><mn>300</mn></mrow><annotation encoding="application/x-tex">(25-15)×30=10×30=300</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">25</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">15</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">300</span></span></span></span></span></div></figure><p id="2fe064ec-bc22-4684-b37b-48235f3d7463" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"><h1 class="link-descarga"><a href="Temario%20para%20economi%CC%81a%20faf538d75aba443890755fbbeec11b68/Temario para economía.pdf" download>Descargar en PDF</a></h1></span>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEX-IUS | Tu Legalidad Migratoria, Nuestra Prioridad</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display for headings, Raleway for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuGW8xIRzAUkqoX/bgpBwT/zYJxxYhLwJ6N2b1Jg1d+p7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Custom CSS for fonts, scrollbar, and specific animations */
+    body {
+      font-family: 'Lato', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Custom scrollbar for a premium feel */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e293b; /* slate-800 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #fcd34d; /* accent-gold (yellow-300) */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #fbbf24; /* accent-gold-hover (yellow-400) */
+    }
+
+    /* Hero Section Background with dark overlay */
+    .hero-overlay {
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1514931883144-845183494796?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Placeholder: Night city skyline for a professional, premium feel */
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Custom animations for dynamic entry */
+    @keyframes fadeInFromBottom {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      animation: fadeInFromBottom 0.8s ease-out forwards;
+    }
+    .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+    .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+
+    /* Custom animation for button hover */
+    .btn-hover-scale:hover {
+      transform: scale(1.05);
+    }
+    .btn-hover-scale {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    /* Mobile menu specific styles - managed by JS for toggling 'hidden-mobile' */
+    .nav-menu.hidden-mobile {
+      display: none;
+    }
+    @media (min-width: 768px) { /* md breakpoint */
+      .nav-menu.hidden-mobile {
+        display: flex !important; /* Always show on desktop */
+      }
+    }
+  </style>
+
+  <!-- Tailwind CSS Configuration for custom colors and fonts -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg': '#0f172a', /* slate-900 */
+            'dark-secondary': '#1e293b', /* slate-800 */
+            'dark-accent-bg': '#4a5568', /* indigo-900 */
+            'dark-testimonial': '#4a5568', /* gray-700 */
+            'accent-gold': '#fcd34d', /* yellow-300 */
+            'accent-gold-hover': '#dfa746', /* yellow-400 */
+          },
+          fontFamily: {
+            sans: ['Raleway', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'], /* Used for headings and logo */
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-bg text-gray-200 antialiased">
+
+<!-- Header - Fixed and Responsive -->
+<header class="bg-dark-bg bg-opacity-90 backdrop-blur-sm fixed top-0 left-0 w-full z-50 shadow-lg">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center space-x-2 text-3xl font-sans font-black text-accent-gold tracking-wide">
+      <img src="img/Logitito.webp" alt="MEX-IUS Logo" class="h-8">
+      <span>MEX-IUS</span>
+    </a>
+    <!-- Mobile Menu Toggle & Quick Contact Icons (Mobile Only) -->
+    <div class="md:hidden flex items-center space-x-4">
+      <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="text-gray-300 hover:text-white transition-colors text-xl">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="#contacto" class="text-gray-300 hover:text-white transition-colors text-xl">
+        <i class="far fa-comment-dots"></i>
+      </a>
+      <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Main Navigation (Desktop & Mobile Expanded) -->
+    <nav id="main-nav" class="nav-menu hidden-mobile md:flex md:items-center md:space-x-8 absolute md:static top-full left-0 w-full md:w-auto bg-dark-bg md:bg-transparent p-6 md:p-0 shadow-lg md:shadow-none">
+      <ul class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-lg font-medium">
+        <li><a href="#servicios" class="block text-gray-300 hover:text-accent-gold transition-colors py-2 md:py-0">Servicios</a></li>
+        <li><a href="#recursos" class="block text-gray-300 hover:text-accent-gold transition-colors py-2 md:py-0">Recursos</a></li>
+        <li><a href="#nosotros" class="block text-gray-300 hover:text-accent-gold transition-colors py-2 md:py-0">Nosotros</a></li>
+        <li><a href="#contacto" class="block text-gray-300 hover:text-accent-gold transition-colors py-2 md:py-0">Contacto</a></li>
+      </ul>
+      <!-- Desktop Quick Contact & CTA Button -->
+      <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4 mt-6 md:mt-0">
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="hidden md:block text-gray-300 hover:text-white transition-colors text-xl">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#contacto" class="hidden md:block text-gray-300 hover:text-white transition-colors text-xl">
+          <i class="far fa-comment-dots"></i>
+        </a>
+        <a href="tel:+525512345678" class="bg-accent-gold text-dark-bg font-semibold py-2 px-6 rounded-full hover:bg-accent-gold-hover transition-colors btn-hover-scale text-lg shadow-md flex items-center">
+          <i class="fas fa-phone mr-2"></i> Llamar ahora
+        </a>
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="bg-green-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-600 transition-colors btn-hover-scale text-lg shadow-md flex items-center">
+          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="inicio" class="hero-overlay relative h-screen flex items-center justify-center text-center px-6 pt-24 pb-12">
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-serif font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
+        Tu sueño no tiene fronteras, nosotros tampoco
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
+        Especialistas en trámites y asesoría migratoria en México. Confianza y experiencia a tu servicio.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-400">
+        <a href="tel:+525512345678" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-100 transition-colors btn-hover-scale shadow-lg flex items-center">
+          <i class="fas fa-phone mr-2"></i> Llamar ahora
+        </a>
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center">
+          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Block -->
+  <section class="bg-dark-accent-bg py-16 px-6">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-serif font-bold text-white mb-12">Nuestra Fortaleza, Tu Tranquilidad</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="p-8 bg-dark-secondary rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center">
+          <i class="fas fa-award text-accent-gold text-5xl mb-4"></i>
+          <p class="text-5xl font-serif font-extrabold text-accent-gold mb-2">15+</p>
+          <p class="text-xl text-gray-200">Años de Experiencia</p>
+        </div>
+        <div class="p-8 bg-dark-secondary rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center">
+          <i class="fas fa-chart-line text-accent-gold text-5xl mb-4"></i>
+          <p class="text-5xl font-serif font-extrabold text-accent-gold mb-2">98%</p>
+          <p class="text-xl text-gray-200">Tasa de Éxito</p>
+        </div>
+        <div class="p-8 bg-dark-secondary rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center">
+          <i class="fas fa-quote-right text-accent-gold text-5xl mb-4"></i>
+          <p class="text-xl font-semibold text-gray-200 mb-2">"Proceso claro y eficiente."</p>
+          <p class="text-lg text-gray-400">- Cliente Satisfecho</p>
+        </div>
+        <div class="p-8 bg-dark-secondary rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center">
+          <i class="fas fa-certificate text-accent-gold text-5xl mb-4"></i>
+          <p class="text-xl font-semibold text-gray-200 mb-2">Credenciales Oficiales</p>
+          <p class="text-lg text-gray-400">Certificados y Registrados</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services Section -->
+  <section id="servicios" class="bg-dark-secondary py-16 px-6">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-serif font-bold text-white mb-12">Nuestros Servicios Destacados</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+          <i class="fas fa-user-friends text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Asesoría Migratoria</h3>
+          <p class="text-gray-300">Orientación experta para cada paso de tu proceso migratorio.</p>
+        </div>
+        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+          <i class="fas fa-home text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Residencias</h3>
+          <p class="text-gray-300">Apoyo integral para obtener tu residencia temporal o permanente.</p>
+        </div>
+        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+          <i class="fas fa-gavel text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Regularizaciones</h3>
+          <p class="text-gray-300">Soluciones para regularizar tu estatus migratorio en México.</p>
+        </div>
+        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+          <i class="fas fa-plane-departure text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Visas</h3>
+          <p class="text-gray-300">Gestión de visas para diversos propósitos y nacionalidades.</p>
+        </div>
+        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+          <i class="fas fa-briefcase text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Permisos de Trabajo</h3>
+          <p class="text-gray-300">Asistencia para obtener los permisos laborales necesarios.</p>
+        </div>
+        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+          <i class="fas fa-file-alt text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Constancias de Empleador</h3>
+          <p class="text-gray-300">Apoyo a empresas para cumplir con la normativa migratoria.</p>
+        </div>
+      </div>
+      <div class="mt-12">
+        <a href="#contacto" class="bg-white text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-200 transition-colors btn-hover-scale shadow-lg">
+          Ver todos los trámites
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits of Choosing MEX-IUS -->
+  <section class="bg-dark-bg py-16 px-6">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-serif font-bold text-white mb-12">¿Por qué elegir MEX-IUS?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-6 flex flex-col items-center">
+          <i class="fas fa-handshake text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Atención Personalizada</h3>
+          <p class="text-gray-300">Cada caso es único, te brindamos un servicio a tu medida.</p>
+        </div>
+        <div class="p-6 flex flex-col items-center">
+          <i class="fas fa-user-shield text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Expertos Certificados</h3>
+          <p class="text-gray-300">Nuestro equipo está altamente calificado y actualizado.</p>
+        </div>
+        <div class="p-6 flex flex-col items-center">
+          <i class="fas fa-lightbulb text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Procesos Claros</h3>
+          <p class="text-gray-300">Te guiamos con transparencia en cada etapa del trámite.</p>
+        </div>
+        <div class="p-6 flex flex-col items-center">
+          <i class="fas fa-sync-alt text-accent-gold text-5xl mb-4"></i>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Actualización Constante</h3>
+          <p class="text-gray-300">Siempre al día con las últimas leyes y regulaciones migratorias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Call to Action -->
+  <section id="asesoria" class="bg-gradient-to-r from-dark-accent-bg to-dark-bg py-20 px-6 text-center">
+    <div class="container mx-auto">
+      <h2 class="text-4xl md:text-5xl font-serif font-extrabold text-white mb-6">
+        ¿Listo para iniciar tu trámite migratorio?
+      </h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+        Agenda una asesoría gratuita con nuestros expertos y aclara todas tus dudas.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <a href="tel:+525512345678" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-100 transition-colors btn-hover-scale shadow-lg flex items-center">
+          <i class="fas fa-phone mr-2"></i> Llamar ahora
+        </a>
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center">
+          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer id="contacto" class="bg-dark-bg text-gray-400 py-12 px-6">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 border-b border-gray-700 pb-8 mb-8">
+    <!-- Logo & Description -->
+    <div class="col-span-1 md:col-span-2">
+      <a href="#" class="text-3xl font-serif font-extrabold text-accent-gold tracking-wide mb-4 block">MEX-IUS</a>
+      <p class="text-gray-400 leading-relaxed max-w-md">
+        Tu socio confiable en trámites migratorios en México. Ofrecemos asesoría experta y soluciones efectivas para tu legalidad en el país.
+      </p>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="text-xl font-serif font-semibold text-white mb-4">Contacto</h3>
+      <ul class="space-y-2">
+        <li><i class="fas fa-phone-alt text-accent-gold mr-2"></i> <a href="tel:+525512345678" class="hover:text-white transition-colors">+52 55 1234 5678</a></li>
+        <li><i class="fas fa-envelope text-accent-gold mr-2"></i> <a href="mailto:info@mexius.com" class="hover:text-white transition-colors">info@mexius.com</a></li>
+        <li><i class="fas fa-map-marker-alt text-accent-gold mr-2"></i> Av. Siempre Viva 123, Col. Centro, CDMX, México.</li>
+      </ul>
+    </div>
+
+    <!-- Useful Links -->
+    <div>
+      <h3 class="text-xl font-serif font-semibold text-white mb-4">Enlaces Útiles</h3>
+      <ul class="space-y-2">
+        <li><a href="#servicios" class="hover:text-white transition-colors">Nuestros Servicios</a></li>
+        <li><a href="#recursos" class="hover:text-white transition-colors">Recursos Migratorios</a></li>
+        <li><a href="#nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+        <li><a href="#contacto" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between text-sm">
+    <p class="text-center md:text-left mb-4 md:mb-0">&copy; 2023 MEX-IUS. Todos los derechos reservados.</p>
+    <div class="flex space-x-6 mb-4 md:mb-0">
+      <a href="#" class="hover:text-white transition-colors">Aviso de Privacidad</a>
+      <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+    </div>
+    <div class="flex space-x-4 text-xl">
+      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for interactivity -->
+<script>
+  // Mobile Menu Toggle Logic
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mainNav = document.getElementById('main-nav');
+  const menuIcon = mobileMenuButton.querySelector('i'); // Get the icon element
+
+  mobileMenuButton.addEventListener('click', () => {
+    mainNav.classList.toggle('hidden-mobile'); // Toggle custom class to show/hide
+    // Change icon from bars to times and vice-versa
+    if (mainNav.classList.contains('hidden-mobile')) {
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-bars');
+    } else {
+      menuIcon.classList.remove('fa-bars');
+      menuIcon.classList.add('fa-times');
+    }
+  });
+
+  // Close mobile menu when a navigation link is clicked
+  document.querySelectorAll('#main-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      // Only close if the menu is open and it's a mobile view
+      if (!mainNav.classList.contains('hidden-mobile') && window.innerWidth < 768) {
+        mainNav.classList.add('hidden-mobile');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+  });
+
+  // Smooth scrolling for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default jump behavior
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth' // Smooth scroll effect
+      });
+    });
+  });
+</script>
 </body>
 </html>
