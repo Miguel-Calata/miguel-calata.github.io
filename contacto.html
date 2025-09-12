@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEX-IUS | Tu Legalidad Migratoria, Nuestra Prioridad</title>
+  <title>Contacto | MEX-IUS</title>
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Playfair Display for headings, Raleway for body text -->
@@ -35,27 +35,34 @@
       background: #fcd34d; /* accent-gold (yellow-300) */
       border-radius: 4px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #fbbf24; /* accent-gold-hover (yellow-400) */
+    .contact-card {
+      background: linear-gradient(145deg, #1e293b, #2d3748);
+      border-left: 4px solid #fcd34d;
+      transition: all 0.3s ease;
     }
 
-    /* Hero Section Background with dark overlay */
-    .hero-overlay {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1514931883144-845183494796?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Placeholder: Night city skyline for a professional, premium feel */
-      background-size: cover;
-      background-position: center;
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4);
     }
 
-    /* Custom animations for dynamic entry */
-    @keyframes fadeInFromBottom {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .form-input {
+      background: #374151;
+      border: 1px solid #4b5563;
+      color: #e2e8f0;
+      transition: all 0.3s ease;
     }
-    .animate-fade-in-up {
-      animation: fadeInFromBottom 0.8s ease-out forwards;
+
+    .form-input:focus {
+      border-color: #fcd34d;
+      box-shadow: 0 0 0 3px rgba(252, 211, 77, 0.1);
     }
-    .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-    .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
 
     /* Custom animation for button hover */
     .btn-hover-scale:hover {
@@ -74,9 +81,9 @@
         display: flex !important; /* Always show on desktop */
       }
     }
+
   </style>
 
-  <!-- Tailwind CSS Configuration for custom colors and fonts -->
   <script>
     tailwind.config = {
       theme: {
@@ -87,11 +94,11 @@
             'dark-accent-bg': '#4a5568', /* indigo-900 */
             'dark-testimonial': '#4a5568', /* gray-700 */
             'accent-gold': '#fcd34d', /* yellow-300 */
-            'accent-gold-hover': '#dfa746', /* yellow-400 */
+            'accent-gold-hover': '#dfa746',
           },
           fontFamily: {
             sans: ['Raleway', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'], /* Used for headings and logo */
+            serif: ['Playfair Display', 'serif'],
           }
         }
       }
@@ -148,103 +155,120 @@
     </nav>
   </div>
 </header>
-
-<main>
+<main class="pt-24 pb-16 px-6">
   <!-- Hero Section -->
-  <section id="inicio" class="hero-overlay relative h-screen flex items-center justify-center text-center px-6 pt-24 pb-12">
-    <div class="relative z-10 max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-serif font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
-        Tu sueño no tiene fronteras, nosotros tampoco
-      </h1>
-      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
-        Especialistas en trámites y asesoría migratoria en México. Confianza y experiencia a tu servicio.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-400">
-        <a href="tel:+523340118290" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-accent-gold-hover transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
-          <i class="fas fa-phone mr-2"></i> Llamar ahora
+  <section class="text-center mb-16">
+    <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Contáctanos</h1>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+      Estamos aquí para ayudarte con todos tus trámites migratorios. Contáctanos para una asesoría personalizada.
+    </p>
+  </section>
+
+  <!-- Contact Information -->
+  <section class="mb-16">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="contact-card p-8 rounded-lg text-center">
+        <i class="fas fa-phone-alt text-accent-gold text-5xl mb-4"></i>
+        <h3 class="text-2xl font-serif font-semibold text-white mb-4">Teléfono</h3>
+        <p class="text-gray-300 mb-4">Estamos disponibles para atenderte</p>
+        <a href="tel:+523340118290" class="text-accent-gold text-xl font-semibold hover:text-accent-gold-hover transition-colors">
+          +52 33 4011 8290
         </a>
-        <a href="https://wa.me/5213313674036" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center">
-          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
+      </div>
+
+      <div class="contact-card p-8 rounded-lg text-center">
+        <i class="fas fa-envelope text-accent-gold text-5xl mb-4"></i>
+        <h3 class="text-2xl font-serif font-semibold text-white mb-4">Email</h3>
+        <p class="text-gray-300 mb-4">Escríbenos para más información</p>
+        <a href="mailto:mex.ius.gdl@gmail.com" class="text-accent-gold text-xl font-semibold hover:text-accent-gold-hover transition-colors">
+          mex.ius.gdl@gmail.com
         </a>
+      </div>
+
+      <div class="contact-card p-8 rounded-lg text-center">
+        <i class="fas fa-map-marker-alt text-accent-gold text-5xl mb-4"></i>
+        <h3 class="text-2xl font-serif font-semibold text-white mb-4">Ubicación</h3>
+        <p class="text-gray-300">Guadalajara, Jalisco</p>
       </div>
     </div>
   </section>
 
-  <!-- Featured Services Section -->
-  <section id="servicios" class="bg-dark-secondary py-16 px-6">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-serif font-bold text-white mb-12">Nuestros Servicios Destacados</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-user-friends text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Asesoría Migratoria</h3>
-          <p class="text-gray-300">Orientación experta para cada paso de tu proceso migratorio.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-home text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Residencias</h3>
-          <p class="text-gray-300">Apoyo integral para obtener tu residencia temporal o permanente.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-gavel text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Regularizaciones</h3>
-          <p class="text-gray-300">Soluciones para regularizar tu estatus migratorio en México.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-plane-departure text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Visas</h3>
-          <p class="text-gray-300">Gestión de visas para diversos propósitos y nacionalidades.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-briefcase text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Permisos de Trabajo</h3>
-          <p class="text-gray-300">Asistencia para obtener los permisos laborales necesarios.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-file-alt text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Constancias de Empleador</h3>
-          <p class="text-gray-300">Apoyo a empresas para cumplir con la normativa migratoria.</p>
-        </div>
-      </div>
-      <div class="mt-12">
-        <a href="servicios.html" class="bg-white text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-200 transition-colors btn-hover-scale shadow-lg">
-          Ver todos los trámites
-        </a>
+  <!-- Contact Form -->
+  <section class="mb-16">
+    <div class="container mx-auto max-w-4xl">
+      <div class="contact-card p-8 rounded-lg">
+        <h2 class="text-3xl font-serif font-bold text-white text-center mb-8">Envíanos un Mensaje</h2>
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-gray-300 mb-2">Nombre completo *</label>
+              <input type="text" id="name" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-gold" required>
+            </div>
+            <div>
+              <label for="email" class="block text-gray-300 mb-2">Email *</label>
+              <input type="email" id="email" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-gold" required>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="phone" class="block text-gray-300 mb-2">Teléfono</label>
+              <input type="tel" id="phone" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-gold">
+            </div>
+            <div>
+              <label for="service" class="block text-gray-300 mb-2">Servicio de interés</label>
+              <select id="service" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-gold">
+                <option value="">Selecciona un servicio</option>
+                <option value="asesoria">Asesoría Legal Migratoria</option>
+                <option value="formato-sam">Formato SAM</option>
+                <option value="renovaciones">Renovaciones</option>
+                <option value="cambios">Cambios de Condición</option>
+                <option value="regularizaciones">Regularizaciones Migratorias</option>
+                <option value="canjes">Canjes</option>
+                <option value="visas">Visas</option>
+                <option value="constancias">Constancias de Empleador</option>
+                <option value="permisos">Permisos para Trabajar</option>
+                <option value="notificaciones">Notificaciones</option>
+                <option value="permisos-salida">Permisos de Salida y Regreso</option>
+                <option value="reposiciones">Reposiciones</option>
+                <option value="tarjetas">Tarjetas ABTC / APEC</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-gray-300 mb-2">Mensaje *</label>
+            <textarea id="message" rows="5" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-gold" required></textarea>
+          </div>
+
+          <button type="submit" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-accent-gold-hover transition-colors w-full">
+            Enviar Mensaje
+          </button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- Benefits of Choosing MEX-IUS -->
-  <section class="bg-dark-bg py-16 px-6">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-serif font-bold text-white mb-12">¿Por qué elegir MEX-IUS?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-handshake text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Atención Personalizada</h3>
-          <p class="text-gray-300">Cada caso es único, te brindamos un servicio a tu medida.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-user-shield text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Expertos Certificados</h3>
-          <p class="text-gray-300">Nuestro equipo está altamente calificado y actualizado.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-lightbulb text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Procesos Claros</h3>
-          <p class="text-gray-300">Te guiamos con transparencia en cada etapa del trámite.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-sync-alt text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Actualización Constante</h3>
-          <p class="text-gray-300">Siempre al día con las últimas leyes y regulaciones migratorias.</p>
-        </div>
+  <!-- Map Section -->
+  <section class="mb-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-serif font-bold text-white text-center mb-8">Nuestra Ubicación</h2>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238891.533299764!2d-103.48398142382811!3d20.673733300000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b18cb5282509%3A0x2442426987f636b6!2sGuadalajara%2C%20Jalisco%2C%20Mexico!5e0!3m2!1sen!2sus!4v1661533678241!5m2!1sen!2sus"
+          width="100%"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="w-full h-96 rounded-lg">
+        </iframe>
       </div>
     </div>
   </section>
 
-  <!-- Final Call to Action -->
+  <!-- Quick Contact -->
   <section id="asesoria" class="bg-gradient-to-r from-dark-accent-bg to-dark-bg py-20 px-6 text-center">
     <div class="container mx-auto">
       <h2 class="text-4xl md:text-5xl font-serif font-extrabold text-white mb-6">
@@ -257,9 +281,9 @@
         <a href="tel:+523340118290" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-accent-gold-hover transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
           <i class="fas fa-phone mr-2"></i> Llamar ahora
         </a>
-        <a href="https://wa.me/5213313674036" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center">
+        <a href="https://wa.me/5213313674036" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
           <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
+          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en &lt;24h</span>
         </a>
       </div>
     </div>
@@ -292,6 +316,7 @@
       <h3 class="text-xl font-serif font-semibold text-white mb-4">Enlaces Útiles</h3>
       <ul class="space-y-2">
         <li><a href="servicios.html" class="hover:text-white transition-colors">Nuestros Servicios</a></li>
+        <li><a href="index.html#recursos" class="hover:text-white transition-colors">Recursos Migratorios</a></li>
         <li><a href="nosotros.html" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
         <li><a href="contacto.html" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
       </ul>
@@ -313,7 +338,6 @@
   </div>
 </footer>
 
-<!-- JavaScript for interactivity -->
 <script>
   // Mobile Menu Toggle Logic
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -353,6 +377,13 @@
         behavior: 'smooth' // Smooth scroll effect
       });
     });
+  });
+
+  // Form submission handling
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+    this.reset();
   });
 </script>
 </body>

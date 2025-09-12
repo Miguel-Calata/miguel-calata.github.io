@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEX-IUS | Tu Legalidad Migratoria, Nuestra Prioridad</title>
+  <title>Sobre Nosotros | MEX-IUS</title>
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Playfair Display for headings, Raleway for body text -->
@@ -35,27 +35,26 @@
       background: #fcd34d; /* accent-gold (yellow-300) */
       border-radius: 4px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #fbbf24; /* accent-gold-hover (yellow-400) */
+    .mission-vision-card {
+      background: linear-gradient(145deg, #1e293b, #2d3748);
+      border-left: 4px solid #fcd34d;
+      transition: all 0.3s ease;
     }
 
-    /* Hero Section Background with dark overlay */
-    .hero-overlay {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1514931883144-845183494796?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Placeholder: Night city skyline for a professional, premium feel */
-      background-size: cover;
-      background-position: center;
+    .mission-vision-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4);
     }
 
-    /* Custom animations for dynamic entry */
-    @keyframes fadeInFromBottom {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .value-item {
+      background: #374151;
+      transition: all 0.3s ease;
     }
-    .animate-fade-in-up {
-      animation: fadeInFromBottom 0.8s ease-out forwards;
+
+    .value-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
-    .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-    .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
 
     /* Custom animation for button hover */
     .btn-hover-scale:hover {
@@ -74,9 +73,9 @@
         display: flex !important; /* Always show on desktop */
       }
     }
+
   </style>
 
-  <!-- Tailwind CSS Configuration for custom colors and fonts -->
   <script>
     tailwind.config = {
       theme: {
@@ -87,11 +86,11 @@
             'dark-accent-bg': '#4a5568', /* indigo-900 */
             'dark-testimonial': '#4a5568', /* gray-700 */
             'accent-gold': '#fcd34d', /* yellow-300 */
-            'accent-gold-hover': '#dfa746', /* yellow-400 */
+            'accent-gold-hover': '#dfa746',
           },
           fontFamily: {
             sans: ['Raleway', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'], /* Used for headings and logo */
+            serif: ['Playfair Display', 'serif'],
           }
         }
       }
@@ -149,102 +148,107 @@
   </div>
 </header>
 
-<main>
+<main class="pt-24 pb-16 px-6">
   <!-- Hero Section -->
-  <section id="inicio" class="hero-overlay relative h-screen flex items-center justify-center text-center px-6 pt-24 pb-12">
-    <div class="relative z-10 max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-serif font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
-        Tu sueño no tiene fronteras, nosotros tampoco
-      </h1>
-      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
-        Especialistas en trámites y asesoría migratoria en México. Confianza y experiencia a tu servicio.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-400">
-        <a href="tel:+523340118290" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-accent-gold-hover transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
-          <i class="fas fa-phone mr-2"></i> Llamar ahora
-        </a>
-        <a href="https://wa.me/5213313674036" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center">
-          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
-        </a>
+  <section class="text-center mb-16">
+    <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Conoce MEX-IUS</h1>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+      Tu socio confiable en trámites migratorios. Más de 15 años de experiencia nos respaldan.
+    </p>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mb-16">
+    <div class="container mx-auto max-w-4xl">
+      <div class="mission-vision-card p-8 rounded-lg">
+        <div class="text-center mb-8">
+          <i class="fas fa-bullseye text-accent-gold text-5xl mb-4"></i>
+          <h2 class="text-3xl font-serif font-bold text-white">Misión de MEX-IUS</h2>
+        </div>
+        <p class="text-lg text-gray-300 mb-6">
+          Ofrecer servicios especializados en consultoría y gestión migratoria, guiando a nuestros clientes —individuos, familias y organizaciones— a través de procedimientos migratorios con:
+        </p>
+        <ul class="space-y-4 text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+            <span>Rechazo cero al manejo fraudulento y a la omitida normativa; actuamos con estricto apego a las leyes mexicanas y sus actualizaciones.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+            <span>Atenciones personalizadas: desde asesoría sobre visas, residencias, nacionalidad, y protección internacional, hasta representación ante autoridades migratorias.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+            <span>Transparencia y profesionalismo, explicando cada paso del proceso con claridad, para que nuestros clientes tomen decisiones informadas y seguras.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+            <span>Un compromiso firme con los valores humanos, tratándolos con respeto, empatía y confidencialidad.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Featured Services Section -->
-  <section id="servicios" class="bg-dark-secondary py-16 px-6">
+  <!-- Vision Section -->
+  <section class="mb-16">
+    <div class="container mx-auto max-w-4xl">
+      <div class="mission-vision-card p-8 rounded-lg">
+        <div class="text-center mb-8">
+          <i class="fas fa-eye text-accent-gold text-5xl mb-4"></i>
+          <h2 class="text-3xl font-serif font-bold text-white">Visión de MEX-IUS</h2>
+        </div>
+        <p class="text-lg text-gray-300 mb-6">
+          Ser reconocidos como la firma líder e innovadora de consultoría y gestión migratoria en México, destacándonos por:
+        </p>
+        <ul class="space-y-4 text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-star text-accent-gold mt-1 mr-3"></i>
+            <span>Nuestra excelencia técnica y legal, ofreciendo soluciones migratorias integrales que protegen los derechos de personas y empresas.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-accent-gold mt-1 mr-3"></i>
+            <span>Un enfoque basado en ética, transparencia y respeto a la legalidad vigente.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-accent-gold mt-1 mr-3"></i>
+            <span>Contribuir a un entorno migratorio más humano, accesible y justo, promoviendo la integración responsable y el desarrollo económico del país.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="mb-16">
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-serif font-bold text-white mb-12">Nuestros Servicios Destacados</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-user-friends text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Asesoría Migratoria</h3>
-          <p class="text-gray-300">Orientación experta para cada paso de tu proceso migratorio.</p>
+      <h2 class="text-3xl font-serif font-bold text-white mb-12">Nuestros Valores</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="value-item p-6 rounded-lg">
+          <i class="fas fa-scale-balanced text-accent-gold text-4xl mb-4"></i>
+          <h3 class="text-xl font-serif font-semibold text-white mb-3">Legalidad</h3>
+          <p class="text-gray-300">Actuamos con estricto apego a las leyes mexicanas y sus actualizaciones.</p>
         </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-home text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Residencias</h3>
-          <p class="text-gray-300">Apoyo integral para obtener tu residencia temporal o permanente.</p>
+        <div class="value-item p-6 rounded-lg">
+          <i class="fas fa-handshake text-accent-gold text-4xl mb-4"></i>
+          <h3 class="text-xl font-serif font-semibold text-white mb-3">Transparencia</h3>
+          <p class="text-gray-300">Explicamos cada paso del proceso con claridad y honestidad.</p>
         </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-gavel text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Regularizaciones</h3>
-          <p class="text-gray-300">Soluciones para regularizar tu estatus migratorio en México.</p>
+        <div class="value-item p-6 rounded-lg">
+          <i class="fas fa-heart text-accent-gold text-4xl mb-4"></i>
+          <h3 class="text-xl font-serif font-semibold text-white mb-3">Empatía</h3>
+          <p class="text-gray-300">Tratamos a cada cliente con respeto, comprensión y confidencialidad.</p>
         </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-plane-departure text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Visas</h3>
-          <p class="text-gray-300">Gestión de visas para diversos propósitos y nacionalidades.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-briefcase text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Permisos de Trabajo</h3>
-          <p class="text-gray-300">Asistencia para obtener los permisos laborales necesarios.</p>
-        </div>
-        <div class="p-8 bg-dark-bg rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-file-alt text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-3">Constancias de Empleador</h3>
-          <p class="text-gray-300">Apoyo a empresas para cumplir con la normativa migratoria.</p>
-        </div>
-      </div>
-      <div class="mt-12">
-        <a href="servicios.html" class="bg-white text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-200 transition-colors btn-hover-scale shadow-lg">
-          Ver todos los trámites
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Benefits of Choosing MEX-IUS -->
-  <section class="bg-dark-bg py-16 px-6">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-serif font-bold text-white mb-12">¿Por qué elegir MEX-IUS?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-handshake text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Atención Personalizada</h3>
-          <p class="text-gray-300">Cada caso es único, te brindamos un servicio a tu medida.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-user-shield text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Expertos Certificados</h3>
-          <p class="text-gray-300">Nuestro equipo está altamente calificado y actualizado.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-lightbulb text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Procesos Claros</h3>
-          <p class="text-gray-300">Te guiamos con transparencia en cada etapa del trámite.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-sync-alt text-accent-gold text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-white mb-2">Actualización Constante</h3>
-          <p class="text-gray-300">Siempre al día con las últimas leyes y regulaciones migratorias.</p>
+        <div class="value-item p-6 rounded-lg">
+          <i class="fas fa-award text-accent-gold text-4xl mb-4"></i>
+          <h3 class="text-xl font-serif font-semibold text-white mb-3">Excelencia</h3>
+          <p class="text-gray-300">Buscamos la máxima calidad en cada servicio que ofrecemos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Final Call to Action -->
+  <!-- CTA Section -->
   <section id="asesoria" class="bg-gradient-to-r from-dark-accent-bg to-dark-bg py-20 px-6 text-center">
     <div class="container mx-auto">
       <h2 class="text-4xl md:text-5xl font-serif font-extrabold text-white mb-6">
@@ -257,9 +261,9 @@
         <a href="tel:+523340118290" class="bg-accent-gold text-dark-bg font-bold py-3 px-8 rounded-full text-xl hover:bg-accent-gold-hover transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
           <i class="fas fa-phone mr-2"></i> Llamar ahora
         </a>
-        <a href="https://wa.me/5213313674036" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center">
+        <a href="https://wa.me/5213313674036" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-green-600 transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
           <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en <24h</span>
+          <span class="text-xs ml-2 bg-white text-green-500 px-2 py-1 rounded-full">Respuesta en &lt;24h</span>
         </a>
       </div>
     </div>
@@ -292,6 +296,7 @@
       <h3 class="text-xl font-serif font-semibold text-white mb-4">Enlaces Útiles</h3>
       <ul class="space-y-2">
         <li><a href="servicios.html" class="hover:text-white transition-colors">Nuestros Servicios</a></li>
+        <li><a href="index.html#recursos" class="hover:text-white transition-colors">Recursos Migratorios</a></li>
         <li><a href="nosotros.html" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
         <li><a href="contacto.html" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
       </ul>
