@@ -41,6 +41,14 @@
             background-color: #fee2e2; /* Red-100 */
             border-left: 4px solid #ef4444; /* Red-500 */
         }
+        /* Estilo para elementos que parecen código */
+        code {
+            background-color: #e5e7eb; /* Gray-200 */
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Menlo', 'Monospace';
+            font-weight: 700;
+        }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen font-sans flex items-center justify-center p-4">
@@ -102,47 +110,54 @@
     </div>
 
     <script>
-        // --- 1. Definición de las Preguntas y Respuestas ---
+        // --- 1. Definición de las Preguntas y Respuestas (Extraídas textualmente del PDF) ---
         const allQuestions = [
-            // Verdadero/Falso (T/F)
-            { type: 'tf', category: 'Semana 2', question: 'Cada declaración de clase que empieza con la palabra clave "public" debe almacenarse en un archivo que tenga exactamente el mismo nombre de la clase, y que termine con la extensión .java.', answer: true, explanation: 'Esto es una regla fundamental para las clases públicas en Java.' },
-            { type: 'tf', category: 'Semana 4', question: 'La expresión $((x>y)$ && $(a<b))$ es verdadera si $(x>y)$ es verdadera, o si $(a<b)$ es verdadera.', answer: false, explanation: 'La expresión "&&" (AND lógico) requiere que *ambas* condiciones sean verdaderas. La descripción es para el operador "||" (OR lógico).' },
-            { type: 'tf', category: 'Semana 5', question: 'Cuando una clase redefine un método de su superclase (mismo encabezado, diferente cuerpo), se dice que la subclase "sobrecarga" (overloads) a ese método.', answer: false, explanation: 'El término correcto es "sobrescribe" (overrides).' },
-            { type: 'tf', category: 'Semana 5', question: 'La clase "Object" es la raíz de todas las jerarquías de herencia en Java.', answer: true, explanation: 'Todas las clases en Java, directa o indirectamente, heredan de "Object".' },
-            { type: 'tf', category: 'Semana 6', question: 'Un método que se declara como "final" en una superclase no se puede sobrescribir en una subclase.', answer: true, explanation: 'El modificador "final" previene que un método sea sobrescrito.' },
-            { type: 'tf', category: 'Semana 6', question: 'Una clase abstracta debe forzosamente contener al menos un método abstracto.', answer: false, explanation: 'Una clase puede ser declarada "abstracta" incluso sin tener métodos abstractos, para prevenir su instanciación.' },
-            { type: 'tf', category: 'Semana 7', question: 'Si dentro de un bloque try se lanza una excepción para la cual no hay una cláusula catch, el programa continúa después del último bloque catch.', answer: false, explanation: 'Si no hay un catch que la maneje, la excepción se propaga y el programa termina (o se propaga a un nivel superior).' },
-            { type: 'tf', category: 'Semana 7', question: 'Un bloque catch que atrapa una excepción de un tipo que es superclase de otros tipos de excepciones, también atrapará a estas últimas excepciones.', answer: true, explanation: 'Esto se debe al polimorfismo y es la práctica común para manejar múltiples excepciones relacionadas.' },
-            { type: 'tf', category: 'Semana 4', question: 'La instrucción do...while evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción do...while evalúa la condición *después* de ejecutar el cuerpo, garantizando que se ejecute al menos una vez.' },
-            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, no es necesario especificar la extensión ".class" en la línea de comandos (ej: "java MiClase" en lugar de "java MiClase.class").', answer: true, explanation: 'El comando "java" solo requiere el nombre de la clase, no la extensión ".class".' },
+            // Verdadero/Falso (T/F) - 19 preguntas
+            { type: 'tf', category: 'Semana 2', question: 'Cada declaración de clase que empieza con la palabra clave <code>public</code> debe almacenarse en un archivo que tenga exactamente el mismo nombre de la clase, y que termine con la extensión de nombre de archivo <code>.java</code>.', answer: true, explanation: 'Esto es una regla fundamental para las clases públicas en Java.' },
+            { type: 'tf', category: 'Semana 2', question: 'La declaración <code>Import</code> no es obligatoria cuando una clase en un paquete utiliza a otra clase en el mismo paquete.', answer: true, explanation: 'Las clases dentro del mismo paquete se pueden referenciar directamente sin una declaración <code>import</code>.' },
+            { type: 'tf', category: 'Semana 2', question: 'No se requiere un(a) <code>import</code> si siempre hacemos referencia a una clase con su nombre de clase completamente calificado.', answer: true, explanation: 'El nombre de clase completamente calificado (incluyendo el paquete) permite al compilador encontrar la clase sin una declaración <code>import</code>.' },
+            
+            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa compilado de Java desde la línea de comandos (conocido como Símbolo del sistema en Windows), no es necesario especificar la extensión del programa compilado. Por ejemplo para ejecutar el programa compilado del archivo fuente <code>Bienvenido.java</code>, basta con escribir <code>java Bienvenido</code>.', answer: true, explanation: 'El comando <code>java</code> solo requiere el nombre de la clase (<code>Bienvenido</code>) y no la extensión <code>.class</code>.' },
+            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, primero es compilado y después ejecutado por la Máquina Virtual de Java (JVM).', answer: true, explanation: 'El código Java se compila a bytecode, el cual es luego interpretado y ejecutado por la JVM.' },
+            
+            { type: 'tf', category: 'Semana 4', question: 'La instrucción <code>do...while</code> evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción <code>do...while</code> evalúa la condición *después* de ejecutar el cuerpo, por lo que garantiza que el cuerpo se ejecute al menos una vez.' },
+            { type: 'tf', category: 'Semana 4', question: 'La expresión <code>((x>y) && (a<b))</code> es verdadera si <code>(x>y)</code> es verdadera, o si <code>(a<b)</code> es verdadera.', answer: false, explanation: 'La expresión <code>&&</code> (AND lógico) requiere que *ambas* condiciones sean verdaderas. El enunciado describe el operador <code>||</code> (OR lógico).' },
+            { type: 'tf', category: 'Semana 4', question: 'Si al principio, la condición de continuación de ciclo de un encabezado <code>for</code> es falsa, el programa no ejecuta el cuerpo de la instrucción <code>for</code>.', answer: true, explanation: 'La condición se evalúa antes de la primera iteración, y si es falsa, el ciclo se omite por completo.' },
+            { type: 'tf', category: 'Semana 4', question: 'Al enumerar las instrucciones <code>case</code> en forma consecutiva, sin instrucciones entre ellas, se puede ejecutar las instrucciones del último <code>case</code> de la secuencia. (Esto se conoce como "fall-through")', answer: true, explanation: 'Esto es una característica del <code>switch</code> en Java (fall-through). Si se cumple el <code>case 0</code>, se ejecutan las instrucciones de <code>case 2</code> porque no hay <code>break</code> antes.' },
 
-            // Selección Múltiple (MC) - Simula Completar
+            { type: 'tf', category: 'Semana 5', question: 'Cuando una clase redefine al método de una superclase utilizando el mismo encabezado (mismos tipo de acceso, tipo de retorno, nombre de método y lista de parámetros) pero con otro cuerpo, se dice que la subclase sobrecarga a ese método de la superclase.', answer: false, explanation: 'Redefinir un método con el mismo encabezado se llama *sobrescribir* (override), no sobrecargar (overload).' },
+            { type: 'tf', category: 'Semana 5', question: 'La clase <code>Object</code> es la raíz de todas las jerarquías de herencia en Java.', answer: true, explanation: 'Todas las clases en Java, directa o indirectamente, heredan de <code>Object</code>.' },
+            { type: 'tf', category: 'Semana 5', question: 'Si un constructor no asigna un valor a una variable de instancia (campo), de todas formas ésta se inicializa con su valor predeterminado.', answer: true, explanation: 'Java inicializa automáticamente las variables de instancia no asignadas (ej: 0 para números, <code>false</code> para booleanos, <code>null</code> para referencias a objetos).' },
+            
+            { type: 'tf', category: 'Semana 6', question: 'Si una superclase declara a un método como <code>abstract</code>, una subclase debe forzosamente implementar ese método.', answer: false, explanation: 'Solo las subclases *concretas* (no abstractas) deben implementar todos los métodos abstractos de su superclase.' },
+            { type: 'tf', category: 'Semana 6', question: 'Es posible crear un objeto de una clase abstracta si se asigna a una variable abstracta.', answer: false, explanation: 'Las clases abstractas no se pueden instanciar directamente con <code>new</code>, sin importar el tipo de la variable.' },
+            { type: 'tf', category: 'Semana 6', question: 'Un método que se declara como <code>final</code> en una superclase no se puede sobrescribir en una subclase.', answer: true, explanation: 'El modificador <code>final</code> tiene el propósito específico de evitar que el método sea sobrescrito (overridden).' },
+            { type: 'tf', category: 'Semana 6', question: 'Una clase abstracta debe forzosamente contener un método abstracto.', answer: false, explanation: 'Una clase se puede declarar como <code>abstract</code> incluso si no contiene ningún método <code>abstract</code>, para simplemente evitar su instanciación.' },
+
+            { type: 'tf', category: 'Semana 7', question: 'El bloque <code>finally</code> es opcional, y si existe se debe colocar después del último bloque <code>catch</code>, o después del bloque <code>try</code> si no hay ningún bloque <code>catch</code>.', answer: true, explanation: 'El bloque <code>finally</code> siempre se ejecuta, y su posición es la correcta: al final de la estructura <code>try-catch</code>.' },
+            { type: 'tf', category: 'Semana 7', question: 'Si dentro de un bloque <code>try</code> se lanza una excepción para la cual no hay una cláusula <code>catch</code> que corresponda a esa excepción, la ejecución del programa continúa en la siguiente instrucción después del último bloque <code>catch</code>.', answer: false, explanation: 'Si no se encuentra un <code>catch</code> correspondiente, la excepción se propaga y el programa termina de forma anormal (unhandled exception).' },
+            { type: 'tf', category: 'Semana 7', question: 'Un bloque <code>catch</code> que atrapa una excepción de un tipo que es superclase de otros tipos de excepciones, también atrapará a estas últimas excepciones.', answer: true, explanation: 'Debido a la herencia y el polimorfismo, un bloque <code>catch</code> de un tipo base (superclase) puede manejar cualquier excepción de una subclase de ese tipo.' },
+
+            // Selección Múltiple (MC) - Simula Completar - 2 preguntas
             {
                 type: 'mc', category: 'Semana 2',
-                question: 'El método ______ de Scanner lee caracteres hasta encontrar una nueva línea, y después devuelve esos caracteres como un objeto String.',
+                question: 'El método ______ de <code>Scanner</code> lee caracteres hasta encontrar una nueva línea, y después devuelve esos caracteres como un objeto <code>String</code>.',
                 options: ['next()', 'nextChar()', 'nextLine()', 'readString()'],
                 answer: 'nextLine()',
-                explanation: 'El método nextLine() es el que captura la línea completa, incluyendo espacios, hasta el caracter de nueva línea.'
-            },
-            {
-                type: 'mc', category: 'Semana 3',
-                question: 'Para ejecutar un programa de Java, primero es ______ y después ejecutado por la Máquina Virtual de Java (JVM).',
-                options: ['Interpretado', 'Vinculado', 'Compilado', 'Depurado'],
-                answer: 'Compilado',
-                explanation: 'El código fuente de Java primero se compila a bytecode, y luego la JVM lo ejecuta.'
+                explanation: 'El método <code>nextLine()</code> es el que captura la línea completa de entrada, incluyendo espacios, hasta el caracter de nueva línea.'
             },
             {
                 type: 'mc', category: 'Semana 4',
-                question: 'La instrucción **switch** selecciona una de varias acciones, con base a los posibles valores de una variable o expresión entera, o un ______.',
+                question: 'La instrucción <code>switch</code> selecciona una de varias acciones, con base a los posibles valores de una variable o expresión entera, o un ______.',
                 options: ['boolean', 'float', 'string', 'long'],
                 answer: 'string',
-                explanation: 'En Java, el switch puede usarse con tipos primitivos enteros, enums, y también con Strings.'
+                explanation: 'En versiones modernas de Java, el <code>switch</code> puede usarse con tipos primitivos enteros, enums, y también con objetos de tipo <code>String</code>.'
             },
 
-            // Emparejamiento (Matching)
+            // Emparejamiento (Matching) - 1 pregunta
             {
                 type: 'matching', category: 'Semana 3',
-                question: 'Empareje las unidades de almacenamiento con su equivalencia (1024 unidades de la anterior).',
+                question: 'Empareje los elementos de la columna izquierda que correspondan con los elementos de la columna derecha (equivalencias de capacidad de almacenamiento: 1024 unidades de la anterior).',
                 pairs: [
                     { left: '1 gigabyte (GB)', right: '1024 megabytes (MB)' },
                     { left: '1 terabyte (TB)', right: '1024 gigabytes (GB)' },
@@ -217,7 +232,7 @@
             const currentQ = questions[currentQuestionIndex];
 
             // Resetear UI
-            document.getElementById('question-text').innerHTML = currentQ.question;
+            document.getElementById('question-text').innerHTML = currentQ.question.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
             document.getElementById('feedback-message').textContent = '';
             document.getElementById('check-answer-button').classList.remove('hidden');
             document.getElementById('next-question-button').classList.add('hidden');
