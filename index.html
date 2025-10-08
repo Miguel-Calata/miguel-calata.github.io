@@ -1,365 +1,432 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEX-IUS | Tu Legalidad Migratoria, Nuestra Prioridad</title>
-  <!-- TailwindCSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Playfair Display for headings, Raleway for body text -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;900&display=swap" rel="stylesheet">
-  <!-- Font Awesome CDN for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <style>
-    /* Custom CSS for fonts, scrollbar, and specific animations */
-    body {
-      font-family: 'Raleway', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* Custom scrollbar for a premium feel */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #e5e7eb; /* gray-200 */
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #2563eb; /* blue-600 */
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #1d4ed8; /* blue-700 */
-    }
-
-    /* Hero Section Background with dark overlay */
-    .hero-overlay {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1514931883144-845183494796?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Placeholder: Night city skyline for a professional, premium feel */
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero-gradient {
-      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Custom animations for dynamic entry */
-    @keyframes fadeInFromBottom {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in-up {
-      animation: fadeInFromBottom 0.8s ease-out forwards;
-    }
-    .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-    .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
-
-    /* Custom animation for button hover */
-    .btn-hover-scale:hover {
-      transform: scale(1.05);
-    }
-    .btn-hover-scale {
-      transition: transform 0.2s ease-in-out;
-    }
-
-    /* Mobile menu specific styles - managed by JS for toggling 'hidden-mobile' */
-    .nav-menu.hidden-mobile {
-      display: none;
-    }
-    @media (min-width: 768px) { /* md breakpoint */
-      .nav-menu.hidden-mobile {
-        display: flex !important; /* Always show on desktop */
-      }
-    }
-  </style>
-
-  <!-- Tailwind CSS Configuration for custom colors and fonts -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'primary-blue': '#2563eb',
-            'primary-blue-hover': '#1d4ed8',
-            'light-bg': '#f9fafb', /* gray-50 */
-            'light-secondary': '#f3f4f6', /* gray-100 */
-          },
-          fontFamily: {
-            sans: ['Raleway', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'], /* Used for headings and logo */
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica para Examen de POO</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#4f46e5', // Indigo-600
+                        'secondary': '#10b981', // Emerald-500
+                        'danger': '#ef4444', // Red-500
+                        'warning': '#f59e0b', // Amber-500
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
+    <style>
+        /* Estilos personalizados para el juego */
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .correct-answer {
+            background-color: #d1fae5; /* Green-100 */
+            border-left: 4px solid #10b981; /* Emerald-500 */
+        }
+        .incorrect-answer {
+            background-color: #fee2e2; /* Red-100 */
+            border-left: 4px solid #ef4444; /* Red-500 */
+        }
+    </style>
 </head>
-<body class="bg-light-bg text-gray-800 antialiased">
+<body class="bg-gray-100 min-h-screen font-sans flex items-center justify-center p-4">
 
-<!-- Header - Fixed and Responsive -->
-<header class="bg-white bg-opacity-90 backdrop-blur-sm fixed top-0 left-0 w-full z-50 shadow-md">
-  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="index.html" class="flex items-center space-x-2 text-3xl font-sans font-black text-primary-blue tracking-wide">
-      <img src="img/Logitito.webp" alt="MEX-IUS Logo" class="h-8">
-      <span>MEX-IUS</span>
-    </a>
-    <!-- Mobile Menu Toggle & Quick Contact Icons (Mobile Only) -->
-    <div class="md:hidden flex items-center space-x-4">
-      <a href="https://wa.me/523313674036" target="_blank" class="text-gray-600 hover:text-primary-blue transition-colors text-xl">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="tel:+523313674036" class="text-gray-600 hover:text-primary-blue transition-colors text-xl"><i class="fas fa-phone"></i></a>
-      <button id="mobile-menu-button" class="text-gray-600 hover:text-primary-blue focus:outline-none">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
+    <div id="app" class="w-full max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-primary mb-2">Simulador de Examen POO</h1>
+            <p class="text-gray-600 text-lg">Practica con las preguntas de tus lecturas y temas.</p>
+        </header>
+
+        <!-- Contadores de Juego -->
+        <div class="flex justify-between items-center mb-6 p-4 bg-white rounded-xl shadow-md">
+            <div class="text-center">
+                <p class="text-sm font-medium text-gray-500">Puntaje</p>
+                <p id="score-display" class="text-3xl font-bold text-secondary">0</p>
+            </div>
+            <div class="text-center">
+                <p class="text-sm font-medium text-gray-500">Pregunta</p>
+                <p id="question-count-display" class="text-3xl font-bold text-primary">1 / 0</p>
+            </div>
+            <div class="text-center">
+                <p class="text-sm font-medium text-gray-500">Categoría</p>
+                <p id="category-display" class="text-xl font-semibold text-gray-700">General</p>
+            </div>
+        </div>
+
+        <!-- Área Principal de Pregunta -->
+        <div id="quiz-area" class="bg-white p-6 md:p-10 rounded-xl card transition-all duration-300 min-h-[300px] flex flex-col justify-between">
+            <div id="question-container" class="mb-6">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4" id="question-text">Cargando pregunta...</h2>
+                <div id="answer-options-container" class="space-y-4">
+                    <!-- Opciones de respuesta se inyectarán aquí -->
+                </div>
+            </div>
+
+            <!-- Controles y Feedback -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-4 border-t border-gray-100">
+                <button id="check-answer-button" onclick="checkAnswer()" class="w-full md:w-auto px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-indigo-700 transition duration-150 transform hover:scale-[1.02] shadow-lg mb-4 md:mb-0">
+                    Comprobar Respuesta
+                </button>
+                <div id="feedback-message" class="text-lg font-bold"></div>
+                <button id="next-question-button" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-emerald-600 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden">
+                    Siguiente Pregunta
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal de Resultado Final -->
+        <div id="final-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center p-4 z-50">
+            <div class="bg-white p-8 rounded-xl max-w-md w-full text-center">
+                <h3 class="text-3xl font-bold mb-4 text-primary">Práctica Finalizada</h3>
+                <p class="text-gray-700 mb-6 text-xl">Tu puntaje final es:</p>
+                <p id="final-score" class="text-6xl font-extrabold text-secondary mb-8">0/0</p>
+                <button onclick="restartQuiz()" class="px-8 py-3 bg-warning text-white font-bold rounded-xl hover:bg-amber-600 transition duration-150 transform hover:scale-[1.05]">
+                    Volver a Empezar
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Navigation (Desktop & Mobile Expanded) -->
-    <nav id="main-nav" class="nav-menu hidden-mobile md:flex md:items-center md:space-x-8 absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent p-6 md:p-0 shadow-lg md:shadow-none">
-      <ul class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-lg font-medium">
-        <li><a href="index.html" class="block text-gray-700 hover:text-primary-blue transition-colors py-2 md:py-0">Inicio</a></li>
-        <li><a href="servicios.html" class="block text-gray-700 hover:text-primary-blue transition-colors py-2 md:py-0">Servicios</a></li>
-        <li><a href="nosotros.html" class="block text-gray-700 hover:text-primary-blue transition-colors py-2 md:py-0">Nosotros</a></li>
-        <li><a href="contacto.html" class="block text-gray-700 hover:text-primary-blue transition-colors py-2 md:py-0">Contacto</a></li>
-      </ul>
-      <!-- Desktop Quick Contact & CTA Button -->
-      <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4 mt-6 md:mt-0">
-        <a href="https://wa.me/523313674036" target="_blank" class="hidden text-gray-600 hover:text-primary-blue transition-colors text-xl">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="#contacto" class="hidden text-gray-600 hover:text-primary-blue transition-colors text-xl">
-          <i class="far fa-comment-dots"></i>
-        </a>
-        <a href="tel:+523313674036" class="bg-primary-blue text-white font-semibold py-2 px-6 rounded-full hover:bg-primary-blue-hover transition-colors btn-hover-scale text-lg shadow-md flex items-center">
-          <i class="fas fa-phone mr-2"></i> Llamar ahora
-        </a>
-        <a href="https://wa.me/523313674036" target="_blank" class="bg-transparent border-2 border-primary-blue text-primary-blue font-semibold py-2 px-6 rounded-full hover:bg-primary-blue hover:text-white transition-colors btn-hover-scale text-lg shadow-md flex items-center">
-          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-        </a>
-      </div>
-    </nav>
-  </div>
-</header>
+    <script>
+        // --- 1. Definición de las Preguntas y Respuestas ---
+        const allQuestions = [
+            // Verdadero/Falso (T/F)
+            { type: 'tf', category: 'Semana 2', question: 'Cada declaración de clase que empieza con la palabra clave "public" debe almacenarse en un archivo que tenga exactamente el mismo nombre de la clase, y que termine con la extensión .java.', answer: true, explanation: 'Esto es una regla fundamental para las clases públicas en Java.' },
+            { type: 'tf', category: 'Semana 4', question: 'La expresión $((x>y)$ && $(a<b))$ es verdadera si $(x>y)$ es verdadera, o si $(a<b)$ es verdadera.', answer: false, explanation: 'La expresión "&&" (AND lógico) requiere que *ambas* condiciones sean verdaderas. La descripción es para el operador "||" (OR lógico).' },
+            { type: 'tf', category: 'Semana 5', question: 'Cuando una clase redefine un método de su superclase (mismo encabezado, diferente cuerpo), se dice que la subclase "sobrecarga" (overloads) a ese método.', answer: false, explanation: 'El término correcto es "sobrescribe" (overrides).' },
+            { type: 'tf', category: 'Semana 5', question: 'La clase "Object" es la raíz de todas las jerarquías de herencia en Java.', answer: true, explanation: 'Todas las clases en Java, directa o indirectamente, heredan de "Object".' },
+            { type: 'tf', category: 'Semana 6', question: 'Un método que se declara como "final" en una superclase no se puede sobrescribir en una subclase.', answer: true, explanation: 'El modificador "final" previene que un método sea sobrescrito.' },
+            { type: 'tf', category: 'Semana 6', question: 'Una clase abstracta debe forzosamente contener al menos un método abstracto.', answer: false, explanation: 'Una clase puede ser declarada "abstracta" incluso sin tener métodos abstractos, para prevenir su instanciación.' },
+            { type: 'tf', category: 'Semana 7', question: 'Si dentro de un bloque try se lanza una excepción para la cual no hay una cláusula catch, el programa continúa después del último bloque catch.', answer: false, explanation: 'Si no hay un catch que la maneje, la excepción se propaga y el programa termina (o se propaga a un nivel superior).' },
+            { type: 'tf', category: 'Semana 7', question: 'Un bloque catch que atrapa una excepción de un tipo que es superclase de otros tipos de excepciones, también atrapará a estas últimas excepciones.', answer: true, explanation: 'Esto se debe al polimorfismo y es la práctica común para manejar múltiples excepciones relacionadas.' },
+            { type: 'tf', category: 'Semana 4', question: 'La instrucción do...while evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción do...while evalúa la condición *después* de ejecutar el cuerpo, garantizando que se ejecute al menos una vez.' },
+            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, no es necesario especificar la extensión ".class" en la línea de comandos (ej: "java MiClase" en lugar de "java MiClase.class").', answer: true, explanation: 'El comando "java" solo requiere el nombre de la clase, no la extensión ".class".' },
 
-<main>
-  <!-- Hero Section -->
-  <section id="inicio" class="hero-gradient relative h-screen flex items-center justify-center text-center px-6 pt-24 pb-12">
-    <div class="relative z-10 max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-serif font-extrabold text-gray-900 leading-tight mb-4 animate-fade-in-up">
-        Tu sueño no tiene fronteras, nosotros tampoco
-      </h1>
-      <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
-        Especialistas en trámites y asesoría migratoria en México. Confianza y experiencia a tu servicio.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-400">
-        <a href="tel:+523313674036" class="bg-primary-blue text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-primary-blue-hover transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
-          <i class="fas fa-phone mr-2"></i> Llamar ahora
-        </a>
-        <a href="https://wa.me/523313674036" target="_blank" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-200 transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
-          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
+            // Selección Múltiple (MC) - Simula Completar
+            {
+                type: 'mc', category: 'Semana 2',
+                question: 'El método ______ de Scanner lee caracteres hasta encontrar una nueva línea, y después devuelve esos caracteres como un objeto String.',
+                options: ['next()', 'nextChar()', 'nextLine()', 'readString()'],
+                answer: 'nextLine()',
+                explanation: 'El método nextLine() es el que captura la línea completa, incluyendo espacios, hasta el caracter de nueva línea.'
+            },
+            {
+                type: 'mc', category: 'Semana 3',
+                question: 'Para ejecutar un programa de Java, primero es ______ y después ejecutado por la Máquina Virtual de Java (JVM).',
+                options: ['Interpretado', 'Vinculado', 'Compilado', 'Depurado'],
+                answer: 'Compilado',
+                explanation: 'El código fuente de Java primero se compila a bytecode, y luego la JVM lo ejecuta.'
+            },
+            {
+                type: 'mc', category: 'Semana 4',
+                question: 'La instrucción **switch** selecciona una de varias acciones, con base a los posibles valores de una variable o expresión entera, o un ______.',
+                options: ['boolean', 'float', 'string', 'long'],
+                answer: 'string',
+                explanation: 'En Java, el switch puede usarse con tipos primitivos enteros, enums, y también con Strings.'
+            },
 
-  <!-- Featured Services Section -->
-  <section id="servicios" class="bg-white py-16 px-6">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-serif font-bold text-gray-900 mb-12">Nuestros Servicios Destacados</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="p-8 bg-light-secondary rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-user-friends text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-3">Asesoría Migratoria</h3>
-          <p class="text-gray-600">Orientación experta para cada paso de tu proceso migratorio.</p>
-        </div>
-        <div class="p-8 bg-light-secondary rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-home text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-3">Residencias</h3>
-          <p class="text-gray-600">Apoyo integral para obtener tu residencia temporal o permanente.</p>
-        </div>
-        <div class="p-8 bg-light-secondary rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-gavel text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-3">Regularizaciones</h3>
-          <p class="text-gray-600">Soluciones para regularizar tu estatus migratorio en México.</p>
-        </div>
-        <div class="p-8 bg-light-secondary rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-plane-departure text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-3">Visas</h3>
-          <p class="text-gray-600">Gestión de visas para diversos propósitos y nacionalidades.</p>
-        </div>
-        <div class="p-8 bg-light-secondary rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-briefcase text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-3">Permisos de Trabajo</h3>
-          <p class="text-gray-600">Asistencia para obtener los permisos laborales necesarios.</p>
-        </div>
-        <div class="p-8 bg-light-secondary rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
-          <i class="fas fa-file-alt text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-3">Constancias de Empleador</h3>
-          <p class="text-gray-600">Apoyo a empresas para cumplir con la normativa migratoria.</p>
-        </div>
-      </div>
-      <div class="mt-12">
-        <a href="servicios.html" class="bg-primary-blue text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-primary-blue-hover transition-colors btn-hover-scale shadow-lg">
-          Ver todos los trámites
-        </a>
-      </div>
-    </div>
-  </section>
+            // Emparejamiento (Matching)
+            {
+                type: 'matching', category: 'Semana 3',
+                question: 'Empareje las unidades de almacenamiento con su equivalencia (1024 unidades de la anterior).',
+                pairs: [
+                    { left: '1 gigabyte (GB)', right: '1024 megabytes (MB)' },
+                    { left: '1 terabyte (TB)', right: '1024 gigabytes (GB)' },
+                    { left: '1 petabyte (PB)', right: '1024 terabytes (TB)' },
+                    { left: '1 exabyte (EB)', right: '1024 petabytes (PB)' },
+                    { left: '1 megabyte (MB)', right: '1024 kilobytes (KB)' }
+                ]
+            }
+        ];
 
-  <!-- Benefits of Choosing MEX-IUS -->
-  <section class="bg-light-bg py-16 px-6">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-serif font-bold text-gray-900 mb-12">¿Por qué elegir MEX-IUS?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-handshake text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-2">Atención Personalizada</h3>
-          <p class="text-gray-600">Cada caso es único, te brindamos un servicio a tu medida.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-user-shield text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-2">Expertos Certificados</h3>
-          <p class="text-gray-600">Nuestro equipo está altamente calificado y actualizado.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-lightbulb text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-2">Procesos Claros</h3>
-          <p class="text-gray-600">Te guiamos con transparencia en cada etapa del trámite.</p>
-        </div>
-        <div class="p-6 flex flex-col items-center">
-          <i class="fas fa-sync-alt text-primary-blue text-5xl mb-4"></i>
-          <h3 class="text-2xl font-serif font-semibold text-gray-900 mb-2">Actualización Constante</h3>
-          <p class="text-gray-600">Siempre al día con las últimas leyes y regulaciones migratorias.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        // --- 2. Variables de Estado Globales ---
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questions = []; // Array que contendrá las preguntas barajadas
+        let quizState = 'in_progress'; // 'in_progress', 'finished'
 
-  <!-- Final Call to Action -->
-  <section id="asesoria" class="bg-light-secondary py-20 px-6 text-center">
-    <div class="container mx-auto">
-      <h2 class="text-4xl md:text-5xl font-serif font-extrabold text-gray-900 mb-6">
-        ¿Listo para iniciar tu trámite migratorio?
-      </h2>
-      <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-        Agenda una asesoría gratuita con nuestros expertos y aclara todas tus dudas.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <a href="tel:+523313674036" class="bg-primary-blue text-white font-bold py-3 px-8 rounded-full text-xl hover:bg-primary-blue-hover transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
-          <i class="fas fa-phone mr-2"></i> Llamar ahora
-        </a>
-        <a href="https://wa.me/523313674036" target="_blank" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full text-xl hover:bg-gray-200 transition-colors btn-hover-scale shadow-lg flex items-center justify-center">
-          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
+        // --- 3. Funciones de Utilidad ---
 
-<!-- Footer -->
-<footer id="contacto" class="bg-gray-800 text-gray-300 py-12 px-6">
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 border-b border-gray-600 pb-8 mb-8">
-    <!-- Logo & Description -->
-    <div class="col-span-1 md:col-span-2">
-      <a href="index.html" class="text-3xl font-sans font-black text-primary-blue tracking-wide mb-4 block">MEX-IUS</a>
-      <p class="text-gray-400 leading-relaxed max-w-md">
-        Tu socio confiable en trámites migratorios en México. Ofrecemos asesoría experta y soluciones efectivas para tu legalidad en el país.
-      </p>
-    </div>
+        /**
+         * Baraja un array usando el algoritmo Fisher-Yates.
+         * @param {Array} array
+         */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
-    <!-- Contact Info -->
-    <div>
-      <h3 class="text-xl font-serif font-semibold text-white mb-4">Contacto</h3>
-      <ul class="space-y-2">
-        <li class="flex items-start">
-          <i class="fas fa-phone-alt text-primary-blue mr-2 mt-1"></i>
-          <div>
-            <a href="tel:+523313674036" class="block hover:text-white transition-colors">+52 33 1367 4036</a>
-            <a href="tel:+523340118290" class="block hover:text-white transition-colors">+52 33 4011 8290</a>
-            <a href="tel:+523318874483" class="block hover:text-white transition-colors">+52 33 1887 4483</a>
-          </div>
-        </li>
-        <li><i class="fas fa-envelope text-primary-blue mr-2"></i> <a href="mailto:mex.ius.gdl@gmail.com" class="hover:text-white transition-colors">mex.ius.gdl@gmail.com</a></li>
-        <li><i class="fas fa-map-marker-alt text-primary-blue mr-2"></i> Guadalajara, Jalisco</li>
-      </ul>
-    </div>
+        /**
+         * Inicializa el juego: baraja las preguntas y comienza.
+         */
+        function initializeQuiz() {
+            // Clonar y barajar todas las preguntas
+            questions = shuffleArray([...allQuestions]);
+            currentQuestionIndex = 0;
+            score = 0;
+            quizState = 'in_progress';
 
-    <!-- Useful Links -->
-    <div>
-      <h3 class="text-xl font-serif font-semibold text-white mb-4">Enlaces Útiles</h3>
-      <ul class="space-y-2">
-        <li><a href="servicios.html" class="hover:text-white transition-colors">Nuestros Servicios</a></li>
-        <li><a href="nosotros.html" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
-        <li><a href="contacto.html" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
-      </ul>
-    </div>
-  </div>
+            document.getElementById('final-modal').classList.add('hidden');
+            document.getElementById('final-modal').classList.remove('flex');
 
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between text-sm">
-    <p class="text-center md:text-left mb-4 md:mb-0">&copy; 2025 MEX-IUS. Todos los derechos reservados.</p>
-    <div class="flex space-x-6 mb-4 md:mb-0 text-gray-400">
-      <a href="#" class="hover:text-white transition-colors">Aviso de Privacidad</a>
-      <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
-    </div>
-    <div class="flex space-x-4 text-xl text-gray-400">
-      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
-      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-    </div>
-  </div>
-</footer>
+            updateScoreDisplay();
+            loadQuestion();
+        }
 
-<!-- JavaScript for interactivity -->
-<script>
-  // Mobile Menu Toggle Logic
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mainNav = document.getElementById('main-nav');
-  const menuIcon = mobileMenuButton.querySelector('i'); // Get the icon element
+        /**
+         * Actualiza los contadores de puntaje y pregunta.
+         */
+        function updateScoreDisplay() {
+            document.getElementById('score-display').textContent = score;
+            document.getElementById('question-count-display').textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
+            const currentQ = questions[currentQuestionIndex];
+            if (currentQ) {
+                document.getElementById('category-display').textContent = currentQ.category;
+            } else {
+                document.getElementById('category-display').textContent = 'General';
+            }
+        }
 
-  mobileMenuButton.addEventListener('click', () => {
-    mainNav.classList.toggle('hidden-mobile'); // Toggle custom class to show/hide
-    // Change icon from bars to times and vice-versa
-    if (mainNav.classList.contains('hidden-mobile')) {
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-    } else {
-      menuIcon.classList.remove('fa-bars');
-      menuIcon.classList.add('fa-times');
-    }
-  });
+        /**
+         * Carga y renderiza la pregunta actual.
+         */
+        function loadQuestion() {
+            // Si el índice excede el número de preguntas, finaliza el quiz.
+            if (currentQuestionIndex >= questions.length) {
+                endQuiz();
+                return;
+            }
 
-  // Close mobile menu when a navigation link is clicked
-  document.querySelectorAll('#main-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      // Only close if the menu is open and it's a mobile view
-      if (!mainNav.classList.contains('hidden-mobile') && window.innerWidth < 768) {
-        mainNav.classList.add('hidden-mobile');
-        menuIcon.classList.remove('fa-times');
-        menuIcon.classList.add('fa-bars');
-      }
-    });
-  });
+            const currentQ = questions[currentQuestionIndex];
 
-  // Smooth scrolling for all anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault(); // Prevent default jump behavior
+            // Resetear UI
+            document.getElementById('question-text').innerHTML = currentQ.question;
+            document.getElementById('feedback-message').textContent = '';
+            document.getElementById('check-answer-button').classList.remove('hidden');
+            document.getElementById('next-question-button').classList.add('hidden');
+            document.getElementById('answer-options-container').innerHTML = '';
+            document.getElementById('quiz-area').classList.remove('correct-answer', 'incorrect-answer');
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth' // Smooth scroll effect
-      });
-    });
-  });
-</script>
+            // Renderizar basado en el tipo de pregunta
+            if (currentQ.type === 'tf') {
+                renderTrueFalse(currentQ);
+            } else if (currentQ.type === 'mc') {
+                renderMultipleChoice(currentQ);
+            } else if (currentQ.type === 'matching') {
+                renderMatching(currentQ);
+            }
+
+            updateScoreDisplay();
+        }
+
+        // --- 4. Funciones de Renderizado por Tipo de Pregunta ---
+
+        /**
+         * Renderiza la pregunta Verdadero/Falso.
+         * @param {Object} q - Objeto de pregunta.
+         */
+        function renderTrueFalse(q) {
+            const container = document.getElementById('answer-options-container');
+            container.innerHTML = `
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <label class="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors w-full">
+                        <input type="radio" name="tf_answer" value="true" class="h-5 w-5 text-primary focus:ring-primary">
+                        <span class="ml-3 text-lg font-medium text-gray-700">Verdadero</span>
+                    </label>
+                    <label class="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors w-full">
+                        <input type="radio" name="tf_answer" value="false" class="h-5 w-5 text-primary focus:ring-primary">
+                        <span class="ml-3 text-lg font-medium text-gray-700">Falso</span>
+                    </label>
+                </div>
+            `;
+        }
+
+        /**
+         * Renderiza la pregunta de Selección Múltiple.
+         * @param {Object} q - Objeto de pregunta.
+         */
+        function renderMultipleChoice(q) {
+            const container = document.getElementById('answer-options-container');
+            const shuffledOptions = shuffleArray([...q.options]); // Barajar opciones
+            container.innerHTML = shuffledOptions.map(option => `
+                <label class="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
+                    <input type="radio" name="mc_answer" value="${option}" class="h-5 w-5 text-primary focus:ring-primary radio-option">
+                    <span class="ml-3 text-lg font-medium text-gray-700">${option}</span>
+                </label>
+            `).join('');
+        }
+
+        /**
+         * Renderiza la pregunta de Emparejamiento.
+         * @param {Object} q - Objeto de pregunta.
+         */
+        function renderMatching(q) {
+            const container = document.getElementById('answer-options-container');
+            const leftOptions = q.pairs.map(p => p.left);
+            const rightOptions = q.pairs.map(p => p.right);
+            const shuffledRight = shuffleArray([...rightOptions]); // Barajar el lado derecho
+
+            container.classList.add('space-y-3');
+            container.innerHTML = leftOptions.map((leftItem, index) => `
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center bg-gray-50 p-3 rounded-lg matching-pair" data-left="${leftItem}">
+                    <span class="font-medium text-gray-700 w-full sm:w-1/2 mb-2 sm:mb-0">${leftItem}</span>
+                    <select id="select_${index}" class="form-select mt-1 block w-full sm:w-1/2 rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary p-2 matching-select" data-correct-right="${q.pairs.find(p => p.left === leftItem).right}">
+                        <option value="">Elegir...</option>
+                        ${shuffledRight.map(rightItem => `<option value="${rightItem}">${rightItem}</option>`).join('')}
+                    </select>
+                </div>
+            `).join('');
+        }
+
+        // --- 5. Funciones de Verificación de Respuesta ---
+
+        /**
+         * Comprueba la respuesta del usuario para la pregunta actual.
+         */
+        function checkAnswer() {
+            const currentQ = questions[currentQuestionIndex];
+            let isCorrect = false;
+
+            if (currentQ.type === 'tf') {
+                isCorrect = checkTrueFalse(currentQ);
+            } else if (currentQ.type === 'mc') {
+                isCorrect = checkMultipleChoice(currentQ);
+            } else if (currentQ.type === 'matching') {
+                isCorrect = checkMatching(currentQ);
+            }
+
+            if (isCorrect) {
+                score++;
+                document.getElementById('feedback-message').innerHTML = `<span class="text-secondary">¡Correcto!</span>`;
+                document.getElementById('quiz-area').classList.add('correct-answer');
+            } else {
+                document.getElementById('feedback-message').innerHTML = `<span class="text-danger">Incorrecto.</span><br><span class="text-sm font-normal text-gray-600"><strong>Explicación:</strong> ${currentQ.explanation}</span>`;
+                document.getElementById('quiz-area').classList.add('incorrect-answer');
+            }
+
+            // Deshabilitar botón de comprobar y mostrar siguiente
+            document.getElementById('check-answer-button').classList.add('hidden');
+            document.getElementById('next-question-button').classList.remove('hidden');
+            updateScoreDisplay();
+            disableOptions(currentQ.type);
+        }
+
+        /**
+         * Deshabilita las opciones de respuesta después de la comprobación.
+         * @param {string} type - Tipo de pregunta.
+         */
+        function disableOptions(type) {
+            if (type === 'tf') {
+                document.querySelectorAll('input[name="tf_answer"]').forEach(input => input.disabled = true);
+            } else if (type === 'mc') {
+                document.querySelectorAll('input[name="mc_answer"]').forEach(input => {
+                    input.disabled = true;
+                    // Resaltar respuesta correcta
+                    if (input.value === questions[currentQuestionIndex].answer) {
+                        input.parentElement.classList.add('border-2', 'border-secondary', 'bg-emerald-100');
+                    }
+                });
+            } else if (type === 'matching') {
+                document.querySelectorAll('.matching-select').forEach(select => {
+                    select.disabled = true;
+                    const correctValue = select.getAttribute('data-correct-right');
+                    // Resaltar correctos/incorrectos
+                    const parentDiv = select.closest('.matching-pair');
+                    if (select.value === correctValue) {
+                         parentDiv.classList.add('border-2', 'border-secondary', 'bg-emerald-100');
+                    } else if (select.value !== "") {
+                        parentDiv.classList.add('border-2', 'border-danger', 'bg-red-100');
+                    }
+                    parentDiv.innerHTML += `<span class="text-sm text-gray-700 mt-1 sm:mt-0 sm:ml-4"> (Correcto: ${correctValue})</span>`;
+                });
+            }
+        }
+
+
+        /**
+         * Lógica de comprobación para Verdadero/Falso.
+         * @param {Object} q - Objeto de pregunta.
+         * @returns {boolean}
+         */
+        function checkTrueFalse(q) {
+            const selected = document.querySelector('input[name="tf_answer"]:checked');
+            if (!selected) return false;
+            return selected.value === q.answer.toString();
+        }
+
+        /**
+         * Lógica de comprobación para Selección Múltiple.
+         * @param {Object} q - Objeto de pregunta.
+         * @returns {boolean}
+         */
+        function checkMultipleChoice(q) {
+            const selected = document.querySelector('input[name="mc_answer"]:checked');
+            if (!selected) return false;
+            return selected.value === q.answer;
+        }
+
+        /**
+         * Lógica de comprobación para Emparejamiento.
+         * @param {Object} q - Objeto de pregunta.
+         * @returns {boolean}
+         */
+        function checkMatching(q) {
+            const selects = document.querySelectorAll('.matching-select');
+            let allCorrect = true;
+
+            selects.forEach(select => {
+                const correctValue = select.getAttribute('data-correct-right');
+                if (select.value !== correctValue) {
+                    allCorrect = false;
+                }
+            });
+
+            return allCorrect;
+        }
+
+        /**
+         * Pasa a la siguiente pregunta o finaliza el quiz.
+         */
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        /**
+         * Muestra el modal de resultados finales.
+         */
+        function endQuiz() {
+            document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+            document.getElementById('final-modal').classList.remove('hidden');
+            document.getElementById('final-modal').classList.add('flex');
+        }
+
+        /**
+         * Reinicia el quiz.
+         */
+        function restartQuiz() {
+            initializeQuiz();
+        }
+
+        // Inicializar el quiz cuando la ventana cargue
+        window.onload = initializeQuiz;
+    </script>
 </body>
 </html>
