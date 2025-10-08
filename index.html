@@ -19,7 +19,6 @@
                         'secondary': '#10b981', // Emerald-500
                         'danger': '#ef4444', // Red-500
                         'warning': '#f59e0b', // Amber-500
-                        'gemini': '#4285F4', // Blue for Gemini feature
                     }
                 }
             }
@@ -49,28 +48,6 @@
             border-radius: 4px;
             font-family: 'Consolas', 'Menlo', 'Monospace';
             font-weight: 700;
-        }
-        /* Estilo para el área de explicación de Gemini */
-        #gemini-explanation {
-            white-space: pre-wrap;
-            background-color: #f0f8ff; /* Light Blue */
-            border-radius: 8px;
-            padding: 16px;
-            border: 1px solid #d4e3f4;
-            margin-top: 16px;
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #4285F4;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            margin-right: 8px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -113,17 +90,10 @@
                     Comprobar Respuesta
                 </button>
                 <div id="feedback-message" class="text-lg font-bold"></div>
-                <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full md:w-auto">
-                    <button id="gemini-button" onclick="getGeminiExplanation()" class="px-6 py-3 bg-gemini text-white font-bold rounded-xl hover:bg-gemini/90 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden flex items-center justify-center">
-                        <span class="text-2xl mr-2">✨</span> Explicación Avanzada
-                    </button>
-                    <button id="next-question-button" onclick="nextQuestion()" class="px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-emerald-600 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden">
-                        Siguiente Pregunta
-                    </button>
-                </div>
+                <button id="next-question-button" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-emerald-600 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden">
+                    Siguiente Pregunta
+                </button>
             </div>
-            <!-- Área para la explicación de Gemini -->
-            <div id="gemini-explanation" class="text-gray-700 text-sm hidden"></div>
         </div>
 
         <!-- Modal de Resultado Final -->
@@ -212,98 +182,12 @@
         ];
 
         // --- 2. Variables de Estado Globales ---
-        const API_KEY = ""; // Clave API de Gemini
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
-        
         let currentQuestionIndex = 0;
         let score = 0;
         let questions = []; // Array que contendrá las preguntas barajadas
         let quizState = 'in_progress'; // 'in_progress', 'finished'
 
-        // --- 3. Funciones de Utilidad y API de Gemini ---
-
-        /**
-         * Realiza una solicitud al API de Gemini con reintentos.
-         * @param {Object} payload - Carga útil para la API.
-         * @param {number} maxRetries - Número máximo de reintentos.
-         * @param {number} delay - Retraso inicial en milisegundos.
-         * @returns {Promise<Object>} Respuesta JSON del API.
-         */
-        async function fetchWithRetry(payload, maxRetries = 3, delay = 1000) {
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (response.ok) {
-                        return response.json();
-                    }
-                } catch (error) {
-                    console.error(`Fetch attempt ${i + 1} failed:`, error);
-                }
-                if (i < maxRetries - 1) {
-                    await new Promise(resolve => setTimeout(resolve, delay * (2 ** i)));
-                }
-            }
-            throw new Error("API request failed after multiple retries.");
-        }
-
-
-        /**
-         * Obtiene una explicación avanzada de Gemini para la pregunta actual.
-         */
-        async function getGeminiExplanation() {
-            const currentQ = questions[currentQuestionIndex];
-            const explanationDiv = document.getElementById('gemini-explanation');
-            const button = document.getElementById('gemini-button');
-            
-            explanationDiv.classList.remove('hidden');
-            button.disabled = true;
-
-            // Mostrar spinner de carga
-            explanationDiv.innerHTML = '<div class="flex items-center text-gemini"><div class="spinner"></div> Generando explicación avanzada con Gemini...</div>';
-
-            try {
-                // 1. Obtener la pregunta y la respuesta (para contexto)
-                let fullPrompt = currentQ.question.replace('<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>', currentQ.answer);
-                fullPrompt = fullPrompt.replace(/<\/?code>/g, ''); // Limpiar etiquetas <code>
-                
-                let answerText = `Respuesta correcta: ${currentQ.answer}`;
-                if (currentQ.type === 'matching') {
-                    answerText = "Relaciones correctas: " + currentQ.pairs.map(p => `${p.left} -> ${p.right}`).join("; ");
-                } else if (currentQ.type === 'tf') {
-                    answerText = `Respuesta correcta: ${currentQ.answer ? 'Verdadero' : 'Falso'}`;
-                }
-
-                const userQuery = `La pregunta de programación es: "${fullPrompt}". La ${answerText}. Proporciona una explicación concisa y detallada del concepto técnico detrás de esta pregunta (máximo 3 párrafos). Incluye un breve ejemplo de código en Java relevante al tema.`;
-
-                const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    systemInstruction: {
-                        parts: [{ text: "Actúa como un profesor universitario experto en Programación Orientada a Objetos (POO) en Java. Proporciona una explicación pedagógica, estructurada y en español. Utiliza formato Markdown para el código." }]
-                    },
-                };
-
-                const result = await fetchWithRetry(payload);
-                
-                const generatedText = result.candidates?.[0]?.content?.parts?.[0]?.text || "No se pudo generar una explicación. Inténtalo de nuevo.";
-                
-                // 2. Renderizar la explicación
-                explanationDiv.innerHTML = `
-                    <h4 class="text-lg font-semibold text-gemini mb-2 border-b border-gemini/50 pb-1">Análisis Detallado por Gemini</h4>
-                    <p>${generatedText}</p>
-                `;
-
-            } catch (error) {
-                console.error("Error al obtener la explicación de Gemini:", error);
-                explanationDiv.innerHTML = `<span class="text-danger">Hubo un error al conectar con Gemini. Por favor, revisa la consola o inténtalo más tarde.</span>`;
-            } finally {
-                button.disabled = false;
-            }
-        }
-
+        // --- 3. Funciones de Utilidad ---
 
         /**
          * Baraja un array usando el algoritmo Fisher-Yates.
@@ -366,8 +250,6 @@
             document.getElementById('feedback-message').textContent = '';
             document.getElementById('check-answer-button').classList.remove('hidden');
             document.getElementById('next-question-button').classList.add('hidden');
-            document.getElementById('gemini-button').classList.add('hidden'); // Ocultar botón de Gemini
-            document.getElementById('gemini-explanation').classList.add('hidden'); // Ocultar explicación
             document.getElementById('answer-options-container').innerHTML = '';
             document.getElementById('quiz-area').classList.remove('correct-answer', 'incorrect-answer');
 
@@ -469,10 +351,9 @@
                 document.getElementById('quiz-area').classList.add('incorrect-answer');
             }
 
-            // Deshabilitar botón de comprobar y mostrar siguiente + Gemini
+            // Deshabilitar botón de comprobar y mostrar siguiente
             document.getElementById('check-answer-button').classList.add('hidden');
             document.getElementById('next-question-button').classList.remove('hidden');
-            document.getElementById('gemini-button').classList.remove('hidden'); // Mostrar botón de Gemini
             updateScoreDisplay();
             disableOptions(currentQ.type);
         }
