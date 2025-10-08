@@ -15,7 +15,7 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#4f46e5', // Indigo-600
+                        'primary': '#f97316', // Orange-500 (Nuevo color primario)
                         'secondary': '#10b981', // Emerald-500
                         'danger': '#ef4444', // Red-500
                         'warning': '#f59e0b', // Amber-500
@@ -86,7 +86,7 @@
 
             <!-- Controles y Feedback -->
             <div class="flex flex-col md:flex-row justify-between items-center pt-4 border-t border-gray-100">
-                <button id="check-answer-button" onclick="checkAnswer()" class="w-full md:w-auto px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-indigo-700 transition duration-150 transform hover:scale-[1.02] shadow-lg mb-4 md:mb-0">
+                <button id="check-answer-button" onclick="checkAnswer()" class="w-full md:w-auto px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition duration-150 transform hover:scale-[1.02] shadow-lg mb-4 md:mb-0">
                     Comprobar Respuesta
                 </button>
                 <div id="feedback-message" class="text-lg font-bold"></div>
@@ -121,7 +121,7 @@
             { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, primero es compilado y después ejecutado por la Máquina Virtual de Java (JVM).', answer: true, explanation: 'El código Java se compila a bytecode, el cual es luego interpretado y ejecutado por la JVM.' },
             
             { type: 'tf', category: 'Semana 4', question: 'La instrucción <code>do...while</code> evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción <code>do...while</code> evalúa la condición *después* de ejecutar el cuerpo, por lo que garantiza que el cuerpo se ejecute al menos una vez.' },
-            { type: 'tf', category: 'Semana 4', question: 'La expresión <code>((x>y) && (a<b))</code> es verdadera si <code>(x>y)</code> es verdadera, o si <code>(a<b)</code> es verdadera.', answer: false, explanation: 'La expresión <code>&&</code> (AND lógico) requiere que *ambas* condiciones sean verdaderas. El enunciado describe el operador <code>||</code> (OR lógico).' },
+            { type: 'tf', category: 'Semana 4', question: 'La expresión <code>((x > y) && (a < b))</code> es verdadera si <code>(x > y)</code> es verdadera, o si <code>(a < b)</code> es verdadera.', answer: false, explanation: 'La expresión <code>&&</code> (AND lógico) requiere que *ambas* condiciones sean verdaderas. El enunciado describe el operador <code>||</code> (OR lógico).' },
             { type: 'tf', category: 'Semana 4', question: 'Si al principio, la condición de continuación de ciclo de un encabezado <code>for</code> es falsa, el programa no ejecuta el cuerpo de la instrucción <code>for</code>.', answer: true, explanation: 'La condición se evalúa antes de la primera iteración, y si es falsa, el ciclo se omite por completo.' },
             { type: 'tf', category: 'Semana 4', question: 'Al enumerar las instrucciones <code>case</code> en forma consecutiva, sin instrucciones entre ellas, se puede ejecutar las instrucciones del último <code>case</code> de la secuencia. (Esto se conoce como "fall-through")', answer: true, explanation: 'Esto es una característica del <code>switch</code> en Java (fall-through). Si se cumple el <code>case 0</code>, se ejecutan las instrucciones de <code>case 2</code> porque no hay <code>break</code> antes.' },
 
