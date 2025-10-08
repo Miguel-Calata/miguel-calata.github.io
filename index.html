@@ -15,10 +15,11 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#f97316', // Orange-500 (Nuevo color primario)
+                        'primary': '#f97316', // Orange-500
                         'secondary': '#10b981', // Emerald-500
                         'danger': '#ef4444', // Red-500
                         'warning': '#f59e0b', // Amber-500
+                        'gemini': '#4285F4', // Blue for Gemini feature
                     }
                 }
             }
@@ -48,6 +49,28 @@
             border-radius: 4px;
             font-family: 'Consolas', 'Menlo', 'Monospace';
             font-weight: 700;
+        }
+        /* Estilo para el área de explicación de Gemini */
+        #gemini-explanation {
+            white-space: pre-wrap;
+            background-color: #f0f8ff; /* Light Blue */
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #d4e3f4;
+            margin-top: 16px;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #4285F4;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -90,10 +113,17 @@
                     Comprobar Respuesta
                 </button>
                 <div id="feedback-message" class="text-lg font-bold"></div>
-                <button id="next-question-button" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-emerald-600 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden">
-                    Siguiente Pregunta
-                </button>
+                <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full md:w-auto">
+                    <button id="gemini-button" onclick="getGeminiExplanation()" class="px-6 py-3 bg-gemini text-white font-bold rounded-xl hover:bg-gemini/90 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden flex items-center justify-center">
+                        <span class="text-2xl mr-2">✨</span> Explicación Avanzada
+                    </button>
+                    <button id="next-question-button" onclick="nextQuestion()" class="px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-emerald-600 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden">
+                        Siguiente Pregunta
+                    </button>
+                </div>
             </div>
+            <!-- Área para la explicación de Gemini -->
+            <div id="gemini-explanation" class="text-gray-700 text-sm hidden"></div>
         </div>
 
         <!-- Modal de Resultado Final -->
@@ -111,30 +141,16 @@
 
     <script>
         // --- 1. Definición de las Preguntas y Respuestas (Extraídas textualmente del PDF) ---
+        // Total: 22 preguntas (4 Completar + 1 Emparejar + 17 V/F)
         const allQuestions = [
-            // Verdadero/Falso (T/F) - 15 preguntas
-            { type: 'tf', category: 'Semana 2', question: 'Cada declaración de clase que empieza con la palabra clave <code>public</code> debe almacenarse en un archivo que tenga exactamente el mismo nombre de la clase, y que termine con la extensión de nombre de archivo <code>.java</code>.', answer: true, explanation: 'Esto es una regla fundamental para las clases públicas en Java.' },
-            { type: 'tf', category: 'Semana 2', question: 'La declaración <code>Import</code> no es obligatoria cuando una clase en un paquete utiliza a otra clase en el mismo paquete.', answer: true, explanation: 'Las clases dentro del mismo paquete se pueden referenciar directamente sin una declaración <code>import</code>.' },
-            
-            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa compilado de Java desde la línea de comandos (conocido como Símbolo del sistema en Windows), no es necesario especificar la extensión del programa compilado. Por ejemplo para ejecutar el programa compilado del archivo fuente <code>Bienvenido.java</code>, basta con escribir <code>java Bienvenido</code>.', answer: true, explanation: 'El comando <code>java</code> solo requiere el nombre de la clase (<code>Bienvenido</code>) y no la extensión <code>.class</code>.' },
-            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, primero es compilado y después ejecutado por la Máquina Virtual de Java (JVM).', answer: true, explanation: 'El código Java se compila a bytecode, el cual es luego interpretado y ejecutado por la JVM.' },
-            
-            { type: 'tf', category: 'Semana 4', question: 'La instrucción <code>do...while</code> evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción <code>do...while</code> evalúa la condición *después* de ejecutar el cuerpo, por lo que garantiza que el cuerpo se ejecute al menos una vez.' },
-            { type: 'tf', category: 'Semana 4', question: 'La expresión <code>((x > y) && (a < b))</code> es verdadera si <code>(x > y)</code> es verdadera, o si <code>(a < b)</code> es verdadera.', answer: false, explanation: 'La expresión <code>&&</code> (AND lógico) requiere que *ambas* condiciones sean verdaderas. El enunciado describe el operador <code>||</code> (OR lógico).' },
-            { type: 'tf', category: 'Semana 4', question: 'Si al principio, la condición de continuación de ciclo de un encabezado <code>for</code> es falsa, el programa no ejecuta el cuerpo de la instrucción <code>for</code>.', answer: true, explanation: 'La condición se evalúa antes de la primera iteración, y si es falsa, el ciclo se omite por completo.' },
-            { type: 'tf', category: 'Semana 4', question: 'Al enumerar las instrucciones <code>case</code> en forma consecutiva, sin instrucciones entre ellas, se puede ejecutar las instrucciones del último <code>case</code> de la secuencia. (Esto se conoce como "fall-through")', answer: true, explanation: 'Esto es una característica del <code>switch</code> en Java (fall-through). Si se cumple el <code>case 0</code>, se ejecutan las instrucciones de <code>case 2</code> porque no hay <code>break</code> antes.' },
-
-            { type: 'tf', category: 'Semana 5', question: 'La clase <code>Object</code> es la raíz de todas las jerarquías de herencia en Java.', answer: true, explanation: 'Todas las clases en Java, directa o indirectamente, heredan de <code>Object</code>.' },
-            { type: 'tf', category: 'Semana 5', question: 'Si un constructor no asigna un valor a una variable de instancia (campo), de todas formas ésta se inicializa con su valor predeterminado.', answer: true, explanation: 'Java inicializa automáticamente las variables de instancia no asignadas (ej: 0 para números, <code>false</code> para booleanos, <code>null</code> para referencias a objetos).' },
-            
-            { type: 'tf', category: 'Semana 6', question: 'Si una superclase declara a un método como <code>abstract</code>, una subclase debe forzosamente implementar ese método.', answer: false, explanation: 'Solo las subclases *concretas* (no abstractas) deben implementar todos los métodos abstractos de su superclase.' },
-            { type: 'tf', category: 'Semana 6', question: 'Es posible crear un objeto de una clase abstracta si se asigna a una variable abstracta.', answer: false, explanation: 'Las clases abstractas no se pueden instanciar directamente con <code>new</code>, sin importar el tipo de la variable.' },
-            { type: 'tf', category: 'Semana 6', question: 'Una clase abstracta debe forzosamente contener un método abstracto.', answer: false, explanation: 'Una clase se puede declarar como <code>abstract</code> incluso si no contiene ningún método <code>abstract</code>, para simplemente evitar su instanciación.' },
-
-            { type: 'tf', category: 'Semana 7', question: 'Si dentro de un bloque <code>try</code> se lanza una excepción para la cual no hay una cláusula <code>catch</code> que corresponda a esa excepción, la ejecución del programa continúa en la siguiente instrucción después del último bloque <code>catch</code>.', answer: false, explanation: 'Si no se encuentra un <code>catch</code> correspondiente, la excepción se propaga y el programa termina de forma anormal (unhandled exception).' },
-            { type: 'tf', category: 'Semana 7', question: 'Un bloque <code>catch</code> que atrapa una excepción de un tipo que es superclase de otros tipos de excepciones, también atrapará a estas últimas excepciones.', answer: true, explanation: 'Debido a la herencia y el polimorfismo, un bloque <code>catch</code> de un tipo base (superclase) puede manejar cualquier excepción de una subclase de ese tipo.' },
-
-            // Selección Múltiple (MC) - 6 preguntas (2 originales + 4 corregidas)
+            // Selección Múltiple (MC) - Simula Completar - 4 preguntas
+            {
+                type: 'mc', category: 'Semana 2',
+                question: 'Cada declaración de clase que empieza con la palabra clave ______ debe almacenarse en un archivo que tenga exactamente el mismo nombre de la clase, y que termine con la extensión de nombre de archivo <code>.java</code>.',
+                options: ['private', 'protected', 'public', 'static'],
+                answer: 'public',
+                explanation: 'Esto es una regla fundamental: una clase solo puede ser pública si el nombre del archivo es exactamente igual al nombre de la clase, incluyendo el modificador <code>public</code>.'
+            },
             {
                 type: 'mc', category: 'Semana 2',
                 question: 'El método ______ de <code>Scanner</code> lee caracteres hasta encontrar una nueva línea, y después devuelve esos caracteres como un objeto <code>String</code>.',
@@ -143,40 +159,18 @@
                 explanation: 'El método <code>nextLine()</code> es el que captura la línea completa de entrada, incluyendo espacios, hasta el caracter de nueva línea.'
             },
             {
+                type: 'mc', category: 'Semana 2',
+                question: 'No se requiere un(a) ______ si siempre hacemos referencia a una clase con su nombre de clase completamente calificado.',
+                options: ['import', 'package', 'public', 'class'],
+                answer: 'import',
+                explanation: 'Si se utiliza el nombre de clase completamente calificado (Fully Qualified Class Name), no es necesaria la declaración <code>import</code>.'
+            },
+            {
                 type: 'mc', category: 'Semana 4',
-                question: 'La instrucción <code>switch</code> selecciona una de varias acciones, con base a los posibles valores de una variable o expresión entera, o un ______.',
-                options: ['boolean', 'float', 'string', 'long'],
-                answer: 'string',
-                explanation: 'En versiones modernas de Java, el <code>switch</code> puede usarse con tipos primitivos enteros, enums, y también con objetos de tipo <code>String</code>.'
-            },
-            // --- Preguntas T/F corregidas a MC/Completar ---
-            { 
-                type: 'mc', category: 'Semana 2', 
-                question: 'No se requiere un(a) ______ si siempre hacemos referencia a una clase con su nombre de clase completamente calificado.', 
-                options: ['import', 'package', 'public', 'class'], 
-                answer: 'import', 
-                explanation: 'Si se utiliza el nombre de clase completamente calificado (Fully Qualified Class Name), no es necesaria la declaración <code>import</code>.' 
-            },
-            { 
-                type: 'mc', category: 'Semana 5', 
-                question: 'Cuando una clase redefine al método de una superclase utilizando el mismo encabezado pero con otro cuerpo, se dice que la subclase ______ a ese método de la superclase.', 
-                options: ['sobrecarga', 'abstrae', 'sobrescribe', 'finaliza'], 
-                answer: 'sobrescribe', 
-                explanation: 'El término correcto es *sobrescribir* (override). *Sobrecargar* (overload) es tener el mismo nombre de método con diferente lista de parámetros.' 
-            },
-            { 
-                type: 'mc', category: 'Semana 6', 
-                question: 'Un método que se declara como ______ en una superclase no se puede sobrescribir en una subclase.', 
-                options: ['abstract', 'static', 'private', 'final'], 
-                answer: 'final', 
-                explanation: 'El modificador <code>final</code> impide que un método sea modificado o sobrescrito en cualquier subclase.' 
-            },
-            { 
-                type: 'mc', category: 'Semana 7', 
-                question: 'El bloque ______ es opcional, y si existe se debe colocar después del último bloque <code>catch</code>, o después del bloque <code>try</code> si no hay ningún bloque <code>catch</code>.', 
-                options: ['throw', 'finally', 'resource', 'catch'], 
-                answer: 'finally', 
-                explanation: 'El bloque <code>finally</code> contiene el código que se ejecuta incondicionalmente, ya sea que se lance o no una excepción.' 
+                question: 'La instrucción ______ selecciona una de varias acciones, con base a los posibles valores de una variable o expresión entera, o un <code>String</code>.',
+                options: ['for', 'if/else', 'switch', 'do/while'],
+                answer: 'switch',
+                explanation: 'La instrucción <code>switch</code> es la que permite seleccionar entre múltiples bloques de código basados en el valor de una expresión (entera, enum o String en Java).'
             },
 
             // Emparejamiento (Matching) - 1 pregunta
@@ -190,16 +184,126 @@
                     { left: '1 exabyte (EB)', right: '1024 petabytes (PB)' },
                     { left: '1 megabyte (MB)', right: '1024 kilobytes (KB)' }
                 ]
-            }
+            },
+
+            // Verdadero/Falso (T/F) - 17 preguntas restantes
+            { type: 'tf', category: 'Semana 2', question: 'La declaración <code>Import</code> no es obligatoria cuando una clase en un paquete utiliza a otra clase en el mismo paquete.', answer: true, explanation: 'Las clases dentro del mismo paquete se pueden referenciar directamente sin una declaración <code>import</code>.' },
+
+            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa compilado de Java desde la línea de comandos (conocido como Símbolo del sistema en Windows), no es necesario especificar la extensión del programa compilado. Por ejemplo para ejecutar el programa compilado del archivo fuente <code>Bienvenido.java</code>, basta con escribir <code>java Bienvenido</code>.', answer: true, explanation: 'El comando <code>java</code> solo requiere el nombre de la clase (<code>Bienvenido</code>) y no la extensión <code>.class</code>.' },
+            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, primero es compilado y después ejecutado por la Máquina Virtual de Java (JVM).', answer: true, explanation: 'El código Java se compila a bytecode, el cual es luego interpretado y ejecutado por la JVM.' },
+
+            { type: 'tf', category: 'Semana 4', question: 'La instrucción <code>do...while</code> evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción <code>do...while</code> evalúa la condición *después* de ejecutar el cuerpo (bucle de post-prueba), por lo que garantiza que el cuerpo se ejecute al menos una vez, incluso si la condición es falsa inicialmente.' },
+            { type: 'tf', category: 'Semana 4', question: 'La expresión <code>((x > y) && (a < b))</code> es verdadera si <code>(x > y)</code> es verdadera, o si <code>(a < b)</code> es verdadera.', answer: false, explanation: 'La expresión <code>&&</code> (AND lógico) requiere que *ambas* condiciones sean verdaderas. El enunciado describe el operador <code>||</code> (OR lógico).' },
+            { type: 'tf', category: 'Semana 4', question: 'Si al principio, la condición de continuación de ciclo de un encabezado <code>for</code> es falsa, el programa no ejecuta el cuerpo de la instrucción <code>for</code>.', answer: true, explanation: 'La condición se evalúa antes de la primera iteración (bucle de pre-prueba), y si es falsa, el ciclo se omite por completo.' },
+            { type: 'tf', category: 'Semana 4', question: 'Al enumerar las instrucciones <code>case</code> en forma consecutiva, sin instrucciones entre ellas, se puede ejecutar las instrucciones del último <code>case</code> de la secuencia. (Esto se conoce como "fall-through")', answer: true, explanation: 'Esto es una característica del <code>switch</code> en Java (fall-through). Si se cumple un <code>case</code> y no hay <code>break</code>, la ejecución "cae" al siguiente <code>case</code>.' },
+
+            { type: 'tf', category: 'Semana 5', question: 'Cuando una clase redefine al método de una superclase utilizando el mismo encabezado (mismos tipo de acceso, tipo de retorno, nombre de método y lista de parámetros) pero con otro cuerpo, se dice que la subclase sobrecarga a ese método de la superclase.', answer: false, explanation: 'Redefinir un método con el mismo encabezado se llama *sobrescribir* (override), no sobrecargar (overload).' },
+            { type: 'tf', category: 'Semana 5', question: 'La clase <code>Object</code> es la raíz de todas las jerarquías de herencia en Java.', answer: true, explanation: 'Todas las clases en Java, directa o indirectamente, heredan de <code>Object</code>.' },
+            { type: 'tf', category: 'Semana 5', question: 'Si un constructor no asigna un valor a una variable de instancia (campo), de todas formas ésta se inicializa con su valor predeterminado.', answer: true, explanation: 'Java inicializa automáticamente las variables de instancia no asignadas (ej: 0 para números, <code>false</code> para booleanos, <code>null</code> para referencias a objetos).' },
+
+            { type: 'tf', category: 'Semana 6', question: 'Si una superclase declara a un método como <code>abstract</code>, una subclase debe forzosamente implementar ese método.', answer: false, explanation: 'Solo las subclases *concretas* (no abstractas) deben implementar todos los métodos abstractos de su superclase.' },
+            { type: 'tf', category: 'Semana 6', question: 'Es posible crear un objeto de una clase abstracta si se asigna a una variable abstracta.', answer: false, explanation: 'Las clases abstractas no se pueden instanciar directamente con <code>new</code>, sin importar el tipo de la variable.' },
+            { type: 'tf', category: 'Semana 6', question: 'Un método que se declara como <code>final</code> en una superclase no se puede sobrescribir en una subclase.', answer: true, explanation: 'El modificador <code>final</code> tiene el propósito específico de evitar que el método sea sobrescrito (overridden).' },
+            { type: 'tf', category: 'Semana 6', question: 'Una clase abstracta debe forzosamente contener un método abstracto.', answer: false, explanation: 'Una clase se puede declarar como <code>abstract</code> incluso si no contiene ningún método <code>abstract</code>, para simplemente evitar su instanciación.' },
+
+            { type: 'tf', category: 'Semana 7', question: 'El bloque <code>finally</code> es opcional, y si existe se debe colocar después del último bloque <code>catch</code>, o después del bloque <code>try</code> si no hay ningún bloque <code>catch</code>.', answer: true, explanation: 'El bloque <code>finally</code> siempre se ejecuta, y su posición es la correcta: al final de la estructura <code>try-catch</code>.' },
+            { type: 'tf', category: 'Semana 7', question: 'Si dentro de un bloque <code>try</code> se lanza una excepción para la cual no hay una cláusula <code>catch</code> que corresponda a esa excepción, la ejecución del programa continúa en la siguiente instrucción después del último bloque <code>catch</code>.', answer: false, explanation: 'Si no se encuentra un <code>catch</code> correspondiente, la excepción se propaga y el programa termina de forma anormal (unhandled exception).' },
+            { type: 'tf', category: 'Semana 7', question: 'Un bloque <code>catch</code> que atrapa una excepción de un tipo que es superclase de otros tipos de excepciones, también atrapará a estas últimas excepciones.', answer: true, explanation: 'Debido a la herencia y el polimorfismo, un bloque <code>catch</code> de un tipo base (superclase) puede manejar cualquier excepción de una subclase de ese tipo.' },
         ];
 
         // --- 2. Variables de Estado Globales ---
+        const API_KEY = ""; // Clave API de Gemini
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+        
         let currentQuestionIndex = 0;
         let score = 0;
         let questions = []; // Array que contendrá las preguntas barajadas
         let quizState = 'in_progress'; // 'in_progress', 'finished'
 
-        // --- 3. Funciones de Utilidad ---
+        // --- 3. Funciones de Utilidad y API de Gemini ---
+
+        /**
+         * Realiza una solicitud al API de Gemini con reintentos.
+         * @param {Object} payload - Carga útil para la API.
+         * @param {number} maxRetries - Número máximo de reintentos.
+         * @param {number} delay - Retraso inicial en milisegundos.
+         * @returns {Promise<Object>} Respuesta JSON del API.
+         */
+        async function fetchWithRetry(payload, maxRetries = 3, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (response.ok) {
+                        return response.json();
+                    }
+                } catch (error) {
+                    console.error(`Fetch attempt ${i + 1} failed:`, error);
+                }
+                if (i < maxRetries - 1) {
+                    await new Promise(resolve => setTimeout(resolve, delay * (2 ** i)));
+                }
+            }
+            throw new Error("API request failed after multiple retries.");
+        }
+
+
+        /**
+         * Obtiene una explicación avanzada de Gemini para la pregunta actual.
+         */
+        async function getGeminiExplanation() {
+            const currentQ = questions[currentQuestionIndex];
+            const explanationDiv = document.getElementById('gemini-explanation');
+            const button = document.getElementById('gemini-button');
+            
+            explanationDiv.classList.remove('hidden');
+            button.disabled = true;
+
+            // Mostrar spinner de carga
+            explanationDiv.innerHTML = '<div class="flex items-center text-gemini"><div class="spinner"></div> Generando explicación avanzada con Gemini...</div>';
+
+            try {
+                // 1. Obtener la pregunta y la respuesta (para contexto)
+                let fullPrompt = currentQ.question.replace('<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>', currentQ.answer);
+                fullPrompt = fullPrompt.replace(/<\/?code>/g, ''); // Limpiar etiquetas <code>
+                
+                let answerText = `Respuesta correcta: ${currentQ.answer}`;
+                if (currentQ.type === 'matching') {
+                    answerText = "Relaciones correctas: " + currentQ.pairs.map(p => `${p.left} -> ${p.right}`).join("; ");
+                } else if (currentQ.type === 'tf') {
+                    answerText = `Respuesta correcta: ${currentQ.answer ? 'Verdadero' : 'Falso'}`;
+                }
+
+                const userQuery = `La pregunta de programación es: "${fullPrompt}". La ${answerText}. Proporciona una explicación concisa y detallada del concepto técnico detrás de esta pregunta (máximo 3 párrafos). Incluye un breve ejemplo de código en Java relevante al tema.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: "Actúa como un profesor universitario experto en Programación Orientada a Objetos (POO) en Java. Proporciona una explicación pedagógica, estructurada y en español. Utiliza formato Markdown para el código." }]
+                    },
+                };
+
+                const result = await fetchWithRetry(payload);
+                
+                const generatedText = result.candidates?.[0]?.content?.parts?.[0]?.text || "No se pudo generar una explicación. Inténtalo de nuevo.";
+                
+                // 2. Renderizar la explicación
+                explanationDiv.innerHTML = `
+                    <h4 class="text-lg font-semibold text-gemini mb-2 border-b border-gemini/50 pb-1">Análisis Detallado por Gemini</h4>
+                    <p>${generatedText}</p>
+                `;
+
+            } catch (error) {
+                console.error("Error al obtener la explicación de Gemini:", error);
+                explanationDiv.innerHTML = `<span class="text-danger">Hubo un error al conectar con Gemini. Por favor, revisa la consola o inténtalo más tarde.</span>`;
+            } finally {
+                button.disabled = false;
+            }
+        }
+
 
         /**
          * Baraja un array usando el algoritmo Fisher-Yates.
@@ -257,10 +361,13 @@
             const currentQ = questions[currentQuestionIndex];
 
             // Resetear UI
+            // Reemplaza el marcador de completar (______) con una línea visible en HTML
             document.getElementById('question-text').innerHTML = currentQ.question.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
             document.getElementById('feedback-message').textContent = '';
             document.getElementById('check-answer-button').classList.remove('hidden');
             document.getElementById('next-question-button').classList.add('hidden');
+            document.getElementById('gemini-button').classList.add('hidden'); // Ocultar botón de Gemini
+            document.getElementById('gemini-explanation').classList.add('hidden'); // Ocultar explicación
             document.getElementById('answer-options-container').innerHTML = '';
             document.getElementById('quiz-area').classList.remove('correct-answer', 'incorrect-answer');
 
@@ -268,6 +375,7 @@
             if (currentQ.type === 'tf') {
                 renderTrueFalse(currentQ);
             } else if (currentQ.type === 'mc') {
+                // Las preguntas de Completar se renderizan como Selección Múltiple
                 renderMultipleChoice(currentQ);
             } else if (currentQ.type === 'matching') {
                 renderMatching(currentQ);
@@ -299,7 +407,7 @@
         }
 
         /**
-         * Renderiza la pregunta de Selección Múltiple.
+         * Renderiza la pregunta de Selección Múltiple (Completar).
          * @param {Object} q - Objeto de pregunta.
          */
         function renderMultipleChoice(q) {
@@ -361,9 +469,10 @@
                 document.getElementById('quiz-area').classList.add('incorrect-answer');
             }
 
-            // Deshabilitar botón de comprobar y mostrar siguiente
+            // Deshabilitar botón de comprobar y mostrar siguiente + Gemini
             document.getElementById('check-answer-button').classList.add('hidden');
             document.getElementById('next-question-button').classList.remove('hidden');
+            document.getElementById('gemini-button').classList.remove('hidden'); // Mostrar botón de Gemini
             updateScoreDisplay();
             disableOptions(currentQ.type);
         }
