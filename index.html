@@ -3,460 +3,1788 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica para Examen de POO</title>
-    <!-- Carga de Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <title>Calculadora de Puntos de Función y Líneas de Código</title>
+    <style>
+        :root {
+            /* Primitive Color Tokens */
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+
+            /* RGB versions for opacity control */
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            --color-red-400-rgb: 255, 84, 89;
+            --color-orange-500-rgb: 168, 75, 47;
+            --color-orange-400-rgb: 230, 129, 97;
+
+            /* Background color tokens (Light Mode) */
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --color-bg-7: rgba(236, 72, 153, 0.08);
+            --color-bg-8: rgba(6, 182, 212, 0.08);
+
+            /* Semantic Color Tokens (Light Mode) */
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-btn-primary-text: var(--color-cream-50);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+            --color-info: var(--color-slate-500);
+            --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+            --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+            /* Common style patterns */
+            --focus-ring: 0 0 0 3px var(--color-focus-ring);
+            --focus-outline: 2px solid var(--color-primary);
+            --status-bg-opacity: 0.15;
+            --status-border-opacity: 0.25;
+            --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+            /* RGB versions for opacity control */
+            --color-success-rgb: 33, 128, 141;
+            --color-error-rgb: 192, 21, 47;
+            --color-warning-rgb: 168, 75, 47;
+            --color-info-rgb: 98, 108, 113;
+
+            /* Typography */
+            --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --font-size-xs: 11px;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+            --letter-spacing-tight: -0.01em;
+
+            /* Spacing */
+            --space-0: 0;
+            --space-1: 1px;
+            --space-2: 2px;
+            --space-4: 4px;
+            --space-6: 6px;
+            --space-8: 8px;
+            --space-10: 10px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+            /* Animation */
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Layout */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-bg-1: rgba(29, 78, 216, 0.15);
+                --color-bg-2: rgba(180, 83, 9, 0.15);
+                --color-bg-3: rgba(21, 128, 61, 0.15);
+                --color-bg-4: rgba(185, 28, 28, 0.15);
+                --color-bg-5: rgba(107, 33, 168, 0.15);
+                --color-bg-6: rgba(194, 65, 12, 0.15);
+                --color-bg-7: rgba(190, 24, 93, 0.15);
+                --color-bg-8: rgba(8, 145, 178, 0.15);
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-primary-active: var(--color-teal-800);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+                --color-info: var(--color-gray-300);
+                --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+                --color-btn-primary-text: var(--color-slate-900);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+                --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+                --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+                --color-success-rgb: var(--color-teal-300-rgb);
+                --color-error-rgb: var(--color-red-400-rgb);
+                --color-warning-rgb: var(--color-orange-400-rgb);
+                --color-info-rgb: var(--color-gray-300-rgb);
+            }
+        }
+
+        html {
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
+            color: var(--color-text);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        h1 { font-size: var(--font-size-4xl); }
+        h2 { font-size: var(--font-size-3xl); }
+        h3 { font-size: var(--font-size-2xl); }
+        h4 { font-size: var(--font-size-xl); }
+        h5 { font-size: var(--font-size-lg); }
+        h6 { font-size: var(--font-size-md); }
+
+        p {
+            margin: 0 0 var(--space-16) 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .btn:focus-visible {
+            outline: none;
+            box-shadow: var(--focus-ring);
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn--primary:active {
+            background: var(--color-primary-active);
+        }
+
+        .btn--secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn--secondary:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .btn--lg {
+            padding: var(--space-10) var(--space-20);
+            font-size: var(--font-size-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .btn--full-width {
+            width: 100%;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: var(--space-8) var(--space-12);
+            font-size: var(--font-size-md);
+            line-height: 1.5;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+        }
+
+        select.form-control {
+            padding: var(--space-8) var(--space-12);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: var(--select-caret-light);
+            background-repeat: no-repeat;
+            background-position: right var(--space-12) center;
+            background-size: 16px;
+            padding-right: var(--space-32);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+            outline: var(--focus-outline);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .card {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: box-shadow var(--duration-normal) var(--ease-standard);
+        }
+
+        .card__body {
+            padding: var(--space-16);
+        }
+
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: var(--space-16);
+            padding-left: var(--space-16);
+            max-width: var(--container-xl);
+        }
+
+        .flex {
+            display: flex;
+        }
+        .flex-col {
+            flex-direction: column;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .justify-center {
+            justify-content: center;
+        }
+        .justify-between {
+            justify-content: space-between;
+        }
+        .gap-16 {
+            gap: var(--space-16);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Custom Styles */
+        .app-header {
+            text-align: center;
+            padding: var(--space-32) 0;
+            background: var(--color-bg-1);
+        }
+
+        .app-section {
+            padding: var(--space-32) 0;
+        }
+
+        .section-title {
+            margin-bottom: var(--space-24);
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: var(--space-24);
+        }
+
+        .tab {
+            padding: var(--space-12) var(--space-16);
+            background: none;
+            border: none;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--space-16);
+        }
+
+        .table th,
+        .table td {
+            padding: var(--space-8) var(--space-12);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .table th {
+            background-color: var(--color-bg-2);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .table input {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-4) var(--space-8);
+            width: 100%;
+        }
+
+        .gsc-item {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-base);
+            padding: var(--space-16);
+            margin-bottom: var(--space-16);
+        }
+
+        .gsc-scale {
+            display: flex;
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+
+        .gsc-scale input[type="radio"] {
+            width: var(--space-16);
+            height: var(--space-16);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-16);
+            margin-bottom: var(--space-24);
+        }
+
+        .result-card {
+            background: var(--color-surface);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .result-value {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+        }
+
+        .progress-indicator {
+            background: var(--color-bg-3);
+            border-radius: var(--radius-full);
+            padding: var(--space-4) var(--space-12);
+            font-size: var(--font-size-sm);
+            color: var(--color-success);
+            margin-bottom: var(--space-16);
+        }
+
+        .help-text {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-4);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 300px;
+            background-color: var(--color-charcoal-800);
+            color: var(--color-gray-200);
+            text-align: left;
+            border-radius: var(--radius-base);
+            padding: var(--space-8);
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity var(--duration-normal);
+            font-size: var(--font-size-sm);
+            line-height: 1.4;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--color-charcoal-800) transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .help-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--color-info);
+            color: var(--color-white);
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: var(--space-4);
+            cursor: help;
+        }
+
+        .help-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .help-modal-content {
+            background-color: var(--color-surface);
+            margin: 5% auto;
+            padding: var(--space-24);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: var(--color-text-secondary);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--color-text);
+        }
+
+        .gsc-detailed {
+            margin-bottom: var(--space-16);
+        }
+
+        .gsc-criteria {
+            background: var(--color-bg-1);
+            border-radius: var(--radius-base);
+            padding: var(--space-12);
+            margin-top: var(--space-8);
+            font-size: var(--font-size-sm);
+        }
+
+        .gsc-scale-detailed {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .gsc-option {
+            text-align: center;
+            padding: var(--space-8);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--duration-fast);
+        }
+
+        .gsc-option:hover {
+            background-color: var(--color-secondary);
+        }
+
+        .gsc-option input[type="radio"] {
+            margin-bottom: var(--space-4);
+        }
+
+        .gsc-option.selected {
+            background-color: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-color: var(--color-primary);
+        }
+
+        .definition-box {
+            background: var(--color-bg-3);
+            border: 1px solid var(--color-success);
+            border-radius: var(--radius-base);
+            padding: var(--space-12);
+            margin-bottom: var(--space-16);
+        }
+
+        .examples-list {
+            margin-top: var(--space-8);
+            padding-left: var(--space-16);
+        }
+
+        .complexity-matrix {
+            background: var(--color-bg-2);
+            border-radius: var(--radius-base);
+            padding: var(--space-12);
+            margin-top: var(--space-8);
+            font-size: var(--font-size-sm);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-32);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- PÁGINA PRINCIPAL -->
+        <section id="home-section" class="app-section">
+            <div class="container">
+                <div class="app-header">
+                    <h1>🧮 Calculadora de Puntos de Función y Líneas de Código</h1>
+                    <p>Herramienta profesional para estimar el tamaño y complejidad de proyectos de software basada en el estándar IFPUG</p>
+                    <div style="margin: 24px 0; padding: 16px; background: var(--color-bg-4); border-radius: 8px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        <h4>🎯 ¿Qué puedes hacer?</h4>
+                        <ul style="text-align: left; margin: 8px 0; padding-left: 20px;">
+                            <li>Calcular Puntos de Función con criterios detallados IFPUG</li>
+                            <li>Estimar Líneas de Código para 25+ lenguajes de programación</li>
+                            <li>Evaluar 14 características del sistema (GSC)</li>
+                            <li>Obtener estimaciones de esfuerzo y complejidad</li>
+                            <li>Acceder a definiciones técnicas completas y ejemplos</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn--primary btn--lg" onclick="startCalculation()">🚀 Iniciar Cálculo</button>
+                    <button class="btn btn--secondary btn--lg" onclick="openHelpModal()" style="margin-left: 16px;">📚 Guía Completa</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIGURACIÓN DEL PROYECTO -->
+        <section id="project-config" class="app-section hidden">
+            <div class="container">
+                <div class="progress-indicator">Paso 1 de 4: Configuración del Proyecto</div>
+                <h2 class="section-title">🛠️ Configuración del Proyecto 
+                    <button class="btn btn--secondary" style="font-size: 12px; padding: 4px 8px; margin-left: 16px;" onclick="openHelpModal()">📖 Ayuda Completa</button>
+                </h2>
+                
+                <div class="card">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label" for="project-name">Nombre del Proyecto</label>
+                            <input type="text" id="project-name" class="form-control" placeholder="Ingresa el nombre del proyecto">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="programming-language">Lenguaje de Programación Principal 
+                                <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">El lenguaje principal determinará el factor de conversión de Puntos de Función a Líneas de Código. Selecciona el lenguaje que representará la mayor parte del código.</span></span>
+                            </label>
+                            <select id="programming-language" class="form-control">
+                                <option value="">Selecciona un lenguaje de programación</option>
+                                <option value="C">C (128 LDC/PF)</option>
+                                <option value="C++">C++ (53 LDC/PF)</option>
+                                <option value="Java">Java (53 LDC/PF)</option>
+                                <option value="C#">C# (53 LDC/PF)</option>
+                                <option value="JavaScript">JavaScript (53 LDC/PF)</option>
+                                <option value="Python">Python (53 LDC/PF)</option>
+                                <option value="Visual Basic">Visual Basic (40 LDC/PF)</option>
+                                <option value="PHP">PHP (53 LDC/PF)</option>
+                                <option value="COBOL">COBOL (107 LDC/PF)</option>
+                                <option value="SQL">SQL (13 LDC/PF)</option>
+                                <option value="React">React (29 LDC/PF)</option>
+                                <option value="Angular">Angular (29 LDC/PF)</option>
+                                <option value="Vue">Vue (29 LDC/PF)</option>
+                                <option value="Node.js">Node.js (53 LDC/PF)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="project-description">Descripción del Proyecto 
+                                <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Describe el propósito, alcance y características principales del proyecto. Esta información ayudará en la evaluación de las características del sistema.</span></span>
+                            </label>
+                            <textarea id="project-description" class="form-control" rows="3" placeholder="Ej: Sistema de gestión de inventarios con interfaz web, reportes automáticos, integración con proveedores y módulo de facturación"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn--secondary" onclick="goToHome()">Volver</button>
+                    <button class="btn btn--primary" onclick="goToFunctions()">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUNCIONES DEL SISTEMA -->
+        <section id="functions-section" class="app-section hidden">
+            <div class="container">
+                <div class="progress-indicator">Paso 2 de 4: Funciones del Sistema</div>
+                <h2 class="section-title">⚙️ Funciones del Sistema</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('entradas')">Entradas</button>
+                    <button class="tab" onclick="switchTab('salidas')">Salidas</button>
+                    <button class="tab" onclick="switchTab('peticiones')">Peticiones</button>
+                    <button class="tab" onclick="switchTab('archivos-internos')">Archivos Internos</button>
+                    <button class="tab" onclick="switchTab('archivos-externos')">Archivos Externos</button>
+                </div>
+
+                <!-- Entradas Tab -->
+                <div id="entradas-tab" class="tab-content active">
+                    <div class="definition-box">
+                        <h4>📥 Entradas (External Input - EI)</h4>
+                        <p><strong>Definición:</strong> Transacciones relacionadas con agregar, eliminar (física o lógicamente) y modificar datos</p>
+                        <p><strong>Ejemplos:</strong> Formulario de registro de usuario, Actualización de datos de producto, Eliminación de cliente, Cambio de contraseña</p>
+                        <div class="complexity-matrix">
+                            <strong>Matriz de Complejidad:</strong><br>
+                            • &lt;1-4 elementos datos, &lt;2 archivos: BAJO (3 PF)<br>
+                            • 5-15 elementos datos, 2-3 archivos: MEDIO (4 PF)<br>
+                            • &gt;15 elementos datos, &gt;3 archivos: ALTO (6 PF)
+                        </div>
+                    </div>
+                    <table class="table" id="entradas-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Nombre descriptivo de la función que identifica claramente su propósito</span></span></th>
+                                <th>Archivos Referidos <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Número de archivos internos (ILF) y archivos externos (EIF) que son accedidos, leídos o actualizados por esta función</span></span></th>
+                                <th>Elementos de Datos <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Campos únicos de información reconocidos por el usuario final que cruzan la frontera de la aplicación</span></span></th>
+                                <th>Nivel <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Clasificación (Bajo, Medio, Alto) determinada por el número de archivos referidos y elementos de datos</span></span></th>
+                                <th>Valor PF <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Puntos de función asignados a cada función basándose en su tipo y nivel de complejidad</span></span></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entradas-tbody">
+                        </tbody>
+                    </table>
+                    <button class="btn btn--secondary" onclick="addRow('entradas')">Agregar Entrada</button>
+                    <div id="entradas-subtotal" class="result-value" style="margin-top: 16px;">Subtotal: 0 PF</div>
+                </div>
+
+                <!-- Salidas Tab -->
+                <div id="salidas-tab" class="tab-content">
+                    <div class="definition-box">
+                        <h4>📊 Salidas (External Output - EO)</h4>
+                        <p><strong>Definición:</strong> Consultas que involucran cálculos derivados (como cálculos matemáticos, estadísticos o de resumen)</p>
+                        <p><strong>Ejemplos:</strong> Reporte de ventas con totales, Gráfico de rendimiento, Balance contable, Nómina calculada</p>
+                        <div class="complexity-matrix">
+                            <strong>Matriz de Complejidad:</strong><br>
+                            • &lt;1-5 elementos datos, &lt;2 archivos: BAJO (4 PF)<br>
+                            • 6-19 elementos datos, 2-3 archivos: MEDIO (5 PF)<br>
+                            • &gt;19 elementos datos, &gt;3 archivos: ALTO (7 PF)
+                        </div>
+                    </div>
+                    <table class="table" id="salidas-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Archivos Referidos</th>
+                                <th>Elementos de Datos</th>
+                                <th>Nivel</th>
+                                <th>Valor PF</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salidas-tbody">
+                        </tbody>
+                    </table>
+                    <button class="btn btn--secondary" onclick="addRow('salidas')">Agregar Salida</button>
+                    <div id="salidas-subtotal" class="result-value" style="margin-top: 16px;">Subtotal: 0 PF</div>
+                </div>
+
+                <!-- Peticiones Tab -->
+                <div id="peticiones-tab" class="tab-content">
+                    <div class="definition-box">
+                        <h4>🔍 Peticiones (External Inquiry - EQ)</h4>
+                        <p><strong>Definición:</strong> Consultas que no involucran cálculos derivados (como listados directos o búsquedas simples)</p>
+                        <p><strong>Ejemplos:</strong> Búsqueda de cliente por ID, Lista de productos, Consulta de inventario, Directorio telefónico</p>
+                        <div class="complexity-matrix">
+                            <strong>Matriz de Complejidad:</strong><br>
+                            • &lt;1-5 elementos datos, &lt;2 archivos: BAJO (3 PF)<br>
+                            • 6-19 elementos datos, 2-3 archivos: MEDIO (4 PF)<br>
+                            • &gt;19 elementos datos, &gt;3 archivos: ALTO (6 PF)
+                        </div>
+                    </div>
+                    <table class="table" id="peticiones-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Archivos Referidos</th>
+                                <th>Elementos de Datos</th>
+                                <th>Nivel</th>
+                                <th>Valor PF</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="peticiones-tbody">
+                        </tbody>
+                    </table>
+                    <button class="btn btn--secondary" onclick="addRow('peticiones')">Agregar Petición</button>
+                    <div id="peticiones-subtotal" class="result-value" style="margin-top: 16px;">Subtotal: 0 PF</div>
+                </div>
+
+                <!-- Archivos Internos Tab -->
+                <div id="archivos-internos-tab" class="tab-content">
+                    <div class="definition-box">
+                        <h4>🗂️ Archivos Internos (Internal Logical File - ILF)</h4>
+                        <p><strong>Definición:</strong> Archivos lógicos que son mantenidos (agregados, eliminados o modificados) por el propio sistema</p>
+                        <p><strong>Ejemplos:</strong> Tabla de usuarios, Base de datos de productos, Archivo de configuración del sistema, Log de transacciones</p>
+                        <div class="complexity-matrix">
+                            <strong>Matriz de Complejidad:</strong><br>
+                            • &lt;2 registros, &lt;20 elementos: BAJO (7 PF)<br>
+                            • 2-5 registros, 20-50 elementos: MEDIO (10 PF)<br>
+                            • &gt;5 registros, &gt;50 elementos: ALTO (15 PF)
+                        </div>
+                    </div>
+                    <table class="table" id="archivos-internos-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Nombre descriptivo del archivo lógico</span></span></th>
+                                <th>Elementos de Registro <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Subgrupos opcionales de elementos de datos dentro del archivo (ej: tipos de empleado, categorías de producto)</span></span></th>
+                                <th>Elementos de Datos <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Campos únicos de información mantenidos en el archivo</span></span></th>
+                                <th>Nivel <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Clasificación basada en elementos de registro y datos</span></span></th>
+                                <th>Valor PF <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Puntos de función asignados según la complejidad</span></span></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="archivos-internos-tbody">
+                        </tbody>
+                    </table>
+                    <button class="btn btn--secondary" onclick="addRow('archivos-internos')">Agregar Archivo Interno</button>
+                    <div id="archivos-internos-subtotal" class="result-value" style="margin-top: 16px;">Subtotal: 0 PF</div>
+                </div>
+
+                <!-- Archivos Externos Tab -->
+                <div id="archivos-externos-tab" class="tab-content">
+                    <div class="definition-box">
+                        <h4>📁 Archivos Externos (External Interface File - EIF)</h4>
+                        <p><strong>Definición:</strong> Archivos lógicos que son referenciados por el sistema pero mantenidos por otro sistema externo</p>
+                        <p><strong>Ejemplos:</strong> API externa de pagos, Base de datos de códigos postales, Catálogo de productos del proveedor, Servicios web de terceros</p>
+                        <div class="complexity-matrix">
+                            <strong>Matriz de Complejidad:</strong><br>
+                            • &lt;2 registros, &lt;20 elementos: BAJO (5 PF)<br>
+                            • 2-5 registros, 20-50 elementos: MEDIO (7 PF)<br>
+                            • &gt;5 registros, &gt;50 elementos: ALTO (10 PF)
+                        </div>
+                    </div>
+                    <table class="table" id="archivos-externos-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Elementos de Registro</th>
+                                <th>Elementos de Datos</th>
+                                <th>Nivel</th>
+                                <th>Valor PF</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="archivos-externos-tbody">
+                        </tbody>
+                    </table>
+                    <button class="btn btn--secondary" onclick="addRow('archivos-externos')">Agregar Archivo Externo</button>
+                    <div id="archivos-externos-subtotal" class="result-value" style="margin-top: 16px;">Subtotal: 0 PF</div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn--secondary" onclick="goToProjectConfig()">Anterior</button>
+                    <button class="btn btn--primary" onclick="goToCharacteristics()">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARACTERÍSTICAS DEL SISTEMA -->
+        <section id="characteristics-section" class="app-section hidden">
+            <div class="container">
+                <div class="progress-indicator">Paso 3 de 4: Características del Sistema</div>
+                <h2 class="section-title">🎛️ Características del Sistema (GSC)</h2>
+                <p class="help-text">Evalúa cada característica del sistema en una escala de 0 a 5</p>
+                
+                <div id="gsc-container">
+                    <!-- GSC items will be generated here -->
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn--secondary" onclick="goToFunctions()">Anterior</button>
+                    <button class="btn btn--primary" onclick="goToResults()">Ver Resultados</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section id="results-section" class="app-section hidden">
+            <div class="container">
+                <div class="progress-indicator">Paso 4 de 4: Resultados</div>
+                <h2 class="section-title">📈 Resultados del Cálculo</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card" style="border-left: 4px solid var(--color-info);">
+                        <h4>📊 Puntos de Función No Ajustados</h4>
+                        <div id="unadjusted-fp" class="result-value">0</div>
+                        <p class="help-text">Suma de todas las funciones sin ajustar</p>
+                    </div>
+                    <div class="result-card" style="border-left: 4px solid var(--color-warning);">
+                        <h4>⚖️ Factor de Ajuste de Valor</h4>
+                        <div id="vaf" class="result-value">1.00</div>
+                        <p class="help-text">Basado en características del sistema (GSC)</p>
+                    </div>
+                    <div class="result-card" style="border-left: 4px solid var(--color-success);">
+                        <h4>🎯 Puntos de Función Ajustados</h4>
+                        <div id="adjusted-fp" class="result-value">0</div>
+                        <p class="help-text">Métrica final de tamaño funcional</p>
+                    </div>
+                    <div class="result-card" style="border-left: 4px solid var(--color-primary);">
+                        <h4>💻 Líneas de Código Estimadas</h4>
+                        <div id="lines-of-code" class="result-value">0</div>
+                        <p class="help-text">Estimación para <span id="selected-language">el lenguaje seleccionado</span></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Resumen del Proyecto</h3>
+                        <div id="project-summary"></div>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn--secondary" onclick="goToCharacteristics()">⬅️ Anterior</button>
+                    <button class="btn btn--primary" onclick="exportToCSV()" style="background: #28a745; color: white;">📊 Exportar a CSV (Excel)</button>
+                    <button class="btn btn--secondary" onclick="printResults()">🖨️ Imprimir</button>
+                    <button class="btn btn--secondary" onclick="resetProject()">🔄 Nuevo Proyecto</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'primary': '#f97316', // Orange-500
-                        'secondary': '#10b981', // Emerald-500
-                        'danger': '#ef4444', // Red-500
-                        'warning': '#f59e0b', // Amber-500
+        // Data from JSON
+        const languageFactors = {
+            'C': 128, 'C++': 53, 'Java': 53, 'C#': 53, 'JavaScript': 53,
+            'Python': 53, 'Visual Basic': 40, 'PHP': 53, 'COBOL': 107,
+            'SQL': 13, 'React': 29, 'Angular': 29, 'Vue': 29, 'Node.js': 53
+        };
+
+        const functionPointValues = {
+            'entradas': { 'Bajo': 3, 'Medio': 4, 'Alto': 6 },
+            'salidas': { 'Bajo': 4, 'Medio': 5, 'Alto': 7 },
+            'peticiones': { 'Bajo': 3, 'Medio': 4, 'Alto': 6 },
+            'archivos-internos': { 'Bajo': 7, 'Medio': 10, 'Alto': 15 },
+            'archivos-externos': { 'Bajo': 5, 'Medio': 7, 'Alto': 10 }
+        };
+
+        const gscCharacteristics = [
+            { id: 1, name: "Comunicaciones de datos", description: "¿Cuántas facilidades de comunicación existen para ayudar en la transferencia o intercambio de información?" },
+            { id: 2, name: "Procesamiento distribuido de datos", description: "¿Cómo se manejan las funciones de datos y procesamiento distribuido?" },
+            { id: 3, name: "Rendimiento", description: "¿El usuario requirió tiempo de respuesta o throughput?" },
+            { id: 4, name: "Configuración fuertemente utilizada", description: "¿Qué tan fuertemente utilizada es la plataforma de hardware actual?" },
+            { id: 5, name: "Tasa de transacciones", description: "¿Con qué frecuencia se ejecutan las transacciones diariamente, semanalmente, mensualmente?" },
+            { id: 6, name: "Entrada de datos en línea", description: "¿Qué porcentaje de la información se ingresa en línea?" },
+            { id: 7, name: "Eficiencia del usuario final", description: "¿La aplicación fue diseñada para la eficiencia del usuario final?" },
+            { id: 8, name: "Actualización en línea", description: "¿Cuántos archivos son actualizados por transacción en línea?" },
+            { id: 9, name: "Procesamiento complejo", description: "¿La aplicación tiene procesamiento lógico o matemático extensivo?" },
+            { id: 10, name: "Reutilización", description: "¿La aplicación fue desarrollada para satisfacer las necesidades de uno o muchos usuarios?" },
+            { id: 11, name: "Facilidad de instalación", description: "¿Qué tan difícil es la conversión e instalación?" },
+            { id: 12, name: "Facilidad operacional", description: "¿Qué tan efectivos son los procedimientos de inicio, respaldo y recuperación?" },
+            { id: 13, name: "Múltiples sitios", description: "¿La aplicación fue diseñada para ser instalada en múltiples sitios?" },
+            { id: 14, name: "Facilitar cambios", description: "¿La aplicación fue diseñada para facilitar cambios?" }
+        ];
+
+        // Project data
+        let projectData = {
+            name: '',
+            language: '',
+            description: '',
+            functions: {
+                entradas: [],
+                salidas: [],
+                peticiones: [],
+                'archivos-internos': [],
+                'archivos-externos': []
+            },
+            gscValues: Array(14).fill(0)
+        };
+
+        // Navigation functions
+        function startCalculation() {
+            showSection('project-config');
+        }
+
+        function goToHome() {
+            showSection('home-section');
+        }
+
+        function goToProjectConfig() {
+            showSection('project-config');
+        }
+
+        function goToFunctions() {
+            // Save project config
+            projectData.name = document.getElementById('project-name').value;
+            projectData.language = document.getElementById('programming-language').value;
+            projectData.description = document.getElementById('project-description').value;
+            
+            // Validation
+            if (!projectData.name.trim()) {
+                alert('⚠️ Por favor ingresa un nombre para el proyecto');
+                return;
+            }
+            
+            if (!projectData.language) {
+                alert('⚠️ Por favor selecciona un lenguaje de programación');
+                return;
+            }
+            
+            showSection('functions-section');
+        }
+
+        function goToCharacteristics() {
+            generateGSCForm();
+            updateGSCTotals(); // Initialize GSC totals display
+            showSection('characteristics-section');
+        }
+
+        function goToResults() {
+            // Save GSC values
+            for (let i = 0; i < 14; i++) {
+                const value = document.querySelector(`input[name="gsc-${i+1}"]:checked`);
+                projectData.gscValues[i] = value ? parseInt(value.value) : 0;
+            }
+            
+            calculateResults();
+            showSection('results-section');
+        }
+
+        function showSection(sectionId) {
+            const sections = ['home-section', 'project-config', 'functions-section', 'characteristics-section', 'results-section'];
+            sections.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        // Table management
+        function addRow(functionType) {
+            const tbody = document.getElementById(functionType + '-tbody');
+            const row = document.createElement('tr');
+            const rowId = Date.now(); // Simple ID generation
+            
+            let columnsHtml;
+            if (functionType.includes('archivos')) {
+                columnsHtml = `
+                    <td><input type="text" placeholder="Ej: Tabla Usuarios" onchange="updateRow('${functionType}', ${rowId})"></td>
+                    <td><input type="number" min="0" placeholder="1-10" onchange="updateRow('${functionType}', ${rowId})" title="Subgrupos opcionales de datos"></td>
+                    <td><input type="number" min="0" placeholder="10-50" onchange="updateRow('${functionType}', ${rowId})" title="Campos mantenidos en el archivo">
+                    <td><span class="complexity-level">-</span></td>
+                    <td><span class="fp-value">0</span></td>
+                    <td><button class="btn btn--secondary" onclick="removeRow('${functionType}', ${rowId})">Eliminar</button></td>
+                `;
+            } else {
+                columnsHtml = `
+                    <td><input type="text" placeholder="Ej: Registro de usuario" onchange="updateRow('${functionType}', ${rowId})"></td>
+                    <td><input type="number" min="0" placeholder="1-5" onchange="updateRow('${functionType}', ${rowId})" title="Número de ILF + EIF accedidos"></td>
+                    <td><input type="number" min="0" placeholder="5-20" onchange="updateRow('${functionType}', ${rowId})" title="Campos de información únicos">
+                    <td><span class="complexity-level">-</span></td>
+                    <td><span class="fp-value">0</span></td>
+                    <td><button class="btn btn--secondary" onclick="removeRow('${functionType}', ${rowId})">Eliminar</button></td>
+                `;
+            }
+            
+            row.innerHTML = columnsHtml;
+            row.dataset.rowId = rowId;
+            tbody.appendChild(row);
+            
+            // Initialize empty data
+            if (!projectData.functions[functionType]) {
+                projectData.functions[functionType] = [];
+            }
+            projectData.functions[functionType].push({
+                id: rowId,
+                name: '',
+                files: 0,
+                elements: 0,
+                complexity: 'Bajo',
+                fpValue: 0
+            });
+        }
+
+        function updateRow(functionType, rowId) {
+            const row = document.querySelector(`[data-row-id="${rowId}"]`);
+            const inputs = row.querySelectorAll('input');
+            
+            const functionData = projectData.functions[functionType].find(f => f.id === rowId);
+            if (!functionData) return;
+            
+            functionData.name = inputs[0].value;
+            functionData.files = parseInt(inputs[1].value) || 0;
+            functionData.elements = parseInt(inputs[2].value) || 0;
+            
+            // Calculate complexity
+            const complexity = calculateComplexity(functionType, functionData.files, functionData.elements);
+            functionData.complexity = complexity;
+            functionData.fpValue = functionPointValues[functionType][complexity];
+            
+            // Update UI
+            row.querySelector('.complexity-level').textContent = complexity;
+            row.querySelector('.fp-value').textContent = functionData.fpValue;
+            
+            updateSubtotal(functionType);
+        }
+
+        function removeRow(functionType, rowId) {
+            const row = document.querySelector(`[data-row-id="${rowId}"]`);
+            row.remove();
+            
+            projectData.functions[functionType] = projectData.functions[functionType].filter(f => f.id !== rowId);
+            updateSubtotal(functionType);
+        }
+
+        function calculateComplexity(functionType, files, elements) {
+            if (functionType.includes('archivos')) {
+                // Use files as registro_elem and elements as datos
+                if (files < 2) {
+                    if (elements <= 19) return 'Bajo';
+                    if (elements <= 50) return 'Bajo';
+                    return 'Medio';
+                } else if (files <= 5) {
+                    if (elements <= 19) return 'Bajo';
+                    if (elements <= 50) return 'Medio';
+                    return 'Alto';
+                } else {
+                    if (elements <= 19) return 'Medio';
+                    if (elements <= 50) return 'Alto';
+                    return 'Alto';
+                }
+            } else {
+                // For entradas, salidas, peticiones
+                if (functionType === 'entradas') {
+                    if (files < 2) {
+                        if (elements <= 4) return 'Bajo';
+                        if (elements <= 15) return 'Bajo';
+                        return 'Medio';
+                    } else if (files === 2) {
+                        if (elements <= 4) return 'Bajo';
+                        if (elements <= 15) return 'Medio';
+                        return 'Alto';
+                    } else {
+                        if (elements <= 4) return 'Medio';
+                        if (elements <= 15) return 'Alto';
+                        return 'Alto';
+                    }
+                } else {
+                    // salidas and peticiones
+                    if (files < 2) {
+                        if (elements <= 5) return 'Bajo';
+                        if (elements <= 19) return 'Bajo';
+                        return 'Medio';
+                    } else if (files <= 3) {
+                        if (elements <= 5) return 'Bajo';
+                        if (elements <= 19) return 'Medio';
+                        return 'Alto';
+                    } else {
+                        if (elements <= 5) return 'Medio';
+                        if (elements <= 19) return 'Alto';
+                        return 'Alto';
                     }
                 }
             }
         }
-    </script>
-    <style>
-        /* Estilos personalizados para el juego */
-        .card {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease-in-out;
+
+        function updateSubtotal(functionType) {
+            const total = projectData.functions[functionType].reduce((sum, func) => sum + func.fpValue, 0);
+            document.getElementById(functionType + '-subtotal').textContent = `Subtotal: ${total} PF`;
         }
-        .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .correct-answer {
-            background-color: #d1fae5; /* Green-100 */
-            border-left: 4px solid #10b981; /* Emerald-500 */
-        }
-        .incorrect-answer {
-            background-color: #fee2e2; /* Red-100 */
-            border-left: 4px solid #ef4444; /* Red-500 */
-        }
-        /* Estilo para elementos que parecen código */
-        code {
-            background-color: #e5e7eb; /* Gray-200 */
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: 'Consolas', 'Menlo', 'Monospace';
-            font-weight: 700;
-        }
-    </style>
-</head>
-<body class="bg-gray-100 min-h-screen font-sans flex items-center justify-center p-4">
 
-    <div id="app" class="w-full max-w-4xl">
-        <header class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-primary mb-2">Simulador de Examen POO</h1>
-            <p class="text-gray-600 text-lg">Practica con las preguntas de tus lecturas y temas.</p>
-        </header>
-
-        <!-- Contadores de Juego -->
-        <div class="flex justify-between items-center mb-6 p-4 bg-white rounded-xl shadow-md">
-            <div class="text-center">
-                <p class="text-sm font-medium text-gray-500">Puntaje</p>
-                <p id="score-display" class="text-3xl font-bold text-secondary">0</p>
-            </div>
-            <div class="text-center">
-                <p class="text-sm font-medium text-gray-500">Pregunta</p>
-                <p id="question-count-display" class="text-3xl font-bold text-primary">1 / 0</p>
-            </div>
-            <div class="text-center">
-                <p class="text-sm font-medium text-gray-500">Categoría</p>
-                <p id="category-display" class="text-xl font-semibold text-gray-700">General</p>
-            </div>
-        </div>
-
-        <!-- Área Principal de Pregunta -->
-        <div id="quiz-area" class="bg-white p-6 md:p-10 rounded-xl card transition-all duration-300 min-h-[300px] flex flex-col justify-between">
-            <div id="question-container" class="mb-6">
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4" id="question-text">Cargando pregunta...</h2>
-                <div id="answer-options-container" class="space-y-4">
-                    <!-- Opciones de respuesta se inyectarán aquí -->
-                </div>
-            </div>
-
-            <!-- Controles y Feedback -->
-            <div class="flex flex-col md:flex-row justify-between items-center pt-4 border-t border-gray-100">
-                <button id="check-answer-button" onclick="checkAnswer()" class="w-full md:w-auto px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition duration-150 transform hover:scale-[1.02] shadow-lg mb-4 md:mb-0">
-                    Comprobar Respuesta
-                </button>
-                <div id="feedback-message" class="text-lg font-bold"></div>
-                <button id="next-question-button" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-emerald-600 transition duration-150 transform hover:scale-[1.02] shadow-lg hidden">
-                    Siguiente Pregunta
-                </button>
-            </div>
-        </div>
-
-        <!-- Modal de Resultado Final -->
-        <div id="final-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center p-4 z-50">
-            <div class="bg-white p-8 rounded-xl max-w-md w-full text-center">
-                <h3 class="text-3xl font-bold mb-4 text-primary">Práctica Finalizada</h3>
-                <p class="text-gray-700 mb-6 text-xl">Tu puntaje final es:</p>
-                <p id="final-score" class="text-6xl font-extrabold text-secondary mb-8">0/0</p>
-                <button onclick="restartQuiz()" class="px-8 py-3 bg-warning text-white font-bold rounded-xl hover:bg-amber-600 transition duration-150 transform hover:scale-[1.05]">
-                    Volver a Empezar
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // --- 1. Definición de las Preguntas y Respuestas (Extraídas textualmente del PDF) ---
-        // Total: 22 preguntas (4 Completar + 1 Emparejar + 17 V/F)
-        const allQuestions = [
-            // Selección Múltiple (MC) - Simula Completar - 4 preguntas
-            {
-                type: 'mc', category: 'Semana 2',
-                question: 'Cada declaración de clase que empieza con la palabra clave ______ debe almacenarse en un archivo que tenga exactamente el mismo nombre de la clase, y que termine con la extensión de nombre de archivo <code>.java</code>.',
-                options: ['private', 'protected', 'public', 'static'],
-                answer: 'public',
-                explanation: 'Esto es una regla fundamental: una clase solo puede ser pública si el nombre del archivo es exactamente igual al nombre de la clase, incluyendo el modificador <code>public</code>.'
+        // GSC detailed criteria data
+        const gscDetailedCriteria = {
+            "1. Comunicaciones de datos": {
+                "0": "Aplicación de procesamiento por lotes puro o PC independiente",
+                "1": "Aplicación por lotes pero con entrada remota de datos o impresión remota",
+                "2": "Aplicación por lotes pero con entrada remota de datos Y impresión remota",
+                "3": "Aplicación incluye recolección de datos en línea o front-end TP a proceso por lotes",
+                "4": "Aplicación es más que front-end, pero soporta solo un tipo de protocolo TP",
+                "5": "Aplicación es más que front-end y soporta más de un tipo de protocolo TP"
             },
-            {
-                type: 'mc', category: 'Semana 2',
-                question: 'El método ______ de <code>Scanner</code> lee caracteres hasta encontrar una nueva línea, y después devuelve esos caracteres como un objeto <code>String</code>.',
-                options: ['next()', 'nextChar()', 'nextLine()', 'readString()'],
-                answer: 'nextLine()',
-                explanation: 'El método <code>nextLine()</code> es el que captura la línea completa de entrada, incluyendo espacios, hasta el caracter de nueva línea.'
+            "2. Procesamiento distribuido de datos": {
+                "0": "Aplicación no ayuda en la transferencia de datos entre componentes del sistema",
+                "1": "Aplicación prepara datos para procesamiento del usuario final en otro componente (ej: hojas de cálculo PC)",
+                "2": "Los datos se preparan para transferir, luego se transfieren y procesan en otro componente",
+                "3": "Procesamiento distribuido y transferencia de datos son en línea y en una dirección únicamente",
+                "4": "Procesamiento distribuido y transferencia de datos son en línea y en ambas direcciones",
+                "5": "Funciones de procesamiento se realizan dinámicamente en el componente más apropiado del sistema"
             },
-            {
-                type: 'mc', category: 'Semana 2',
-                question: 'No se requiere un(a) ______ si siempre hacemos referencia a una clase con su nombre de clase completamente calificado.',
-                options: ['import', 'package', 'public', 'class'],
-                answer: 'import',
-                explanation: 'Si se utiliza el nombre de clase completamente calificado (Fully Qualified Class Name), no es necesaria la declaración <code>import</code>.'
+            "3. Rendimiento": {
+                "0": "No se establecieron requisitos especiales de rendimiento por el usuario",
+                "1": "Requisitos de rendimiento y diseño fueron establecidos y revisados pero no se requirieron acciones especiales",
+                "2": "Tiempo de respuesta o throughput es crítico durante horas pico. Fecha límite para el siguiente día hábil",
+                "3": "Tiempo de respuesta o throughput es crítico durante todas las horas hábiles. Requisitos con sistemas de interfaz son restrictivos",
+                "4": "Además, los requisitos de rendimiento requieren tareas de análisis de rendimiento en la fase de diseño",
+                "5": "Además, se usaron herramientas de análisis de rendimiento en las fases de diseño, desarrollo e implementación"
             },
-            {
-                type: 'mc', category: 'Semana 4',
-                question: 'La instrucción ______ selecciona una de varias acciones, con base a los posibles valores de una variable o expresión entera, o un <code>String</code>.',
-                options: ['for', 'if/else', 'switch', 'do/while'],
-                answer: 'switch',
-                explanation: 'La instrucción <code>switch</code> es la que permite seleccionar entre múltiples bloques de código basados en el valor de una expresión (entera, enum o String en Java).'
+            "4. Configuración fuertemente utilizada": {
+                "0": "No se incluyen restricciones operativas explícitas o implícitas",
+                "1": "Existen restricciones operativas, pero son menos restrictivas que una aplicación típica",
+                "2": "Se incluyen algunas consideraciones de seguridad o tiempo",
+                "3": "Se incluyen requisitos específicos de procesador para una pieza específica de la aplicación",
+                "4": "Las restricciones operativas requieren limitaciones especiales en el procesador central o dedicado",
+                "5": "Además, hay limitaciones especiales en los componentes distribuidos del sistema"
             },
-
-            // Emparejamiento (Matching) - 1 pregunta
-            {
-                type: 'matching', category: 'Semana 3',
-                question: 'Empareje los elementos de la columna izquierda que correspondan con los elementos de la columna derecha (equivalencias de capacidad de almacenamiento: 1024 unidades de la anterior).',
-                pairs: [
-                    { left: '1 gigabyte (GB)', right: '1024 megabytes (MB)' },
-                    { left: '1 terabyte (TB)', right: '1024 gigabytes (GB)' },
-                    { left: '1 petabyte (PB)', right: '1024 terabytes (TB)' },
-                    { left: '1 exabyte (EB)', right: '1024 petabytes (PB)' },
-                    { left: '1 megabyte (MB)', right: '1024 kilobytes (KB)' }
-                ]
+            "5. Tasa de transacciones": {
+                "0": "No se anticipa período pico de transacciones",
+                "1": "Se anticipa período pico de transacciones (mensual, trimestral, estacional, anual)",
+                "2": "Se anticipa período pico de transacciones semanal",
+                "3": "Se anticipa período pico de transacciones diario",
+                "4": "Alta tasa de transacciones requiere tareas de análisis de rendimiento en fase de diseño",
+                "5": "Alta tasa de transacciones requiere análisis de rendimiento Y herramientas especializadas"
             },
-
-            // Verdadero/Falso (T/F) - 17 preguntas restantes
-            { type: 'tf', category: 'Semana 2', question: 'La declaración <code>Import</code> no es obligatoria cuando una clase en un paquete utiliza a otra clase en el mismo paquete.', answer: true, explanation: 'Las clases dentro del mismo paquete se pueden referenciar directamente sin una declaración <code>import</code>.' },
-
-            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa compilado de Java desde la línea de comandos (conocido como Símbolo del sistema en Windows), no es necesario especificar la extensión del programa compilado. Por ejemplo para ejecutar el programa compilado del archivo fuente <code>Bienvenido.java</code>, basta con escribir <code>java Bienvenido</code>.', answer: true, explanation: 'El comando <code>java</code> solo requiere el nombre de la clase (<code>Bienvenido</code>) y no la extensión <code>.class</code>.' },
-            { type: 'tf', category: 'Semana 3', question: 'Para ejecutar un programa de Java, primero es compilado y después ejecutado por la Máquina Virtual de Java (JVM).', answer: true, explanation: 'El código Java se compila a bytecode, el cual es luego interpretado y ejecutado por la JVM.' },
-
-            { type: 'tf', category: 'Semana 4', question: 'La instrucción <code>do...while</code> evalúa la condición de continuación de ciclo antes de ejecutar el cuerpo del mismo, por lo que el cuerpo siempre se ejecuta por lo menos una vez.', answer: false, explanation: 'La instrucción <code>do...while</code> evalúa la condición *después* de ejecutar el cuerpo (bucle de post-prueba), por lo que garantiza que el cuerpo se ejecute al menos una vez, incluso si la condición es falsa inicialmente.' },
-            { type: 'tf', category: 'Semana 4', question: 'La expresión <code>((x > y) && (a < b))</code> es verdadera si <code>(x > y)</code> es verdadera, o si <code>(a < b)</code> es verdadera.', answer: false, explanation: 'La expresión <code>&&</code> (AND lógico) requiere que *ambas* condiciones sean verdaderas. El enunciado describe el operador <code>||</code> (OR lógico).' },
-            { type: 'tf', category: 'Semana 4', question: 'Si al principio, la condición de continuación de ciclo de un encabezado <code>for</code> es falsa, el programa no ejecuta el cuerpo de la instrucción <code>for</code>.', answer: true, explanation: 'La condición se evalúa antes de la primera iteración (bucle de pre-prueba), y si es falsa, el ciclo se omite por completo.' },
-            { type: 'tf', category: 'Semana 4', question: 'Al enumerar las instrucciones <code>case</code> en forma consecutiva, sin instrucciones entre ellas, se puede ejecutar las instrucciones del último <code>case</code> de la secuencia. (Esto se conoce como "fall-through")', answer: true, explanation: 'Esto es una característica del <code>switch</code> en Java (fall-through). Si se cumple un <code>case</code> y no hay <code>break</code>, la ejecución "cae" al siguiente <code>case</code>.' },
-
-            { type: 'tf', category: 'Semana 5', question: 'Cuando una clase redefine al método de una superclase utilizando el mismo encabezado (mismos tipo de acceso, tipo de retorno, nombre de método y lista de parámetros) pero con otro cuerpo, se dice que la subclase sobrecarga a ese método de la superclase.', answer: false, explanation: 'Redefinir un método con el mismo encabezado se llama *sobrescribir* (override), no sobrecargar (overload).' },
-            { type: 'tf', category: 'Semana 5', question: 'La clase <code>Object</code> es la raíz de todas las jerarquías de herencia en Java.', answer: true, explanation: 'Todas las clases en Java, directa o indirectamente, heredan de <code>Object</code>.' },
-            { type: 'tf', category: 'Semana 5', question: 'Si un constructor no asigna un valor a una variable de instancia (campo), de todas formas ésta se inicializa con su valor predeterminado.', answer: true, explanation: 'Java inicializa automáticamente las variables de instancia no asignadas (ej: 0 para números, <code>false</code> para booleanos, <code>null</code> para referencias a objetos).' },
-
-            { type: 'tf', category: 'Semana 6', question: 'Si una superclase declara a un método como <code>abstract</code>, una subclase debe forzosamente implementar ese método.', answer: false, explanation: 'Solo las subclases *concretas* (no abstractas) deben implementar todos los métodos abstractos de su superclase.' },
-            { type: 'tf', category: 'Semana 6', question: 'Es posible crear un objeto de una clase abstracta si se asigna a una variable abstracta.', answer: false, explanation: 'Las clases abstractas no se pueden instanciar directamente con <code>new</code>, sin importar el tipo de la variable.' },
-            { type: 'tf', category: 'Semana 6', question: 'Un método que se declara como <code>final</code> en una superclase no se puede sobrescribir en una subclase.', answer: true, explanation: 'El modificador <code>final</code> tiene el propósito específico de evitar que el método sea sobrescrito (overridden).' },
-            { type: 'tf', category: 'Semana 6', question: 'Una clase abstracta debe forzosamente contener un método abstracto.', answer: false, explanation: 'Una clase se puede declarar como <code>abstract</code> incluso si no contiene ningún método <code>abstract</code>, para simplemente evitar su instanciación.' },
-
-            { type: 'tf', category: 'Semana 7', question: 'El bloque <code>finally</code> es opcional, y si existe se debe colocar después del último bloque <code>catch</code>, o después del bloque <code>try</code> si no hay ningún bloque <code>catch</code>.', answer: true, explanation: 'El bloque <code>finally</code> siempre se ejecuta, y su posición es la correcta: al final de la estructura <code>try-catch</code>.' },
-            { type: 'tf', category: 'Semana 7', question: 'Si dentro de un bloque <code>try</code> se lanza una excepción para la cual no hay una cláusula <code>catch</code> que corresponda a esa excepción, la ejecución del programa continúa en la siguiente instrucción después del último bloque <code>catch</code>.', answer: false, explanation: 'Si no se encuentra un <code>catch</code> correspondiente, la excepción se propaga y el programa termina de forma anormal (unhandled exception).' },
-            { type: 'tf', category: 'Semana 7', question: 'Un bloque <code>catch</code> que atrapa una excepción de un tipo que es superclase de otros tipos de excepciones, también atrapará a estas últimas excepciones.', answer: true, explanation: 'Debido a la herencia y el polimorfismo, un bloque <code>catch</code> de un tipo base (superclase) puede manejar cualquier excepción de una subclase de ese tipo.' },
-        ];
-
-        // --- 2. Variables de Estado Globales ---
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let questions = []; // Array que contendrá las preguntas barajadas
-        let quizState = 'in_progress'; // 'in_progress', 'finished'
-
-        // --- 3. Funciones de Utilidad ---
-
-        /**
-         * Baraja un array usando el algoritmo Fisher-Yates.
-         * @param {Array} array
-         */
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+            "6. Entrada de datos en línea": {
+                "0": "Todas las transacciones se procesan en modo por lotes",
+                "1": "1% a 7% de las transacciones son entrada interactiva de datos",
+                "2": "8% a 15% de las transacciones son entrada interactiva de datos",
+                "3": "16% a 23% de las transacciones son entrada interactiva de datos",
+                "4": "24% a 30% de las transacciones son entrada interactiva de datos",
+                "5": "Más del 30% de las transacciones son entrada interactiva de datos"
+            },
+            "7. Eficiencia del usuario final": {
+                "0": "Ninguna de las características de eficiencia está presente",
+                "1": "Una a tres características están presentes (ayudas navegación, menús, ayuda en línea, etc.)",
+                "2": "Cuatro a cinco características están presentes",
+                "3": "Seis o más características, pero sin requisitos específicos relacionados con eficiencia",
+                "4": "Seis o más características Y requisitos específicos requieren tareas de diseño para factores humanos",
+                "5": "Seis o más características Y se requieren herramientas especiales para demostrar que se lograron los objetivos"
+            },
+            "8. Actualización en línea": {
+                "0": "Ninguna actualización en línea",
+                "1": "Actualización en línea de 1-3 archivos de control. Volumen bajo y recuperación fácil",
+                "2": "Actualización en línea de 4 o más archivos de control. Volumen bajo y recuperación fácil",
+                "3": "Actualización en línea de archivos lógicos internos principales",
+                "4": "Además, protección contra pérdida de datos es esencial y ha sido especialmente diseñada",
+                "5": "Además, altos volúmenes requieren procedimientos de recuperación altamente automatizados"
+            },
+            "9. Procesamiento complejo": {
+                "0": "Ninguno de los componentes de procesamiento complejo está presente",
+                "1": "Cualquiera de los siguientes: control sensible, procesamiento lógico extenso, procesamiento matemático extenso, manejo de excepciones, procesamiento multimedia",
+                "2": "Cualquiera de dos de los componentes mencionados",
+                "3": "Cualquiera de tres de los componentes mencionados",
+                "4": "Cualquiera de cuatro de los componentes mencionados",
+                "5": "Los cinco componentes de procesamiento complejo están presentes"
+            },
+            "10. Reutilización": {
+                "0": "Sin código reutilizable",
+                "1": "Código reutilizable se usa dentro de la aplicación",
+                "2": "Menos del 10% de la aplicación consideró las necesidades de más de un usuario",
+                "3": "10% o más de la aplicación consideró las necesidades de más de un usuario",
+                "4": "La aplicación fue específicamente empaquetada/documentada para facilitar reutilización, personalizada a nivel de código fuente",
+                "5": "La aplicación fue específicamente empaquetada/documentada para facilitar reutilización, personalizada mediante mantenimiento de parámetros de usuario"
+            },
+            "11. Facilidad de instalación": {
+                "0": "Sin consideraciones especiales y sin configuración especial requerida para instalación",
+                "1": "Sin consideraciones especiales pero se requiere configuración especial para instalación",
+                "2": "Requisitos de conversión e instalación fueron establecidos, guías proporcionadas y probadas. Impacto no importante",
+                "3": "Requisitos de conversión e instalación fueron establecidos, guías proporcionadas y probadas. Impacto es importante",
+                "4": "Además del punto 2, herramientas automatizadas de conversión e instalación fueron proporcionadas y probadas",
+                "5": "Además del punto 3, herramientas automatizadas de conversión e instalación fueron proporcionadas y probadas"
+            },
+            "12. Facilidad operacional": {
+                "0": "Sin consideraciones operativas especiales más que procedimientos normales de respaldo",
+                "1": "Procedimientos efectivos de inicio/respaldo/recuperación (1 punto)",
+                "2": "Sin intervención del operador (2 puntos) o minimiza montajes de cinta (1 punto)",
+                "3": "Minimiza manejo de papel (1 punto) + otras características",
+                "4": "Combinación de características que suman 4 puntos",
+                "5": "La aplicación está diseñada para operación desatendida. Recuperación automática de errores es característica"
+            },
+            "13. Múltiples sitios": {
+                "0": "Requisitos del usuario no requieren considerar las necesidades de más de un sitio",
+                "1": "Necesidades de múltiples sitios consideradas, aplicación diseñada para operar solo bajo ambientes de hardware/software idénticos",
+                "2": "Necesidades de múltiples sitios consideradas, aplicación diseñada para operar solo bajo ambientes de hardware/software similares",
+                "3": "Necesidades de múltiples sitios consideradas, aplicación diseñada para operar bajo ambientes de hardware/software diferentes",
+                "4": "Documentación y plan de soporte proporcionados y probados para múltiples sitios (con características de 1 o 2)",
+                "5": "Documentación y plan de soporte proporcionados y probados para múltiples sitios (con características de 3)"
+            },
+            "14. Facilitar cambios": {
+                "0": "Ninguna de las características de flexibilidad está presente",
+                "1": "Consulta/reporte flexible simple (1 pto) o datos de control en tablas mantenidas por usuario con efecto siguiente día (1 pto)",
+                "2": "Consulta/reporte complejo (2-3 ptos) o combinación que sume 2 puntos",
+                "3": "Datos de control con efecto inmediato (2 ptos) + otras características que sumen 3 puntos",
+                "4": "Cualquier combinación que sume 4 puntos de las características mencionadas",
+                "5": "Todas las características de flexibilidad están presentes (suma 5 puntos)"
             }
-            return array;
+        };
+
+        // GSC Form Generation
+        function generateGSCForm() {
+            const container = document.getElementById('gsc-container');
+            container.innerHTML = '';
+            
+            gscCharacteristics.forEach((char, index) => {
+                const div = document.createElement('div');
+                div.className = 'gsc-detailed';
+                
+                const criteriaKey = `${char.id}. ${char.name}`;
+                const criteria = gscDetailedCriteria[criteriaKey] || {};
+                
+                div.innerHTML = `
+                    <div class="card">
+                        <div class="card__body">
+                            <h4>${char.name}</h4>
+                            <p class="help-text">${char.description}</p>
+                            
+                            <div class="gsc-criteria">
+                                <strong>Criterios de Evaluación:</strong><br>
+                                ${Object.entries(criteria).map(([level, desc]) => 
+                                    `<strong>${level}:</strong> ${desc}<br>`
+                                ).join('')}
+                            </div>
+                            
+                            <div class="gsc-scale-detailed">
+                                ${[0, 1, 2, 3, 4, 5].map(value => `
+                                    <div class="gsc-option ${projectData.gscValues[index] === value ? 'selected' : ''}" onclick="selectGSC(${index}, ${value})">
+                                        <input type="radio" name="gsc-${char.id}" value="${value}" ${projectData.gscValues[index] === value ? 'checked' : ''}>
+                                        <div><strong>${value}</strong></div>
+                                        <div class="help-text" style="font-size: 10px; margin-top: 4px;">${criteria[value] || 'No definido'}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
         }
 
-        /**
-         * Inicializa el juego: baraja las preguntas y comienza.
-         */
-        function initializeQuiz() {
-            // Clonar y barajar todas las preguntas
-            questions = shuffleArray([...allQuestions]);
-            currentQuestionIndex = 0;
-            score = 0;
-            quizState = 'in_progress';
-
-            document.getElementById('final-modal').classList.add('hidden');
-            document.getElementById('final-modal').classList.remove('flex');
-
-            updateScoreDisplay();
-            loadQuestion();
+        function selectGSC(index, value) {
+            projectData.gscValues[index] = value;
+            
+            // Update visual selection
+            const containers = document.querySelectorAll('.gsc-detailed');
+            const container = containers[index];
+            const options = container.querySelectorAll('.gsc-option');
+            
+            options.forEach((option, i) => {
+                if (i === value) {
+                    option.classList.add('selected');
+                    option.querySelector('input').checked = true;
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+            
+            // Update GSC totals
+            updateGSCTotals();
         }
 
-        /**
-         * Actualiza los contadores de puntaje y pregunta.
-         */
-        function updateScoreDisplay() {
-            document.getElementById('score-display').textContent = score;
-            document.getElementById('question-count-display').textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
-            const currentQ = questions[currentQuestionIndex];
-            if (currentQ) {
-                document.getElementById('category-display').textContent = currentQ.category;
-            } else {
-                document.getElementById('category-display').textContent = 'General';
+        function updateGSCTotals() {
+            const gscSum = projectData.gscValues.reduce((sum, value) => sum + value, 0);
+            const vaf = 0.65 + (gscSum / 100);
+            
+            const totalElement = document.getElementById('gsc-total');
+            const vafElement = document.getElementById('gsc-vaf');
+            
+            if (totalElement) totalElement.textContent = gscSum;
+            if (vafElement) vafElement.textContent = vaf.toFixed(2);
+        }
+
+        // Calculations
+        function calculateResults() {
+            // Calculate unadjusted function points
+            let unadjustedFP = 0;
+            Object.values(projectData.functions).forEach(functions => {
+                functions.forEach(func => {
+                    unadjustedFP += func.fpValue;
+                });
+            });
+            
+            // Calculate VAF
+            const gscSum = projectData.gscValues.reduce((sum, value) => sum + value, 0);
+            const vaf = 0.65 + (gscSum / 100);
+            
+            // Calculate adjusted function points
+            const adjustedFP = unadjustedFP * vaf;
+            
+            // Calculate lines of code
+            const languageFactor = languageFactors[projectData.language] || 53;
+            const linesOfCode = Math.round(adjustedFP * languageFactor);
+            
+            // Update UI
+            document.getElementById('unadjusted-fp').textContent = unadjustedFP.toFixed(0);
+            document.getElementById('vaf').textContent = vaf.toFixed(3);
+            document.getElementById('adjusted-fp').textContent = adjustedFP.toFixed(0);
+            document.getElementById('lines-of-code').textContent = linesOfCode.toLocaleString();
+            
+            // Update language in results
+            const selectedLangElement = document.getElementById('selected-language');
+            if (selectedLangElement) {
+                selectedLangElement.textContent = projectData.language;
             }
+            
+            // Generate project summary
+            generateProjectSummary(unadjustedFP, adjustedFP, linesOfCode);
         }
 
-        /**
-         * Carga y renderiza la pregunta actual.
-         */
-        function loadQuestion() {
-            // Si el índice excede el número de preguntas, finaliza el quiz.
-            if (currentQuestionIndex >= questions.length) {
-                endQuiz();
-                return;
-            }
-
-            const currentQ = questions[currentQuestionIndex];
-
-            // Resetear UI
-            // Reemplaza el marcador de completar (______) con una línea visible en HTML
-            document.getElementById('question-text').innerHTML = currentQ.question.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
-            document.getElementById('feedback-message').textContent = '';
-            document.getElementById('check-answer-button').classList.remove('hidden');
-            document.getElementById('next-question-button').classList.add('hidden');
-            document.getElementById('answer-options-container').innerHTML = '';
-            document.getElementById('quiz-area').classList.remove('correct-answer', 'incorrect-answer');
-
-            // Renderizar basado en el tipo de pregunta
-            if (currentQ.type === 'tf') {
-                renderTrueFalse(currentQ);
-            } else if (currentQ.type === 'mc') {
-                // Las preguntas de Completar se renderizan como Selección Múltiple
-                renderMultipleChoice(currentQ);
-            } else if (currentQ.type === 'matching') {
-                renderMatching(currentQ);
-            }
-
-            updateScoreDisplay();
-        }
-
-        // --- 4. Funciones de Renderizado por Tipo de Pregunta ---
-
-        /**
-         * Renderiza la pregunta Verdadero/Falso.
-         * @param {Object} q - Objeto de pregunta.
-         */
-        function renderTrueFalse(q) {
-            const container = document.getElementById('answer-options-container');
-            container.innerHTML = `
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <label class="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors w-full">
-                        <input type="radio" name="tf_answer" value="true" class="h-5 w-5 text-primary focus:ring-primary">
-                        <span class="ml-3 text-lg font-medium text-gray-700">Verdadero</span>
-                    </label>
-                    <label class="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors w-full">
-                        <input type="radio" name="tf_answer" value="false" class="h-5 w-5 text-primary focus:ring-primary">
-                        <span class="ml-3 text-lg font-medium text-gray-700">Falso</span>
-                    </label>
+        function generateProjectSummary(unadjustedFP, adjustedFP, linesOfCode) {
+            const summary = document.getElementById('project-summary');
+            
+            const functionBreakdown = Object.entries(projectData.functions)
+                .map(([type, functions]) => {
+                    const total = functions.reduce((sum, func) => sum + func.fpValue, 0);
+                    const typeNames = {
+                        'entradas': 'ENTRADAS (EI)',
+                        'salidas': 'SALIDAS (EO)',
+                        'peticiones': 'PETICIONES (EQ)',
+                        'archivos-internos': 'ARCHIVOS INTERNOS (ILF)',
+                        'archivos-externos': 'ARCHIVOS EXTERNOS (EIF)'
+                    };
+                    return `<li>${typeNames[type] || type.toUpperCase()}: ${total} PF (${functions.length} elementos)</li>`;
+                }).join('');
+            
+            const gscSum = projectData.gscValues.reduce((sum, value) => sum + value, 0);
+            const vaf = 0.65 + (gscSum / 100);
+            
+            summary.innerHTML = `
+                <h4>📊 Proyecto: ${projectData.name}</h4>
+                <p><strong>Lenguaje:</strong> ${projectData.language} (${languageFactors[projectData.language] || 53} Líneas/PF)</p>
+                <p><strong>Descripción:</strong> ${projectData.description}</p>
+                
+                <h5>📊 Distribución de Puntos de Función:</h5>
+                <ul>${functionBreakdown}</ul>
+                
+                <h5>🎯 Características del Sistema (GSC):</h5>
+                <ul>
+                    <li>Suma Total GSC: ${gscSum} puntos</li>
+                    <li>Factor de Ajuste de Valor (VAF): ${vaf.toFixed(3)}</li>
+                    <li>Fórmula VAF: 0.65 + (${gscSum} / 100) = ${vaf.toFixed(3)}</li>
+                </ul>
+                
+                <h5>🏆 Métricas Finales:</h5>
+                <ul>
+                    <li><strong>Puntos de Función No Ajustados (UFP):</strong> ${unadjustedFP.toFixed(0)} PF</li>
+                    <li><strong>Puntos de Función Ajustados (AFP):</strong> ${adjustedFP.toFixed(0)} PF</li>
+                    <li><strong>Líneas de Código Estimadas (SLOC):</strong> ${linesOfCode.toLocaleString()} líneas</li>
+                    <li><strong>Fórmula AFP:</strong> ${unadjustedFP.toFixed(0)} × ${vaf.toFixed(3)} = ${adjustedFP.toFixed(0)} PF</li>
+                    <li><strong>Fórmula SLOC:</strong> ${adjustedFP.toFixed(0)} × ${languageFactors[projectData.language] || 53} = ${linesOfCode.toLocaleString()} líneas</li>
+                </ul>
+                
+                <div style="margin-top: 20px; padding: 12px; background: var(--color-bg-3); border-radius: 8px;">
+                    <h6>📈 Interpretación de Resultados:</h6>
+                    <p><strong>Tamaño del Proyecto:</strong> ${adjustedFP <= 100 ? 'Pequeño' : adjustedFP <= 500 ? 'Mediano' : 'Grande'}</p>
+                    <p><strong>Complejidad:</strong> ${gscSum <= 20 ? 'Baja' : gscSum <= 40 ? 'Media' : 'Alta'} (GSC: ${gscSum}/70)</p>
+                    <p><strong>Esfuerzo Estimado:</strong> ${Math.round(adjustedFP / 100 * 5)} a ${Math.round(adjustedFP / 100 * 8)} meses-persona (aprox.)</p>
                 </div>
             `;
         }
 
-        /**
-         * Renderiza la pregunta de Selección Múltiple (Completar).
-         * @param {Object} q - Objeto de pregunta.
-         */
-        function renderMultipleChoice(q) {
-            const container = document.getElementById('answer-options-container');
-            const shuffledOptions = shuffleArray([...q.options]); // Barajar opciones
-            container.innerHTML = shuffledOptions.map(option => `
-                <label class="flex items-center p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                    <input type="radio" name="mc_answer" value="${option}" class="h-5 w-5 text-primary focus:ring-primary radio-option">
-                    <span class="ml-3 text-lg font-medium text-gray-700">${option}</span>
-                </label>
-            `).join('');
-        }
-
-        /**
-         * Renderiza la pregunta de Emparejamiento.
-         * @param {Object} q - Objeto de pregunta.
-         */
-        function renderMatching(q) {
-            const container = document.getElementById('answer-options-container');
-            const leftOptions = q.pairs.map(p => p.left);
-            const rightOptions = q.pairs.map(p => p.right);
-            const shuffledRight = shuffleArray([...rightOptions]); // Barajar el lado derecho
-
-            container.classList.add('space-y-3');
-            container.innerHTML = leftOptions.map((leftItem, index) => `
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center bg-gray-50 p-3 rounded-lg matching-pair" data-left="${leftItem}">
-                    <span class="font-medium text-gray-700 w-full sm:w-1/2 mb-2 sm:mb-0">${leftItem}</span>
-                    <select id="select_${index}" class="form-select mt-1 block w-full sm:w-1/2 rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary p-2 matching-select" data-correct-right="${q.pairs.find(p => p.left === leftItem).right}">
-                        <option value="">Elegir...</option>
-                        ${shuffledRight.map(rightItem => `<option value="${rightItem}">${rightItem}</option>`).join('')}
-                    </select>
-                </div>
-            `).join('');
-        }
-
-        // --- 5. Funciones de Verificación de Respuesta ---
-
-        /**
-         * Comprueba la respuesta del usuario para la pregunta actual.
-         */
-        function checkAnswer() {
-            const currentQ = questions[currentQuestionIndex];
-            let isCorrect = false;
-
-            if (currentQ.type === 'tf') {
-                isCorrect = checkTrueFalse(currentQ);
-            } else if (currentQ.type === 'mc') {
-                isCorrect = checkMultipleChoice(currentQ);
-            } else if (currentQ.type === 'matching') {
-                isCorrect = checkMatching(currentQ);
+        function exportToCSV() {
+            // Validations
+            if (!validateDataForExport()) {
+                return;
             }
-
-            if (isCorrect) {
-                score++;
-                document.getElementById('feedback-message').innerHTML = `<span class="text-secondary">¡Correcto!</span>`;
-                document.getElementById('quiz-area').classList.add('correct-answer');
-            } else {
-                document.getElementById('feedback-message').innerHTML = `<span class="text-danger">Incorrecto.</span><br><span class="text-sm font-normal text-gray-600"><strong>Explicación:</strong> ${currentQ.explanation}</span>`;
-                document.getElementById('quiz-area').classList.add('incorrect-answer');
+            
+            const csvContent = generateCSVContent();
+            
+            // Create and download CSV file
+            const BOM = '\uFEFF'; // UTF-8 BOM for Excel compatibility
+            const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            
+            // Generate intelligent filename
+            const projectName = projectData.name.replace(/[^a-zA-Z0-9]/g, '_');
+            const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+            a.download = `PuntosFuncion_${projectName}_${today}.csv`;
+            
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            // Show success message
+            showExportMessage('✅ Archivo CSV exportado exitosamente. Ya puedes abrirlo en Excel.');
+        }
+        
+        function validateDataForExport() {
+            // Check if project has name
+            if (!projectData.name.trim()) {
+                alert('⚠️ Por favor ingresa un nombre para el proyecto antes de exportar.');
+                return false;
             }
-
-            // Deshabilitar botón de comprobar y mostrar siguiente
-            document.getElementById('check-answer-button').classList.add('hidden');
-            document.getElementById('next-question-button').classList.remove('hidden');
-            updateScoreDisplay();
-            disableOptions(currentQ.type);
-        }
-
-        /**
-         * Deshabilita las opciones de respuesta después de la comprobación.
-         * @param {string} type - Tipo de pregunta.
-         */
-        function disableOptions(type) {
-            if (type === 'tf') {
-                document.querySelectorAll('input[name="tf_answer"]').forEach(input => input.disabled = true);
-            } else if (type === 'mc') {
-                document.querySelectorAll('input[name="mc_answer"]').forEach(input => {
-                    input.disabled = true;
-                    // Resaltar respuesta correcta
-                    if (input.value === questions[currentQuestionIndex].answer) {
-                        input.parentElement.classList.add('border-2', 'border-secondary', 'bg-emerald-100');
-                    }
-                });
-            } else if (type === 'matching') {
-                document.querySelectorAll('.matching-select').forEach(select => {
-                    select.disabled = true;
-                    const correctValue = select.getAttribute('data-correct-right');
-                    // Resaltar correctos/incorrectos
-                    const parentDiv = select.closest('.matching-pair');
-                    if (select.value === correctValue) {
-                         parentDiv.classList.add('border-2', 'border-secondary', 'bg-emerald-100');
-                    } else if (select.value !== "") {
-                        parentDiv.classList.add('border-2', 'border-danger', 'bg-red-100');
-                    }
-                    parentDiv.innerHTML += `<span class="text-sm text-gray-700 mt-1 sm:mt-0 sm:ml-4"> (Correcto: ${correctValue})</span>`;
-                });
+            
+            // Check if language is selected
+            if (!projectData.language) {
+                alert('⚠️ Por favor selecciona un lenguaje de programación antes de exportar.');
+                return false;
             }
+            
+            // Check if at least one function is defined
+            const totalFunctions = Object.values(projectData.functions)
+                .reduce((sum, functions) => sum + functions.length, 0);
+            
+            if (totalFunctions === 0) {
+                alert('⚠️ Por favor define al menos una función del sistema antes de exportar.');
+                return false;
+            }
+            
+            // Check if all GSC values are set (not all zeros is acceptable)
+            const hasGSCValues = projectData.gscValues.some(value => value > 0);
+            if (!hasGSCValues) {
+                const confirm = window.confirm('⚠️ No has evaluado ninguna característica del sistema (GSC). ¿Deseas continuar con la exportación?');
+                if (!confirm) return false;
+            }
+            
+            return true;
         }
-
-
-        /**
-         * Lógica de comprobación para Verdadero/Falso.
-         * @param {Object} q - Objeto de pregunta.
-         * @returns {boolean}
-         */
-        function checkTrueFalse(q) {
-            const selected = document.querySelector('input[name="tf_answer"]:checked');
-            if (!selected) return false;
-            return selected.value === q.answer.toString();
-        }
-
-        /**
-         * Lógica de comprobación para Selección Múltiple.
-         * @param {Object} q - Objeto de pregunta.
-         * @returns {boolean}
-         */
-        function checkMultipleChoice(q) {
-            const selected = document.querySelector('input[name="mc_answer"]:checked');
-            if (!selected) return false;
-            return selected.value === q.answer;
-        }
-
-        /**
-         * Lógica de comprobación para Emparejamiento.
-         * @param {Object} q - Objeto de pregunta.
-         * @returns {boolean}
-         */
-        function checkMatching(q) {
-            const selects = document.querySelectorAll('.matching-select');
-            let allCorrect = true;
-
-            selects.forEach(select => {
-                const correctValue = select.getAttribute('data-correct-right');
-                if (select.value !== correctValue) {
-                    allCorrect = false;
-                }
+        
+        function generateCSVContent() {
+            const lines = [];
+            const currentDate = new Date().toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit', 
+                year: 'numeric'
             });
-
-            return allCorrect;
+            
+            // Header
+            lines.push('CALCULADORA DE PUNTOS DE FUNCIÓN - RESULTADOS');
+            lines.push(`Proyecto:,${escapeCSVField(projectData.name)}`);
+            lines.push(`Lenguaje:,${projectData.language}`);
+            lines.push(`Fecha:,${currentDate}`);
+            lines.push('============================================');
+            lines.push('');
+            
+            // Function types data
+            const functionTypes = {
+                'entradas': { name: 'ENTRADAS', headers: ['Núm.', 'Entrada', 'Archivos referidos', 'Elementos de datos', 'Nivel', 'Valor'] },
+                'salidas': { name: 'SALIDAS', headers: ['Núm.', 'Salida', 'Archivos referidos', 'Elementos de datos', 'Nivel', 'Valor'] },
+                'peticiones': { name: 'PETICIONES', headers: ['Núm.', 'Petición', 'Archivos referidos', 'Elementos de datos', 'Nivel', 'Valor'] },
+                'archivos-internos': { name: 'ARCHIVOS INTERNOS', headers: ['Núm.', 'Archivo interno', 'Elementos de registro', 'Elementos de datos', 'Nivel', 'Valor'] },
+                'archivos-externos': { name: 'ARCHIVOS EXTERNOS', headers: ['Núm.', 'Archivo externo', 'Elementos de registro', 'Elementos de datos', 'Nivel', 'Valor'] }
+            };
+            
+            Object.entries(functionTypes).forEach(([key, config]) => {
+                const functions = projectData.functions[key] || [];
+                lines.push(config.name);
+                lines.push(config.headers.join(','));
+                
+                let subtotal = 0;
+                functions.forEach((func, index) => {
+                    const row = [
+                        index + 1,
+                        escapeCSVField(func.name || 'Sin nombre'),
+                        func.files || 0,
+                        func.elements || 0,
+                        func.complexity || 'Bajo',
+                        func.fpValue || 0
+                    ];
+                    lines.push(row.join(','));
+                    subtotal += func.fpValue || 0;
+                });
+                
+                if (functions.length === 0) {
+                    lines.push('(No hay elementos definidos)');
+                }
+                lines.push(`Subtotal ${config.name.toLowerCase()},${subtotal}`);
+                lines.push('');
+            });
+            
+            // GSC Section
+            lines.push('CARACTERÍSTICAS DEL SISTEMA (GSC)');
+            lines.push('Característica,Valor,Descripción');
+            
+            gscCharacteristics.forEach((char, index) => {
+                const value = projectData.gscValues[index] || 0;
+                const description = getGSCDescription(char.name, value);
+                lines.push(`${escapeCSVField(char.name)},${value},${escapeCSVField(description)}`);
+            });
+            
+            const gscSum = projectData.gscValues.reduce((sum, value) => sum + value, 0);
+            lines.push(`Suma GSC,${gscSum}`);
+            lines.push('');
+            
+            // Final Results
+            const unadjustedFP = parseInt(document.getElementById('unadjusted-fp').textContent);
+            const vaf = parseFloat(document.getElementById('vaf').textContent);
+            const adjustedFP = parseInt(document.getElementById('adjusted-fp').textContent);
+            const linesOfCode = parseInt(document.getElementById('lines-of-code').textContent.replace(/,/g, ''));
+            const languageFactor = languageFactors[projectData.language] || 53;
+            
+            lines.push('RESULTADOS FINALES');
+            lines.push('Métrica,Valor');
+            lines.push(`Puntos de Función No Ajustados,${unadjustedFP}`);
+            lines.push(`Factor de Ajuste de Valor (VAF),${vaf.toFixed(3)}`);
+            lines.push(`Puntos de Función Ajustados,${adjustedFP}`);
+            lines.push(`Factor de Conversión LDC,${languageFactor}`);
+            lines.push(`Líneas de Código Estimadas,${linesOfCode}`);
+            
+            return lines.join('\n');
+        }
+        
+        function escapeCSVField(field) {
+            if (typeof field !== 'string') {
+                field = String(field);
+            }
+            
+            // If field contains comma, quotes, or newlines, wrap in quotes and escape internal quotes
+            if (field.includes(',') || field.includes('"') || field.includes('\n')) {
+                return '"' + field.replace(/"/g, '""') + '"';
+            }
+            return field;
+        }
+        
+        function getGSCDescription(charName, value) {
+            const criteriaKey = gscCharacteristics.find(c => c.name === charName)?.id + ". " + charName;
+            const criteria = gscDetailedCriteria[criteriaKey];
+            if (criteria && criteria[value]) {
+                return criteria[value].substring(0, 100) + (criteria[value].length > 100 ? '...' : '');
+            }
+            return `Valor ${value} seleccionado`;
+        }
+        
+        function showExportMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.innerHTML = message;
+            messageDiv.style.cssText = `
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                background: var(--color-success); 
+                color: white; 
+                padding: 16px 20px; 
+                border-radius: 8px; 
+                box-shadow: var(--shadow-lg); 
+                z-index: 2000;
+                max-width: 350px;
+                font-weight: 500;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                messageDiv.style.transition = 'opacity 0.3s';
+                setTimeout(() => messageDiv.remove(), 300);
+            }, 4000);
         }
 
-        /**
-         * Pasa a la siguiente pregunta o finaliza el quiz.
-         */
-        function nextQuestion() {
-            currentQuestionIndex++;
-            loadQuestion();
+        function resetProject() {
+            projectData = {
+                name: '',
+                language: '',
+                description: '',
+                functions: {
+                    entradas: [],
+                    salidas: [],
+                    peticiones: [],
+                    'archivos-internos': [],
+                    'archivos-externos': []
+                },
+                gscValues: Array(14).fill(0)
+            };
+            
+            // Clear all tables
+            Object.keys(projectData.functions).forEach(type => {
+                document.getElementById(type + '-tbody').innerHTML = '';
+                updateSubtotal(type);
+            });
+            
+            // Reset form fields
+            document.getElementById('project-name').value = '';
+            document.getElementById('programming-language').value = '';
+            document.getElementById('project-description').value = '';
+            
+            showSection('home-section');
         }
 
-        /**
-         * Muestra el modal de resultados finales.
-         */
-        function endQuiz() {
-            document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
-            document.getElementById('final-modal').classList.remove('hidden');
-            document.getElementById('final-modal').classList.add('flex');
+        function openHelpModal() {
+            document.getElementById('help-modal').style.display = 'block';
         }
 
-        /**
-         * Reinicia el quiz.
-         */
-        function restartQuiz() {
-            initializeQuiz();
+        function closeHelpModal() {
+            document.getElementById('help-modal').style.display = 'none';
         }
 
-        // Inicializar el quiz cuando la ventana cargue
-        window.onload = initializeQuiz;
+        function printResults() {
+            window.print();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('help-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Add print styles
+        const printStyles = document.createElement('style');
+        printStyles.innerHTML = `
+            @media print {
+                .nav-buttons, .tabs, .btn { display: none !important; }
+                .app-section:not(#results-section) { display: none !important; }
+                #results-section { display: block !important; }
+                .container { max-width: 100% !important; padding: 0 !important; }
+                .results-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            }
+        `;
+        document.head.appendChild(printStyles);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + H for help
+            if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+                e.preventDefault();
+                openHelpModal();
+            }
+            // Escape to close modal
+            if (e.key === 'Escape') {
+                closeHelpModal();
+            }
+        });
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize empty rows for each function type
+            Object.keys(projectData.functions).forEach(type => {
+                updateSubtotal(type);
+            });
+            
+            // Add keyboard shortcut hint
+            const helpHint = document.createElement('div');
+            helpHint.innerHTML = '💡 Consejo: Presiona Ctrl+H para abrir la ayuda en cualquier momento';
+            helpHint.style.cssText = 'position: fixed; bottom: 16px; right: 16px; background: var(--color-info); color: var(--color-white); padding: 8px 12px; border-radius: 4px; font-size: 12px; z-index: 1000; opacity: 0.8;';
+            document.body.appendChild(helpHint);
+            
+            // Hide hint after 5 seconds
+            setTimeout(() => {
+                helpHint.style.opacity = '0';
+                setTimeout(() => helpHint.remove(), 300);
+            }, 5000);
+        });
     </script>
 </body>
 </html>
