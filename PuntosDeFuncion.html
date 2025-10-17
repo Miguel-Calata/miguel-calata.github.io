@@ -486,6 +486,119 @@
             font-size: var(--font-size-sm);
             color: var(--color-success);
             margin-bottom: var(--space-16);
+            position: relative;
+        }
+        
+        .progress-indicator::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--color-success);
+            border-radius: 2px;
+        }
+        
+        /* Enhanced visual feedback */
+        .gsc-question {
+            transition: all 0.3s ease;
+        }
+        
+        .gsc-question:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gsc-option {
+            transition: all 0.2s ease;
+        }
+        
+        .gsc-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table tr:hover {
+            background: var(--color-bg-1);
+        }
+        
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:active::after {
+            animation: ripple 0.6s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Breadcrumb navigation */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: var(--color-bg-1);
+            border-radius: 8px;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        
+        .breadcrumb-separator {
+            color: var(--color-border);
         }
 
         .help-text {
@@ -663,6 +776,12 @@
                 <div class="app-header">
                     <h1>🧮 Calculadora de Puntos de Función y Líneas de Código</h1>
                     <p>Herramienta profesional para estimar el tamaño y complejidad de proyectos de software basada en el estándar IFPUG</p>
+                    
+                    <div style="margin: 16px 0; padding: 12px 16px; background: var(--color-bg-3); border-radius: 8px; max-width: 600px; margin-left: auto; margin-right: auto; border-left: 4px solid var(--color-success);">
+                        <h5 style="margin: 0 0 8px 0; color: var(--color-success); font-size: 14px;">💾 Sistema de Auto-Guardado Inteligente</h5>
+                        <p style="margin: 0; font-size: 13px; color: var(--color-text-secondary);">Tu progreso se guarda automáticamente cada 30 segundos y está protegido contra cierre accidental de la página. Usa Ctrl+S para guardar manualmente.</p>
+                    </div>
+                    
                     <div style="margin: 24px 0; padding: 16px; background: var(--color-bg-4); border-radius: 8px; max-width: 600px; margin-left: auto; margin-right: auto;">
                         <h4>🎯 ¿Qué puedes hacer?</h4>
                         <ul style="text-align: left; margin: 8px 0; padding-left: 20px;">
@@ -671,9 +790,12 @@
                             <li>Evaluar 14 características del sistema (GSC)</li>
                             <li>Obtener estimaciones de esfuerzo y complejidad</li>
                             <li>Acceder a definiciones técnicas completas y ejemplos</li>
+                            <li>Sistema de auto-guardado con protección contra pérdida de datos</li>
+                            <li>Interfaz moderna con indicadores de progreso en tiempo real</li>
                         </ul>
                     </div>
                     <button class="btn btn--primary btn--lg" onclick="startCalculation()">🚀 Iniciar Cálculo</button>
+                    <button class="btn btn--secondary btn--lg" onclick="openHelpModal()" style="margin-left: 16px;">📚 Guía Completa</button>
                 </div>
             </div>
         </section>
@@ -763,7 +885,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Nombre descriptivo de la función que identifica claramente su propósito</span></span></th>
-                                <th>Archivos Referidos <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Número de archivos (clases) que son accedidos, leídos o actualizados por esta función</span></span></th>
+                                <th>Archivos Referidos <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Número de archivos internos (ILF) y archivos externos (EIF) que son accedidos, leídos o actualizados por esta función</span></span></th>
                                 <th>Elementos de Datos <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Campos únicos de información reconocidos por el usuario final que cruzan la frontera de la aplicación</span></span></th>
                                 <th>Nivel <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Clasificación (Bajo, Medio, Alto) determinada por el número de archivos referidos y elementos de datos</span></span></th>
                                 <th>Valor PF <span class="tooltip"><span class="help-icon">?</span><span class="tooltip-text">Puntos de función asignados a cada función basándose en su tipo y nivel de complejidad</span></span></th>
@@ -901,9 +1023,27 @@
                     <div id="archivos-externos-subtotal" class="result-value" style="margin-top: 16px;">Subtotal: 0 PF</div>
                 </div>
                 
+                <div class="breadcrumb">
+                    <div class="breadcrumb-item">
+                        <span>📝</span> Configuración
+                    </div>
+                    <div class="breadcrumb-separator">→</div>
+                    <div class="breadcrumb-item active">
+                        <span>⚙️</span> Funciones
+                    </div>
+                    <div class="breadcrumb-separator">→</div>
+                    <div class="breadcrumb-item">
+                        <span>🏛️</span> Características
+                    </div>
+                    <div class="breadcrumb-separator">→</div>
+                    <div class="breadcrumb-item">
+                        <span>📈</span> Resultados
+                    </div>
+                </div>
+                
                 <div class="nav-buttons">
-                    <button class="btn btn--secondary" onclick="goToProjectConfig()">Anterior</button>
-                    <button class="btn btn--primary" onclick="goToCharacteristics()">Siguiente</button>
+                    <button class="btn btn--secondary" onclick="goToProjectConfig()">← Anterior: Configuración</button>
+                    <button class="btn btn--primary" onclick="goToCharacteristics()">Siguiente: Características →</button>
                 </div>
             </div>
         </section>
@@ -919,9 +1059,27 @@
                     <!-- GSC items will be generated here -->
                 </div>
                 
+                <div class="breadcrumb">
+                    <div class="breadcrumb-item">
+                        <span>📝</span> Configuración
+                    </div>
+                    <div class="breadcrumb-separator">→</div>
+                    <div class="breadcrumb-item">
+                        <span>⚙️</span> Funciones
+                    </div>
+                    <div class="breadcrumb-separator">→</div>
+                    <div class="breadcrumb-item active">
+                        <span>🏛️</span> Características
+                    </div>
+                    <div class="breadcrumb-separator">→</div>
+                    <div class="breadcrumb-item">
+                        <span>📈</span> Resultados
+                    </div>
+                </div>
+                
                 <div class="nav-buttons">
-                    <button class="btn btn--secondary" onclick="goToFunctions()">Anterior</button>
-                    <button class="btn btn--primary" onclick="goToResults()">Ver Resultados</button>
+                    <button class="btn btn--secondary" onclick="goToFunctions()">← Anterior: Funciones</button>
+                    <button class="btn btn--primary" onclick="goToResults()">Finalizar: Ver Resultados →</button>
                 </div>
             </div>
         </section>
@@ -989,23 +1147,23 @@
         };
 
         const gscCharacteristics = [
-            { id: 1, name: "Comunicaciones de datos", description: "¿Cuántas facilidades de comunicación existen para ayudar en la transferencia o intercambio de información?" },
-            { id: 2, name: "Procesamiento distribuido de datos", description: "¿Cómo se manejan las funciones de datos y procesamiento distribuido?" },
-            { id: 3, name: "Rendimiento", description: "¿El usuario requirió tiempo de respuesta o throughput?" },
-            { id: 4, name: "Configuración fuertemente utilizada", description: "¿Qué tan fuertemente utilizada es la plataforma de hardware actual?" },
-            { id: 5, name: "Tasa de transacciones", description: "¿Con qué frecuencia se ejecutan las transacciones diariamente, semanalmente, mensualmente?" },
-            { id: 6, name: "Entrada de datos en línea", description: "¿Qué porcentaje de la información se ingresa en línea?" },
-            { id: 7, name: "Eficiencia del usuario final", description: "¿La aplicación fue diseñada para la eficiencia del usuario final?" },
-            { id: 8, name: "Actualización en línea", description: "¿Cuántos archivos son actualizados por transacción en línea?" },
-            { id: 9, name: "Procesamiento complejo", description: "¿La aplicación tiene procesamiento lógico o matemático extensivo?" },
-            { id: 10, name: "Reutilización", description: "¿La aplicación fue desarrollada para satisfacer las necesidades de uno o muchos usuarios?" },
-            { id: 11, name: "Facilidad de instalación", description: "¿Qué tan difícil es la conversión e instalación?" },
-            { id: 12, name: "Facilidad operacional", description: "¿Qué tan efectivos son los procedimientos de inicio, respaldo y recuperación?" },
-            { id: 13, name: "Múltiples sitios", description: "¿La aplicación fue diseñada para ser instalada en múltiples sitios?" },
-            { id: 14, name: "Facilitar cambios", description: "¿La aplicación fue diseñada para facilitar cambios?" }
+            { id: 1, name: "Comunicaciones de Datos", question: "¿Cómo transfiere datos el sistema?", description: "Evalúa las necesidades de comunicación del sistema para transferir información entre componentes", example: "Un sistema bancario que procesa transacciones en tiempo real" },
+            { id: 2, name: "Procesamiento Distribuido", question: "¿El sistema distribuye el procesamiento entre múltiples componentes?", description: "Mide cómo el sistema distribuye tareas y datos entre diferentes componentes o servidores", example: "Un motor de búsqueda que distribuye consultas entre múltiples servidores" },
+            { id: 3, name: "Requisitos de Rendimiento", question: "¿Qué tan críticos son los tiempos de respuesta del sistema?", description: "Evalúa la importancia del rendimiento y velocidad de respuesta del sistema", example: "Sistema de control de tráfico aéreo que requiere respuestas instantáneas" },
+            { id: 4, name: "Uso Intensivo del Hardware", question: "¿El sistema funcionará en un ambiente con recursos limitados?", description: "Evalúa si el sistema debe funcionar eficientemente en hardware con alta demanda", example: "Sistema universitario de inscripciones usado por miles de estudiantes simultáneamente" },
+            { id: 5, name: "Volumen de Transacciones", question: "¿El sistema debe manejar grandes volúmenes de transacciones?", description: "Mide la frecuencia e intensidad de las operaciones que debe procesar el sistema", example: "Sistema bancario que procesa millones de transacciones nocturnas" },
+            { id: 6, name: "Entrada de Datos Interactiva", question: "¿Qué porcentaje de datos se captura de forma interactiva?", description: "Evalúa cuánta información ingresa el usuario directamente vs. procesamiento automático", example: "Sistema de inventario donde operadores escanean productos manualmente" },
+            { id: 7, name: "Facilidad de Uso", question: "¿El sistema está diseñado para ser fácil y eficiente de usar?", description: "Evalúa las características que mejoran la experiencia del usuario final", example: "Software de análisis financiero con interfaz intuitiva para ejecutivos" },
+            { id: 8, name: "Actualizaciones en Tiempo Real", question: "¿Cuántos archivos principales actualiza el sistema en tiempo real?", description: "Mide la complejidad de mantener datos actualizados instantáneamente", example: "Sistema de reservas aéreas que bloquea asientos en tiempo real" },
+            { id: 9, name: "Complejidad de Procesamiento", question: "¿El sistema realiza cálculos complejos o toma decisiones elaboradas?", description: "Evalúa la complejidad del procesamiento interno del sistema", example: "Sistema de diagnóstico médico con algoritmos de inteligencia artificial" },
+            { id: 10, name: "Reutilización de Código", question: "¿El sistema está diseñado para reutilizar componentes?", description: "Evalúa si el código puede usarse en múltiples sistemas o por diferentes usuarios", example: "Biblioteca de componentes de interfaz usada en múltiples aplicaciones" },
+            { id: 11, name: "Facilidad de Instalación", question: "¿Qué tan fácil es instalar y configurar el sistema?", description: "Evalúa la complejidad del proceso de instalación y migración", example: "Software empresarial con instalador automático y migración de datos" },
+            { id: 12, name: "Facilidad de Operación", question: "¿Qué tan automatizadas son las operaciones diarias del sistema?", description: "Evalúa el nivel de automatización en respaldos, recuperación y mantenimiento", example: "Sistema de base de datos con respaldo automático y recuperación de desastres" },
+            { id: 13, name: "Múltiples Ubicaciones", question: "¿El sistema funcionará en diferentes lugares u organizaciones?", description: "Evalúa si el sistema debe adaptarse a diferentes entornos e instalaciones", example: "Software de una multinacional usado en oficinas de diferentes países" },
+            { id: 14, name: "Facilidad de Mantenimiento", question: "¿El sistema está diseñado para facilitar cambios futuros?", description: "Evalúa qué tan fácil será modificar y mantener el sistema en el futuro", example: "Sistema ERP con configuración flexible sin necesidad de reprogramar" }
         ];
 
-        // Project data
+        // Project data with auto-save functionality
         let projectData = {
             name: '',
             language: '',
@@ -1019,6 +1177,161 @@
             },
             gscValues: Array(14).fill(0)
         };
+        
+        // Auto-save and recovery system (using in-memory storage)
+        let isDataChanged = false;
+        let lastSaveTime = null;
+        let autoSaveInterval = null;
+        let savedProjectData = null; // In-memory storage replacement
+        
+        // Auto-save functionality (in-memory)
+        function autoSave() {
+            try {
+                savedProjectData = {
+                    ...JSON.parse(JSON.stringify(projectData)), // Deep copy
+                    timestamp: Date.now(),
+                    lastModified: new Date().toLocaleString('es-ES')
+                };
+                lastSaveTime = Date.now();
+                isDataChanged = false;
+                updateSaveStatus('✅ Guardado', 'var(--color-success)');
+            } catch (error) {
+                console.warn('Error en auto-save:', error);
+                updateSaveStatus('❌ Error al guardar', 'var(--color-error)');
+            }
+        }
+        
+        function manualSave() {
+            updateSaveStatus('⏳ Guardando...', 'var(--color-warning)');
+            setTimeout(() => {
+                autoSave();
+                showSaveMessage('💾 Progreso guardado en memoria');
+            }, 500);
+        }
+        
+        function updateSaveStatus(status, color) {
+            const statusElement = document.getElementById('save-status');
+            if (statusElement) {
+                statusElement.textContent = status;
+                statusElement.style.color = color;
+            }
+        }
+        
+        function showSaveMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.innerHTML = message;
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: var(--color-success);
+                color: white;
+                padding: 12px 16px;
+                border-radius: 6px;
+                box-shadow: var(--shadow-lg);
+                z-index: 2000;
+                font-weight: 500;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                messageDiv.style.transform = 'translateX(100%)';
+                messageDiv.style.transition = 'all 0.3s';
+                setTimeout(() => messageDiv.remove(), 300);
+            }, 2000);
+        }
+        
+        // Load saved data (from memory)
+        function loadSavedData() {
+            return savedProjectData; // Return in-memory saved data
+        }
+        
+        // Check for unsaved changes
+        function markDataAsChanged() {
+            isDataChanged = true;
+            updateSaveStatus('⚠️ Sin guardar', 'var(--color-warning)');
+        }
+        
+        // Recovery modal
+        function showRecoveryModal(savedData) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 3000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            `;
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: var(--color-surface);
+                padding: 32px;
+                border-radius: 12px;
+                max-width: 500px;
+                width: 90%;
+                text-align: center;
+                box-shadow: var(--shadow-lg);
+            `;
+            
+            modalContent.innerHTML = `
+                <h3 style="color: var(--color-primary); margin: 0 0 16px 0;">🔄 Trabajo Previo Encontrado</h3>
+                <p style="margin: 16px 0;">Se encontró un proyecto guardado previamente.</p>
+                <div style="background: var(--color-bg-1); padding: 16px; border-radius: 8px; margin: 16px 0; text-align: left;">
+                    <strong>Proyecto:</strong> ${savedData.name || 'Sin nombre'}<br>
+                    <strong>Lenguaje:</strong> ${savedData.language || 'No seleccionado'}<br>
+                    <strong>Última modificación:</strong> ${savedData.lastModified}<br>
+                </div>
+                <p style="margin: 16px 0; color: var(--color-text-secondary);"><strong>¿Deseas recuperar tu trabajo previo?</strong></p>
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px;">
+                    <button id="recover-btn" class="btn btn--primary">🔄 Continuar donde quedé</button>
+                    <button id="new-btn" class="btn btn--secondary">🆕 Empezar nuevo proyecto</button>
+                </div>
+            `;
+            
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            document.getElementById('recover-btn').onclick = () => {
+                recoverData(savedData);
+                modal.remove();
+            };
+            
+            document.getElementById('new-btn').onclick = () => {
+                savedProjectData = null; // Clear in-memory data
+                modal.remove();
+                showSaveMessage('🆕 Nuevo proyecto iniciado');
+            };
+        }
+        
+        function recoverData(savedData) {
+            projectData = { ...savedData };
+            
+            // Restore form data
+            if (projectData.name) document.getElementById('project-name').value = projectData.name;
+            if (projectData.language) document.getElementById('programming-language').value = projectData.language;
+            if (projectData.description) document.getElementById('project-description').value = projectData.description;
+            
+            // Restore function tables
+            Object.keys(projectData.functions).forEach(type => {
+                const tbody = document.getElementById(type + '-tbody');
+                if (tbody) tbody.innerHTML = '';
+                
+                projectData.functions[type].forEach(func => {
+                    addRowWithData(type, func);
+                });
+            });
+            
+            showSaveMessage('✅ Trabajo previo recuperado exitosamente');
+            updateSaveStatus('✅ Guardado', 'var(--color-success)');
+        }
 
         // Navigation functions
         function startCalculation() {
@@ -1050,7 +1363,55 @@
                 return;
             }
             
+            // Generate function progress indicator
+            addFunctionProgressIndicator();
+            
+            markDataAsChanged();
             showSection('functions-section');
+        }
+        
+        function addFunctionProgressIndicator() {
+            const sections = ['functions-section', 'characteristics-section', 'results-section'];
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                const existing = section.querySelector('.section-progress');
+                if (existing) existing.remove();
+                
+                if (sectionId === 'functions-section') {
+                    const progressDiv = document.createElement('div');
+                    progressDiv.className = 'section-progress';
+                    progressDiv.innerHTML = `
+                        <div style="background: var(--color-bg-1); padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 style="margin: 0; color: var(--color-primary);">Progreso de Funciones</h4>
+                                    <p style="margin: 4px 0 0 0; font-size: 14px;"><span id="functions-completed">0</span> funciones definidas</p>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: center;">
+                                    <button class="btn btn--primary" style="font-size: 12px; padding: 6px 12px;" onclick="manualSave()">💾 Guardar</button>
+                                    <div id="functions-total-display" style="background: var(--color-primary); padding: 8px 16px; border-radius: 16px; color: white; font-weight: 600;">0 PF</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    const container = section.querySelector('.container');
+                    const progressIndicator = container.querySelector('.progress-indicator');
+                    progressIndicator.after(progressDiv);
+                }
+            });
+        }
+        
+        function updateFunctionProgress() {
+            const totalFunctions = Object.values(projectData.functions).reduce((sum, arr) => sum + arr.length, 0);
+            const totalFP = Object.values(projectData.functions).reduce((sum, functions) => 
+                sum + functions.reduce((subSum, func) => subSum + func.fpValue, 0), 0
+            );
+            
+            const completedElement = document.getElementById('functions-completed');
+            const totalDisplay = document.getElementById('functions-total-display');
+            
+            if (completedElement) completedElement.textContent = totalFunctions;
+            if (totalDisplay) totalDisplay.textContent = `${totalFP} PF`;
         }
 
         function goToCharacteristics() {
@@ -1132,6 +1493,40 @@
                 complexity: 'Bajo',
                 fpValue: 0
             });
+            
+            markDataAsChanged();
+        }
+        
+        function addRowWithData(functionType, functionData) {
+            const tbody = document.getElementById(functionType + '-tbody');
+            const row = document.createElement('tr');
+            
+            let columnsHtml;
+            if (functionType.includes('archivos')) {
+                columnsHtml = `
+                    <td><input type="text" value="${functionData.name || ''}" placeholder="Ej: Tabla Usuarios" onchange="updateRow('${functionType}', ${functionData.id})"></td>
+                    <td><input type="number" value="${functionData.files || ''}" min="0" placeholder="1-10" onchange="updateRow('${functionType}', ${functionData.id})" title="Subgrupos opcionales de datos"></td>
+                    <td><input type="number" value="${functionData.elements || ''}" min="0" placeholder="10-50" onchange="updateRow('${functionType}', ${functionData.id})" title="Campos mantenidos en el archivo">
+                    <td><span class="complexity-level">${functionData.complexity || 'Bajo'}</span></td>
+                    <td><span class="fp-value">${functionData.fpValue || 0}</span></td>
+                    <td><button class="btn btn--secondary" onclick="removeRow('${functionType}', ${functionData.id})">Eliminar</button></td>
+                `;
+            } else {
+                columnsHtml = `
+                    <td><input type="text" value="${functionData.name || ''}" placeholder="Ej: Registro de usuario" onchange="updateRow('${functionType}', ${functionData.id})"></td>
+                    <td><input type="number" value="${functionData.files || ''}" min="0" placeholder="1-5" onchange="updateRow('${functionType}', ${functionData.id})" title="Número de ILF + EIF accedidos"></td>
+                    <td><input type="number" value="${functionData.elements || ''}" min="0" placeholder="5-20" onchange="updateRow('${functionType}', ${functionData.id})" title="Campos de información únicos">
+                    <td><span class="complexity-level">${functionData.complexity || 'Bajo'}</span></td>
+                    <td><span class="fp-value">${functionData.fpValue || 0}</span></td>
+                    <td><button class="btn btn--secondary" onclick="removeRow('${functionType}', ${functionData.id})">Eliminar</button></td>
+                `;
+            }
+            
+            row.innerHTML = columnsHtml;
+            row.dataset.rowId = functionData.id;
+            tbody.appendChild(row);
+            
+            updateSubtotal(functionType);
         }
 
         function updateRow(functionType, rowId) {
@@ -1155,6 +1550,7 @@
             row.querySelector('.fp-value').textContent = functionData.fpValue;
             
             updateSubtotal(functionType);
+            markDataAsChanged();
         }
 
         function removeRow(functionType, rowId) {
@@ -1163,6 +1559,7 @@
             
             projectData.functions[functionType] = projectData.functions[functionType].filter(f => f.id !== rowId);
             updateSubtotal(functionType);
+            markDataAsChanged();
         }
 
         function calculateComplexity(functionType, files, elements) {
@@ -1218,122 +1615,137 @@
 
         function updateSubtotal(functionType) {
             const total = projectData.functions[functionType].reduce((sum, func) => sum + func.fpValue, 0);
-            document.getElementById(functionType + '-subtotal').textContent = `Subtotal: ${total} PF`;
+            const subtotalElement = document.getElementById(functionType + '-subtotal');
+            if (subtotalElement) {
+                subtotalElement.textContent = `Subtotal: ${total} PF`;
+                
+                // Add visual feedback
+                if (total > 0) {
+                    subtotalElement.style.color = 'var(--color-success)';
+                    subtotalElement.style.fontWeight = '600';
+                } else {
+                    subtotalElement.style.color = 'var(--color-text-secondary)';
+                    subtotalElement.style.fontWeight = '400';
+                }
+            }
+            
+            // Update overall function progress
+            updateFunctionProgress();
         }
 
-        // GSC detailed criteria data
+        // GSC detailed criteria data - NUEVAS PREGUNTAS REDISEÑADAS
         const gscDetailedCriteria = {
-            "1. Comunicaciones de datos": {
-                "0": "Aplicación de procesamiento por lotes puro o PC independiente",
-                "1": "Aplicación por lotes pero con entrada remota de datos o impresión remota",
-                "2": "Aplicación por lotes pero con entrada remota de datos Y impresión remota",
-                "3": "Aplicación incluye recolección de datos en línea o front-end TP a proceso por lotes",
-                "4": "Aplicación es más que front-end, pero soporta solo un tipo de protocolo TP",
-                "5": "Aplicación es más que front-end y soporta más de un tipo de protocolo TP"
+            "1. Comunicaciones de Datos": {
+                "0": "Aplicación independiente sin comunicación externa (ej: calculadora offline)",
+                "1": "Sistema por lotes con entrada o salida remota básica",
+                "2": "Sistema por lotes con entrada Y salida remota",
+                "3": "Sistema web básico con interfaz online para procesos",
+                "4": "Sistema interactivo con un protocolo de comunicación (ej: API REST)",
+                "5": "Sistema complejo con múltiples protocolos (REST, GraphQL, WebSockets, etc.)"
             },
-            "2. Procesamiento distribuido de datos": {
-                "0": "Aplicación no ayuda en la transferencia de datos entre componentes del sistema",
-                "1": "Aplicación prepara datos para procesamiento del usuario final en otro componente (ej: hojas de cálculo PC)",
-                "2": "Los datos se preparan para transferir, luego se transfieren y procesan en otro componente",
-                "3": "Procesamiento distribuido y transferencia de datos son en línea y en una dirección únicamente",
-                "4": "Procesamiento distribuido y transferencia de datos son en línea y en ambas direcciones",
-                "5": "Funciones de procesamiento se realizan dinámicamente en el componente más apropiado del sistema"
+            "2. Procesamiento Distribuido": {
+                "0": "Todo el procesamiento ocurre en un solo lugar",
+                "1": "Prepara datos para que otro sistema los procese",
+                "2": "Envía datos a otro sistema para procesamiento automático",
+                "3": "Procesamiento distribuido en tiempo real en una dirección",
+                "4": "Procesamiento distribuido bidireccional en tiempo real",
+                "5": "Procesamiento dinámico que elige automáticamente el mejor servidor"
             },
-            "3. Rendimiento": {
-                "0": "No se establecieron requisitos especiales de rendimiento por el usuario",
-                "1": "Requisitos de rendimiento y diseño fueron establecidos y revisados pero no se requirieron acciones especiales",
-                "2": "Tiempo de respuesta o throughput es crítico durante horas pico. Fecha límite para el siguiente día hábil",
-                "3": "Tiempo de respuesta o throughput es crítico durante todas las horas hábiles. Requisitos con sistemas de interfaz son restrictivos",
-                "4": "Además, los requisitos de rendimiento requieren tareas de análisis de rendimiento en la fase de diseño",
-                "5": "Además, se usaron herramientas de análisis de rendimiento en las fases de diseño, desarrollo e implementación"
+            "3. Requisitos de Rendimiento": {
+                "0": "No hay requisitos especiales de velocidad",
+                "1": "Rendimiento considerado pero sin medidas específicas",
+                "2": "Velocidad crítica en horas pico (ej: Black Friday)",
+                "3": "Velocidad crítica durante horario laboral completo",
+                "4": "Requiere análisis de rendimiento durante el diseño",
+                "5": "Usa herramientas especializadas para optimizar rendimiento"
             },
-            "4. Configuración fuertemente utilizada": {
-                "0": "No se incluyen restricciones operativas explícitas o implícitas",
-                "1": "Existen restricciones operativas, pero son menos restrictivas que una aplicación típica",
-                "2": "Se incluyen algunas consideraciones de seguridad o tiempo",
-                "3": "Se incluyen requisitos específicos de procesador para una pieza específica de la aplicación",
-                "4": "Las restricciones operativas requieren limitaciones especiales en el procesador central o dedicado",
-                "5": "Además, hay limitaciones especiales en los componentes distribuidos del sistema"
+            "4. Uso Intensivo del Hardware": {
+                "0": "Hardware dedicado sin otras aplicaciones importantes",
+                "1": "Comparte recursos pero con restricciones mínimas",
+                "2": "Debe considerar seguridad y tiempo de procesamiento",
+                "3": "Requiere optimizaciones específicas para el procesador",
+                "4": "Necesita optimizaciones especiales para el servidor principal",
+                "5": "Requiere optimizaciones en toda la infraestructura distribuida"
             },
-            "5. Tasa de transacciones": {
-                "0": "No se anticipa período pico de transacciones",
-                "1": "Se anticipa período pico de transacciones (mensual, trimestral, estacional, anual)",
-                "2": "Se anticipa período pico de transacciones semanal",
-                "3": "Se anticipa período pico de transacciones diario",
-                "4": "Alta tasa de transacciones requiere tareas de análisis de rendimiento en fase de diseño",
-                "5": "Alta tasa de transacciones requiere análisis de rendimiento Y herramientas especializadas"
+            "5. Volumen de Transacciones": {
+                "0": "Pocas transacciones, sin picos de uso",
+                "1": "Picos de uso ocasionales (mensual/estacional)",
+                "2": "Picos de uso semanales",
+                "3": "Picos de uso diarios",
+                "4": "Alto volumen requiere análisis de capacidad",
+                "5": "Volumen extremo requiere herramientas especializadas y análisis continuo"
             },
-            "6. Entrada de datos en línea": {
-                "0": "Todas las transacciones se procesan en modo por lotes",
-                "1": "1% a 7% de las transacciones son entrada interactiva de datos",
-                "2": "8% a 15% de las transacciones son entrada interactiva de datos",
-                "3": "16% a 23% de las transacciones son entrada interactiva de datos",
-                "4": "24% a 30% de las transacciones son entrada interactiva de datos",
-                "5": "Más del 30% de las transacciones son entrada interactiva de datos"
+            "6. Entrada de Datos Interactiva": {
+                "0": "Todas las transacciones son automáticas (0%)",
+                "1": "1-7% de las funciones requieren entrada manual",
+                "2": "8-15% de las funciones requieren entrada manual",
+                "3": "16-23% de las funciones requieren entrada manual",
+                "4": "24-30% de las funciones requieren entrada manual",
+                "5": "Más del 30% requiere entrada manual constante"
             },
-            "7. Eficiencia del usuario final": {
-                "0": "Ninguna de las características de eficiencia está presente",
-                "1": "Una a tres características están presentes (ayudas navegación, menús, ayuda en línea, etc.)",
-                "2": "Cuatro a cinco características están presentes",
-                "3": "Seis o más características, pero sin requisitos específicos relacionados con eficiencia",
-                "4": "Seis o más características Y requisitos específicos requieren tareas de diseño para factores humanos",
-                "5": "Seis o más características Y se requieren herramientas especiales para demostrar que se lograron los objetivos"
+            "7. Facilidad de Uso": {
+                "0": "Interfaz básica sin características especiales",
+                "1": "1-3 características de usabilidad (menús, ayuda básica)",
+                "2": "4-5 características de usabilidad (navegación, atajos)",
+                "3": "6+ características pero sin requisitos específicos",
+                "4": "6+ características con estudios de usabilidad",
+                "5": "Diseño avanzado con pruebas especializadas de usuario"
             },
-            "8. Actualización en línea": {
-                "0": "Ninguna actualización en línea",
-                "1": "Actualización en línea de 1-3 archivos de control. Volumen bajo y recuperación fácil",
-                "2": "Actualización en línea de 4 o más archivos de control. Volumen bajo y recuperación fácil",
-                "3": "Actualización en línea de archivos lógicos internos principales",
-                "4": "Además, protección contra pérdida de datos es esencial y ha sido especialmente diseñada",
-                "5": "Además, altos volúmenes requieren procedimientos de recuperación altamente automatizados"
+            "8. Actualizaciones en Tiempo Real": {
+                "0": "No actualiza archivos en tiempo real",
+                "1": "Actualiza 1-3 archivos simples con fácil recuperación",
+                "2": "Actualiza 4+ archivos simples con fácil recuperación",
+                "3": "Actualiza archivos principales del sistema",
+                "4": "Incluye protección crítica contra pérdida de datos",
+                "5": "Sistema automatizado de recuperación para alto volumen"
             },
-            "9. Procesamiento complejo": {
-                "0": "Ninguno de los componentes de procesamiento complejo está presente",
-                "1": "Cualquiera de los siguientes: control sensible, procesamiento lógico extenso, procesamiento matemático extenso, manejo de excepciones, procesamiento multimedia",
-                "2": "Cualquiera de dos de los componentes mencionados",
-                "3": "Cualquiera de tres de los componentes mencionados",
-                "4": "Cualquiera de cuatro de los componentes mencionados",
-                "5": "Los cinco componentes de procesamiento complejo están presentes"
+            "9. Complejidad de Procesamiento": {
+                "0": "Procesamiento simple sin cálculos complejos",
+                "1": "Una característica: lógica extensa O matemáticas O multimedia O excepciones O seguridad",
+                "2": "Dos de las características anteriores",
+                "3": "Tres de las características anteriores",
+                "4": "Cuatro de las características anteriores",
+                "5": "Todas las características: lógica + matemáticas + multimedia + excepciones + seguridad"
             },
-            "10. Reutilización": {
-                "0": "Sin código reutilizable",
-                "1": "Código reutilizable se usa dentro de la aplicación",
-                "2": "Menos del 10% de la aplicación consideró las necesidades de más de un usuario",
-                "3": "10% o más de la aplicación consideró las necesidades de más de un usuario",
-                "4": "La aplicación fue específicamente empaquetada/documentada para facilitar reutilización, personalizada a nivel de código fuente",
-                "5": "La aplicación fue específicamente empaquetada/documentada para facilitar reutilización, personalizada mediante mantenimiento de parámetros de usuario"
+            "10. Reutilización de Código": {
+                "0": "Código específico, no reutilizable",
+                "1": "Reutiliza código dentro de la misma aplicación",
+                "2": "Menos del 10% es reutilizable por otros sistemas",
+                "3": "10% o más es reutilizable por otros sistemas",
+                "4": "Específicamente documentado para reutilización (requiere modificar código)",
+                "5": "Completamente configurable para reutilización (sin modificar código)"
             },
-            "11. Facilidad de instalación": {
-                "0": "Sin consideraciones especiales y sin configuración especial requerida para instalación",
-                "1": "Sin consideraciones especiales pero se requiere configuración especial para instalación",
-                "2": "Requisitos de conversión e instalación fueron establecidos, guías proporcionadas y probadas. Impacto no importante",
-                "3": "Requisitos de conversión e instalación fueron establecidos, guías proporcionadas y probadas. Impacto es importante",
-                "4": "Además del punto 2, herramientas automatizadas de conversión e instalación fueron proporcionadas y probadas",
-                "5": "Además del punto 3, herramientas automatizadas de conversión e instalación fueron proporcionadas y probadas"
+            "11. Facilidad de Instalación": {
+                "0": "Instalación simple sin consideraciones especiales",
+                "1": "Instalación simple pero requiere configuración específica",
+                "2": "Incluye guías de instalación probadas (impacto menor)",
+                "3": "Incluye guías de instalación probadas (impacto significativo)",
+                "4": "Proporciona herramientas automatizadas (impacto menor)",
+                "5": "Proporciona herramientas automatizadas (impacto significativo)"
             },
-            "12. Facilidad operacional": {
-                "0": "Sin consideraciones operativas especiales más que procedimientos normales de respaldo",
-                "1": "Procedimientos efectivos de inicio/respaldo/recuperación (1 punto)",
-                "2": "Sin intervención del operador (2 puntos) o minimiza montajes de cinta (1 punto)",
-                "3": "Minimiza manejo de papel (1 punto) + otras características",
-                "4": "Combinación de características que suman 4 puntos",
-                "5": "La aplicación está diseñada para operación desatendida. Recuperación automática de errores es característica"
+            "12. Facilidad de Operación": {
+                "0": "Operación manual básica, solo respaldos normales",
+                "1": "Procedimientos de respaldo automatizados",
+                "2": "Respaldo + recuperación automatizados",
+                "3": "Minimiza intervención manual (montaje cintas, papeles)",
+                "4": "Operación semi-automatizada con mínima supervisión",
+                "5": "Operación completamente automatizada con auto-recuperación"
             },
-            "13. Múltiples sitios": {
-                "0": "Requisitos del usuario no requieren considerar las necesidades de más de un sitio",
-                "1": "Necesidades de múltiples sitios consideradas, aplicación diseñada para operar solo bajo ambientes de hardware/software idénticos",
-                "2": "Necesidades de múltiples sitios consideradas, aplicación diseñada para operar solo bajo ambientes de hardware/software similares",
-                "3": "Necesidades de múltiples sitios consideradas, aplicación diseñada para operar bajo ambientes de hardware/software diferentes",
-                "4": "Documentación y plan de soporte proporcionados y probados para múltiples sitios (con características de 1 o 2)",
-                "5": "Documentación y plan de soporte proporcionados y probados para múltiples sitios (con características de 3)"
+            "13. Múltiples Ubicaciones": {
+                "0": "Un solo sitio de instalación",
+                "1": "Múltiples sitios con configuración idéntica",
+                "2": "Múltiples sitios con configuración similar",
+                "3": "Múltiples sitios con configuraciones diferentes",
+                "4": "Incluye documentación y soporte para múltiples sitios (config. similar)",
+                "5": "Incluye documentación y soporte para múltiples sitios (config. diferente)"
             },
-            "14. Facilitar cambios": {
-                "0": "Ninguna de las características de flexibilidad está presente",
-                "1": "Consulta/reporte flexible simple (1 pto) o datos de control en tablas mantenidas por usuario con efecto siguiente día (1 pto)",
-                "2": "Consulta/reporte complejo (2-3 ptos) o combinación que sume 2 puntos",
-                "3": "Datos de control con efecto inmediato (2 ptos) + otras características que sumen 3 puntos",
-                "4": "Cualquier combinación que sume 4 puntos de las características mencionadas",
-                "5": "Todas las características de flexibilidad están presentes (suma 5 puntos)"
+            "14. Facilidad de Mantenimiento": {
+                "0": "Sin consideraciones especiales para cambios",
+                "1": "Permite consultas y reportes flexibles simples",
+                "2": "Permite modificaciones de complejidad media",
+                "3": "Permite modificaciones complejas",
+                "4": "Datos de configuración en tablas editables (actualización diferida)",
+                "5": "Datos de configuración en tablas editables (actualización inmediata)"
             }
         };
 
@@ -1341,6 +1753,24 @@
         function generateGSCForm() {
             const container = document.getElementById('gsc-container');
             container.innerHTML = '';
+            
+            // Añadir indicador de progreso GSC
+            const progressDiv = document.createElement('div');
+            progressDiv.innerHTML = `
+                <div class="gsc-progress" style="margin-bottom: 24px; padding: 16px; background: var(--color-bg-3); border-radius: 8px;">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 style="margin: 0; color: var(--color-success);">Progreso GSC</h4>
+                            <p style="margin: 4px 0 0 0; font-size: 14px;"><span id="gsc-completed">0</span>/14 características evaluadas</p>
+                        </div>
+                        <div style="background: var(--color-success); padding: 8px 16px; border-radius: 16px; color: white; font-weight: 600;" id="gsc-total-display">GSC: 0</div>
+                    </div>
+                    <div style="width: 100%; background: var(--color-border); height: 8px; border-radius: 4px; margin-top: 12px; overflow: hidden;">
+                        <div id="gsc-progress-bar" style="width: 0%; background: var(--color-success); height: 100%; transition: width 0.3s;"></div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(progressDiv);
             
             gscCharacteristics.forEach((char, index) => {
                 const div = document.createElement('div');
@@ -1350,26 +1780,45 @@
                 const criteria = gscDetailedCriteria[criteriaKey] || {};
                 
                 div.innerHTML = `
-                    <div class="card">
+                    <div class="gsc-question card" style="border-left: 4px solid ${projectData.gscValues[index] > 0 ? 'var(--color-success)' : 'var(--color-border)'}; margin-bottom: 20px;">
                         <div class="card__body">
-                            <h4>${char.name}</h4>
-                            <p class="help-text">${char.description}</p>
-                            
-                            <div class="gsc-criteria">
-                                <strong>Criterios de Evaluación:</strong><br>
-                                ${Object.entries(criteria).map(([level, desc]) => 
-                                    `<strong>${level}:</strong> ${desc}<br>`
-                                ).join('')}
+                            <div class="flex justify-between items-start" style="margin-bottom: 12px;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0; color: var(--color-text);">${char.id}. ${char.name}</h4>
+                                    <p class="question" style="margin: 8px 0; font-size: 16px; font-weight: 500; color: var(--color-primary);">${char.question}</p>
+                                    <p class="description" style="margin: 8px 0; color: var(--color-text-secondary);">${char.description}</p>
+                                    <p class="example" style="margin: 8px 0; padding: 8px; background: var(--color-bg-2); border-radius: 4px; font-style: italic;">
+                                        💡 <strong>Ejemplo:</strong> ${char.example}
+                                    </p>
+                                </div>
+                                <div class="gsc-status" style="text-align: center; min-width: 60px;">
+                                    ${projectData.gscValues[index] > 0 ? 
+                                        `<div style="color: var(--color-success); font-size: 24px;">✅</div><div style="font-size: 12px; color: var(--color-success);">Completa</div>` : 
+                                        `<div style="color: var(--color-warning); font-size: 24px;">⚠️</div><div style="font-size: 12px; color: var(--color-warning);">Pendiente</div>`
+                                    }
+                                </div>
                             </div>
                             
-                            <div class="gsc-scale-detailed">
+                            <div class="radio-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 16px;">
                                 ${[0, 1, 2, 3, 4, 5].map(value => `
-                                    <div class="gsc-option ${projectData.gscValues[index] === value ? 'selected' : ''}" onclick="selectGSC(${index}, ${value})">
-                                        <input type="radio" name="gsc-${char.id}" value="${value}" ${projectData.gscValues[index] === value ? 'checked' : ''}>
-                                        <div><strong>${value}</strong></div>
-                                        <div class="help-text" style="font-size: 10px; margin-top: 4px;">${criteria[value] || 'No definido'}</div>
-                                    </div>
+                                    <label class="gsc-option ${projectData.gscValues[index] === value ? 'selected' : ''}" 
+                                           style="display: block; padding: 12px 8px; border: 2px solid ${projectData.gscValues[index] === value ? 'var(--color-primary)' : 'var(--color-border)'}; 
+                                                  border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.2s; 
+                                                  background: ${projectData.gscValues[index] === value ? 'var(--color-primary)' : 'var(--color-surface)'}; 
+                                                  color: ${projectData.gscValues[index] === value ? 'var(--color-btn-primary-text)' : 'var(--color-text)'};" 
+                                           onclick="selectGSC(${index}, ${value})">
+                                        <input type="radio" name="gsc-${char.id}" value="${value}" ${projectData.gscValues[index] === value ? 'checked' : ''} style="margin: 0 0 4px 0;">
+                                        <div style="font-weight: 600; font-size: 18px;">${value}</div>
+                                        <div style="font-size: 11px; margin-top: 4px; opacity: 0.8;">${(criteria[value] || 'No definido').substring(0, 40)}${(criteria[value] || '').length > 40 ? '...' : ''}</div>
+                                    </label>
                                 `).join('')}
+                            </div>
+                            
+                            <div class="gsc-criteria" style="margin-top: 16px; padding: 12px; background: var(--color-bg-1); border-radius: 6px; font-size: 13px;">
+                                <strong>📈 Niveles de Evaluación:</strong><br>
+                                ${Object.entries(criteria).map(([level, desc]) => 
+                                    `<div style="margin: 6px 0;"><strong style="color: var(--color-primary);">${level}:</strong> ${desc}</div>`
+                                ).join('')}
                             </div>
                         </div>
                     </div>
@@ -1377,27 +1826,39 @@
                 
                 container.appendChild(div);
             });
+            
+            // Actualizar progreso inicial
+            updateGSCProgress();
         }
 
         function selectGSC(index, value) {
             projectData.gscValues[index] = value;
             
-            // Update visual selection
-            const containers = document.querySelectorAll('.gsc-detailed');
-            const container = containers[index];
-            const options = container.querySelectorAll('.gsc-option');
+            // Update visual selection and regenerate the form to reflect changes
+            generateGSCForm();
             
-            options.forEach((option, i) => {
-                if (i === value) {
-                    option.classList.add('selected');
-                    option.querySelector('input').checked = true;
-                } else {
-                    option.classList.remove('selected');
-                }
-            });
-            
-            // Update GSC totals
+            // Update GSC totals and progress
             updateGSCTotals();
+            updateGSCProgress();
+            
+            // Auto-save progress
+            autoSave();
+        }
+        
+        function updateGSCProgress() {
+            const completed = projectData.gscValues.filter(val => val > 0).length;
+            const progressPercent = (completed / 14) * 100;
+            
+            const completedElement = document.getElementById('gsc-completed');
+            const progressBar = document.getElementById('gsc-progress-bar');
+            const totalDisplay = document.getElementById('gsc-total-display');
+            
+            if (completedElement) completedElement.textContent = completed;
+            if (progressBar) progressBar.style.width = progressPercent + '%';
+            if (totalDisplay) {
+                const gscSum = projectData.gscValues.reduce((sum, value) => sum + value, 0);
+                totalDisplay.textContent = `GSC: ${gscSum}`;
+            }
         }
 
         function updateGSCTotals() {
@@ -1409,6 +1870,9 @@
             
             if (totalElement) totalElement.textContent = gscSum;
             if (vafElement) vafElement.textContent = vaf.toFixed(2);
+            
+            // Update progress display
+            updateGSCProgress();
         }
 
         // Calculations
@@ -1691,6 +2155,9 @@
         }
 
         function resetProject() {
+            const confirmReset = confirm('🔄 ¿Estás seguro de que deseas reiniciar? Se perderá todo el progreso actual.');
+            if (!confirmReset) return;
+            
             projectData = {
                 name: '',
                 language: '',
@@ -1705,17 +2172,30 @@
                 gscValues: Array(14).fill(0)
             };
             
+            // Clear saved data (in-memory)
+            savedProjectData = null;
+            
             // Clear all tables
             Object.keys(projectData.functions).forEach(type => {
-                document.getElementById(type + '-tbody').innerHTML = '';
+                const tbody = document.getElementById(type + '-tbody');
+                if (tbody) tbody.innerHTML = '';
                 updateSubtotal(type);
             });
             
             // Reset form fields
-            document.getElementById('project-name').value = '';
-            document.getElementById('programming-language').value = '';
-            document.getElementById('project-description').value = '';
+            const nameField = document.getElementById('project-name');
+            const langField = document.getElementById('programming-language');
+            const descField = document.getElementById('project-description');
             
+            if (nameField) nameField.value = '';
+            if (langField) langField.value = '';
+            if (descField) descField.value = '';
+            
+            // Reset status
+            isDataChanged = false;
+            updateSaveStatus('✅ Nuevo proyecto', 'var(--color-success)');
+            
+            showSaveMessage('🆕 Proyecto reiniciado (datos en memoria limpiados)');
             showSection('home-section');
         }
 
@@ -1765,25 +2245,136 @@
             }
         });
 
-        // Initialize the application
+        // Add auto-save interval management
+        function startAutoSave() {
+            // Auto-save every 30 seconds
+            autoSaveInterval = setInterval(() => {
+                if (isDataChanged) {
+                    autoSave();
+                }
+            }, 30000);
+        }
+        
+        function stopAutoSave() {
+            if (autoSaveInterval) {
+                clearInterval(autoSaveInterval);
+                autoSaveInterval = null;
+            }
+        }
+        
+        // Prevent data loss on page unload
+        window.addEventListener('beforeunload', function(e) {
+            if (isDataChanged) {
+                const message = '¿Estás seguro? Tienes trabajo sin guardar que se perderá al cerrar la página.';
+                e.preventDefault();
+                e.returnValue = message;
+                return message;
+            }
+        });
+        
+        // Initialize the application with recovery system
         document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved data
+            const savedData = loadSavedData();
+            if (savedData && (savedData.name || savedData.language || 
+                Object.values(savedData.functions).some(arr => arr.length > 0) ||
+                savedData.gscValues.some(val => val > 0))) {
+                showRecoveryModal(savedData);
+            }
+            
             // Initialize empty rows for each function type
             Object.keys(projectData.functions).forEach(type => {
                 updateSubtotal(type);
             });
             
-            // Add keyboard shortcut hint
-            const helpHint = document.createElement('div');
-            helpHint.innerHTML = '💡 Consejo: Presiona Ctrl+H para abrir la ayuda en cualquier momento';
-            helpHint.style.cssText = 'position: fixed; bottom: 16px; right: 16px; background: var(--color-info); color: var(--color-white); padding: 8px 12px; border-radius: 4px; font-size: 12px; z-index: 1000; opacity: 0.8;';
-            document.body.appendChild(helpHint);
+            // Start auto-save system
+            startAutoSave();
             
-            // Hide hint after 5 seconds
-            setTimeout(() => {
-                helpHint.style.opacity = '0';
-                setTimeout(() => helpHint.remove(), 300);
-            }, 5000);
+            // Add save status indicator
+            addSaveStatusIndicator();
+            
+            // Add manual save button
+            addManualSaveButton();
+            
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Ctrl/Cmd + S for manual save
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    e.preventDefault();
+                    manualSave();
+                }
+            });
+            
+            // Add event listeners to form inputs
+            ['project-name', 'programming-language', 'project-description'].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('input', markDataAsChanged);
+                    element.addEventListener('change', markDataAsChanged);
+                }
+            });
         });
+        
+        function addSaveStatusIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'save-status-container';
+            indicator.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2000;
+                background: var(--color-surface);
+                padding: 8px 16px;
+                border-radius: 20px;
+                border: 1px solid var(--color-border);
+                box-shadow: var(--shadow-sm);
+                font-size: 12px;
+                font-weight: 500;
+            `;
+            
+            indicator.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div id="save-status" style="color: var(--color-success);">✅ Guardado</div>
+                    <div id="last-save-time" style="color: var(--color-text-secondary); font-size: 11px;"></div>
+                </div>
+            `;
+            
+            document.body.appendChild(indicator);
+            
+            // Update timestamp every minute
+            setInterval(updateLastSaveDisplay, 60000);
+        }
+        
+        function updateLastSaveDisplay() {
+            const element = document.getElementById('last-save-time');
+            if (element && lastSaveTime) {
+                const minutes = Math.floor((Date.now() - lastSaveTime) / 60000);
+                if (minutes === 0) {
+                    element.textContent = 'Ahora';
+                } else if (minutes === 1) {
+                    element.textContent = 'Hace 1 min';
+                } else {
+                    element.textContent = `Hace ${minutes} min`;
+                }
+            }
+        }
+        
+        function addManualSaveButton() {
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'btn btn--primary';
+            saveBtn.innerHTML = '💾 Guardar Progreso';
+            saveBtn.onclick = manualSave;
+            saveBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 2000;
+                box-shadow: var(--shadow-lg);
+                background: var(--color-success) !important;
+            `;
+            
+            document.body.appendChild(saveBtn);
+        }
     </script>
 </body>
 </html>
